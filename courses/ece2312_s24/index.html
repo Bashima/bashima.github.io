@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ECE 2312: Discrete-Time Signal and System Analysis (C-24)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9c433f63-d2e8-41b7-9071-a87dacea7a53" class="page sans"><header><h1 class="page-title">ECE 2312: Discrete-Time Signal and System Analysis (C-24)</h1><p class="page-description"></p></header><div class="page-body"><h2 id="d94ae91c-d281-461e-87e2-2eafebd4a4fe" class="">Instructor:</h2><table id="96d72c5a-043a-42ea-9663-b21723faa416" class="simple-table"><tbody><tr id="debcce2f-db00-432f-9520-2d1d05d0aadc"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="">Professor Bashima Islam</td></tr><tr id="c4f08e70-3a0c-4c09-a918-b78430d336bd"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class=""><a href="mailto:bislam@wpi.edu">bislam@wpi.edu</a></td></tr><tr id="932dc693-65c4-41b4-8e4f-e3d42632deb5"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="">On Demand (email if needed)</td></tr></tbody></table><h2 id="01525c4b-83fe-4f0a-a233-47cdd0429e95" class="">Teaching Assistant:</h2><div id="6fe7c441-ad94-45ca-858e-83231ade8551" class="column-list"><div id="450a491f-9c33-4d9e-b5a8-5fe82d33a6e8" style="width:50%" class="column"><table id="05f0c21e-a7fa-4a26-a31c-71573edc5082" class="simple-table"><tbody><tr id="f4817f51-84d7-4532-aa9f-6878699c4c2e"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="">Sheikh Asif Imran Shouborno</td></tr><tr id="5a3338c5-a1d7-4612-a457-4700a5c45cc7"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class=""><a href="mailto:simran@wpi.edu">simran@wpi.edu</a></td></tr><tr id="65fe60dc-c8ec-4bec-ab30-02b14699fd17"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="">Tuesdays 2-4PM</td></tr><tr id="f19ea09c-6365-4c33-a890-f8a494219c3a"><th id="MpDQ" class="simple-table-header-color simple-table-header"><strong>Location</strong></th><td id="lelX" class="">Physical: AK311, Zoom: <a href="https://wpi.zoom.us/j/92502973153">https://wpi.zoom.us/j/92502973153</a></td></tr></tbody></table></div><div id="ee1dbee1-6e61-41de-bc93-6acc6e538b2c" style="width:50%" class="column"><table id="54fceea7-8337-475f-82ad-e62f3eb26fb8" class="simple-table"><tbody><tr id="a016cb20-5ca9-4eea-9e06-bd8640e9e811"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="">Mohammad Nur Hossain Khan</td></tr><tr id="98a775c8-f1ff-4a7c-918d-138b54e0b998"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class=""><a href="mailto:mkhan@wpi.edu">mkhan@wpi.edu</a></td></tr><tr id="261a8a8d-8059-4ff2-9832-f9c5bc49f79a"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="">Monday 2-4pm</td></tr><tr id="d946ac18-21d5-428e-9e9f-fe9646ba4749"><th id="MpDQ" class="simple-table-header-color simple-table-header">Location</th><td id="lelX" class="">AK 311</td></tr></tbody></table></div></div><h2 id="4f434586-023d-4558-9de1-06dff825e3b2" class="">Student Tutor:</h2><table id="6fb3b442-31ce-499c-bcb4-422beb1bd8a0" class="simple-table"><tbody><tr id="f63fa426-a230-4d36-9bea-80ea9b7ce42a"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="" style="width:295.25px">Robbie Oleynick</td></tr><tr id="75de1386-2f95-46b8-b106-b8073511a016"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class="" style="width:295.25px"><a href="mailto:rpoleynick@wpi.edu">rpoleynick@wpi.edu</a></td></tr><tr id="a4c13d5c-78ca-4ce4-a50a-b151b8b8d7c7"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="" style="width:295.25px">Monday 1-2pm, AK 108<br/>Thursday 1-2pm, AK 108<br/></td></tr><tr id="90ac06ef-e1c8-4b7f-8f76-05337fea6f4e"><th id="MpDQ" class="simple-table-header-color simple-table-header">Coding Workshops</th><td id="lelX" class="" style="width:295.25px">Monday, Thursday, Friday 9-10am, AK 013</td></tr></tbody></table><h2 id="29a176d4-8953-466f-9c56-2e4afcd26354" class="">Lecture Schedule:</h2><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="b663db22-5c0a-4e7e-819d-94e8447d4e8d"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/calendar-month_gray.svg"/></div><div style="width:100%">Lectures: MTWRF 4:00 PM – 4:50 PM, Room <strong>AK233</strong></div></figure><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="c9a8af02-18a6-46e1-9645-f78482a9773b"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/warning_red.svg"/></div><div style="width:100%"><em>If school is canceled due to a &quot;significant weather event&quot; (e.g., &quot;snow day&quot;, included cases where the campus is closed as well as days where travel is discouraged… or just plain silly)) or class is canceled due to an unforeseen event; I expect to use zoom online classes (see the Lecture Notes section of this web page) to fill-in for any missed lecture. If an exam is canceled, expect it to be rescheduled for the next class meeting.</em></div></figure><h2 id="cb90e74d-b6f6-4952-a18a-a53bb2a7dfc8" class="">Website:</h2><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="1fc838a4-3e06-4eba-a610-4d2db1e1f3f1"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/globe_blue.svg"/></div><div style="width:100%"><a href="https://www.notion.so/ECE-2312-Discrete-Time-Signal-and-System-Analysis-C-24-9c433f63d2e841b79071a87dacea7a53?pvs=21">https://bashima.notion.site/ECE-2312-Discrete-Time-Signal-and-System-Analysis-9c433f63d2e841b79071a87dacea7a53?pvs=4</a></div></figure><p id="1fe97765-81c5-4392-8526-9f7e27c1e44e" class="">All course materials, problem sets, solutions, announcements, and other useful tidbits will be  available via the ECE2312 CANVAS website.  The official site of the course will not have the problem sets and their solutions.</p><p id="8d0dffc0-df39-4d61-b8e8-9a13b7508104" class=""><strong>Online Lectures </strong>– In this course, all lectures will be recorded and posted online via the ECE2312 CANVAS website. It is expected that all students review and study these online lectures such that they are prepared for an interactive in-class discussion. Furthermore, quizes will cover the material from these online lectures and classes.</p><h2 id="c818c042-e973-44e2-8124-e7305ad7118e" class="">Course Textbook:</h2><ul id="984aed50-1520-41ae-8a15-4dd8174e23ca" class="bulleted-list"><li style="list-style-type:disc">This course will follow two main books <ul id="1e07b47c-4e60-4116-ba21-e45403d06861" class="bulleted-list"><li style="list-style-type:circle">“<strong>The Scientist and Engineer&#x27;s Guide to Digital Signal Processing”</strong> by <strong>Steven W. Smith</strong>.<br/>This book can be found online for free at <br/><a href="https://www.dspguide.com/pdfbook.htm">https://www.dspguide.com/pdfbook.htm</a></li></ul><ul id="e3a8165f-02a5-455a-956f-0dd921c7ad98" class="bulleted-list"><li style="list-style-type:circle"><strong>“Digital Signal Processing : Principles, Algorithms, and Applications” </strong>by <strong>Proakis &amp; Manolakis, 5th Edition, Prentice Hall </strong>(ISBN: 9780137348244). If you own or have access to the <strong>fourth</strong> edition of this text (ISBN-13: 978-0131873742; ISBN-10: 0131873741), it contains nearly identical material (at least for what is covered in this course). Thus, the fourth edition is also recommended.<p id="691b45a5-1d0b-44b8-b2ef-d8959f980d9d" class="">In any case, <strong>none</strong> of the homework problems are taken from the text. Thus, several alternative texts are likely acceptable, particularly if you already own them:</p><ul id="6799fbce-0b58-40da-a09e-4f0a316c2bf6" class="bulleted-list"><li style="list-style-type:square">Lathi: &quot;<strong>Linear Systems and Signals</strong>&quot;: This text has rather complete coverage of this course. Many students will already own this text since several ECE professors use it for ECE 2311.</li></ul><ul id="35e186a2-cf97-4d56-a634-0ca64d4da992" class="bulleted-list"><li style="list-style-type:square">Oppenheim, Willsky, and Nawab, &quot;<strong>Signals and Systems</strong>&quot; Class notes, combined with open-access sources such as Wikipedia, <strong>might</strong> provide the additional reading necessary. Thus, this text is likely a reasonable alternative, so long as you are willing to complete a little extra searching for materials in a few limited areas that we will cover in the course but are not covered in the text.</li></ul></li></ul></li></ul><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="7199e04a-fea1-410e-8767-a1fd43d4e54b"><div style="font-size:1.5em"><span class="icon">ℹ️</span></div><div style="width:100%">We will <strong><strong><strong>Practice</strong></strong></strong> by coding what we have learned in the <strong><strong><strong><strong><strong><strong>Theory</strong></strong></strong></strong></strong></strong> of Discrete-Time Signal and System Analysis using <strong><strong><strong><strong><strong><strong>MATLAB </strong></strong></strong></strong></strong></strong>or <strong><strong><strong><strong><strong><strong>PYTHON</strong></strong></strong></strong></strong></strong>. Feel free to choose either language based on your comfort level. <br/><br/>While Python is open-source, MATLAB only comes in paid format. Fortunately, MatLab is supported by WPI and can be accessed through the WPI software resources.  <br/><br/></div></figure><figure id="ab0aca3d-0685-4402-b2b6-c5f1a6219d45" class="link-to-page"><a href="https://www.notion.so/Programming-Resources-ab0aca3d06854402b2b6c5f1a6219d45?pvs=21">Programming Resources</a></figure><h2 id="085d9dc8-96b5-4eb5-8621-1fdf8f77d09f" class="">Recommended Background:</h2><ul id="566072de-8c15-421e-993b-68c6c6c70dcc" class="bulleted-list"><li style="list-style-type:disc">Undergraduate continuous-time signal analysis.</li></ul><ul id="b2acee47-ebf1-4ddd-89f4-2737154f17d2" class="bulleted-list"><li style="list-style-type:disc">Computer science course in any structured language<ul id="2c8a446e-62cc-4500-8ff9-b5ae7af68547" class="bulleted-list"><li style="list-style-type:circle">Should understand if-then-else, loops, variables, variable scope, etc.</li></ul><ul id="898e0409-ad6a-4ea1-8797-eda2c6bd87a0" class="bulleted-list"><li style="list-style-type:circle">Use functions in both Matlab and Python; do <mark class="highlight-red"><span style="border-bottom:0.05em solid">NOT</span></mark> use scripts. Structured programming is essential for science and engineering. </li></ul></li></ul><h2 id="e55133b0-c96c-433a-bf3b-7c4d4f6980b7" class="">Evaluation:</h2><p id="cd2941ad-a335-41ae-87e2-d3bc145e673e" class=""><mark class="highlight-teal_background"><strong>Projects </strong></mark><mark class="highlight-teal_background">(35%)</mark> -- Teams of up to three students each are expected to complete two projects (all equally weighted) that will involve the synthesis of several course concepts. All source codes need to be uploaded to <strong>GitHub</strong>. Final reports (<em>PDF format only</em>), including links to all the source codes uploaded to GitHub, will be submitted via the ECE2312 CANVAS course website. <br/>Note that each student team is expected to work independently, i.e., no work with other groups, and that no late submissions will be accepted. During code evaluation, each student&#x27;s role will be judged too. <br/>Final reports are due at 5 PM on the day of the deadline.<br/></p><p id="e7d5235e-2532-400c-9d0a-b478e5fff1fa" class=""><strong><mark class="highlight-purple_background">Assignments</mark></strong><mark class="highlight-purple_background"> (35%)</mark> -- Three assignments (all equally weighted) will be assigned throughout the course. Assignments should be scanned and handed in on the assigned date via Canvas as a <em>SINGLE PDF </em>file. Full credit for homework handed in before <mark class="highlight-red">10 A.M</mark>. on the due date. There is no guarantee of any credit for assignments submitted after this time. (Contact Bashima Islam <strong>immediately</strong> for an exception, preferably <strong>before </strong>the due date.)</p><p id="8ef37ca9-18d0-47cd-89d1-4cef83eb4786" class=""><strong><mark class="highlight-blue_background">Quiz</mark></strong><mark class="highlight-blue_background"> (30%) </mark>-- Three quizzes will be administered. The quiz will be open-book/notes/laptop/tablet/smartphone/etc.; there is to be no collaboration with other individuals. The scope of the quiz will be the material taught since the last quiz until the week before. No ‘make-up’ QUIZ will be permitted. </p><h2 id="6c7f968c-6d03-4551-85de-22efa1659349" class="">Course Schedule and Reading Assignments</h2><p id="89cbf827-d846-4574-b9eb-5b3d93fa4bf6" class="">GitHub Link for Sample Codes: <a href="https://github.com/BASHLab/ECE2312">https://github.com/BASHLab/ECE2312</a></p><table id="465ec2a5-fe73-47df-b1b1-7ce208514131" class="simple-table"><thead class="simple-table-header"><tr id="c8c4f4b8-a8c7-43b6-9a76-12d6640cd2e3"><th id="RS`F" class="simple-table-header-color simple-table-header" style="width:42px"># </th><th id="s\rG" class="simple-table-header-color simple-table-header" style="width:60px">Date</th><th id="c|FE" class="simple-table-header-color simple-table-header" style="width:115px">Day</th><th id="BCGh" class="simple-table-header-color simple-table-header" style="width:357px">Topic</th><th id="KP@i" class="simple-table-header-color simple-table-header" style="width:95px">Notes</th><th id="lpPz" class="simple-table-header-color simple-table-header" style="width:58px">Video</th><th id="{yrh" class="simple-table-header-color simple-table-header">HW/Project</th></tr></thead><tbody><tr id="76e58f75-4f04-45b7-b351-ceeda72f9309"><td id="RS`F" class="block-color-purple_background" style="width:42px">1</td><td id="s\rG" class="block-color-purple_background" style="width:60px">01/10</td><td id="c|FE" class="block-color-purple_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-purple_background" style="width:357px">Course Intro/Overview<br/>Discrete Time Signals &amp; Systems — What and Why?<br/></td><td id="KP@i" class="block-color-purple_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETe5o9FFK6BPqP5ZvAOxTDEBJ3dWDeqpUUzFo63bg_Y0yg?e=TwUj56">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYQcCMbTUaxMvoGO_kcJKNoBJDikduIh27oEG31t6wfZrg?e=vur7Mz">Post-Note</a></td><td id="lpPz" class="block-color-purple_background" style="width:58px"></td><td id="{yrh" class="block-color-purple_background"></td></tr><tr id="8a19a419-dd6b-4727-8244-d83c16d978c8"><td id="RS`F" class="block-color-purple_background" style="width:42px">2</td><td id="s\rG" class="block-color-purple_background" style="width:60px">01/11</td><td id="c|FE" class="block-color-purple_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-purple_background" style="width:357px">Classes of Signal and Signal Operations</td><td id="KP@i" class="block-color-purple_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERR4NqI8WMRCodbVYBdrslUBIMF0OamjeeyL7nSdJ-69fw?e=xwXvxF">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/personal/bislam_wpi_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE2312%5FDTSP%2FC24%2FNotes%2FPost%2DNotes%2FLecture2%5FSignal%5FClasses%5FOperations%5Fpost%2Epdf&amp;parent=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE2312%5FDTSP%2FC24%2FNotes%2FPost%2DNotes&amp;ga=1">Post-Note </a></td><td id="lpPz" class="block-color-purple_background" style="width:58px"></td><td id="{yrh" class="block-color-purple_background">Assignment 1 Online</td></tr><tr id="9e55b16c-2e5f-4eda-ac47-f1989799c24e"><td id="RS`F" class="block-color-purple_background" style="width:42px">3</td><td id="s\rG" class="block-color-purple_background" style="width:60px">01/12</td><td id="c|FE" class="block-color-purple_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-purple_background" style="width:357px">Linear Time-Invariant Systems</td><td id="KP@i" class="block-color-purple_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EcQwBOb7Z4VKlKOpggOh4Y0BluGvjeEnXnvE9oqLrfpRYQ?e=EjTw4o">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EZrAfGia9etHrdDA_2Z8-w4BnYoWAY2GXYGB_THDM4lmCw?e=oRw1kQ">Post-Note</a></td><td id="lpPz" class="block-color-purple_background" style="width:58px"></td><td id="{yrh" class="block-color-purple_background"></td></tr><tr id="e3b7b434-7f57-4067-b6c3-025a59098b3e"><td id="RS`F" class="block-color-gray_background" style="width:42px"></td><td id="s\rG" class="block-color-gray_background" style="width:60px">01/15</td><td id="c|FE" class="block-color-gray_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-gray_background" style="width:357px"><mark class="highlight-red"><strong>NO CLASS (Martin Luther King Day)</strong></mark></td><td id="KP@i" class="block-color-gray_background" style="width:95px"></td><td id="lpPz" class="block-color-gray_background" style="width:58px"></td><td id="{yrh" class="block-color-gray_background"></td></tr><tr id="84f0b0d2-50f5-43b0-9777-ada97b18d592"><td id="RS`F" class="block-color-blue_background" style="width:42px">4</td><td id="s\rG" class="block-color-blue_background" style="width:60px">01/16</td><td id="c|FE" class="block-color-blue_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-blue_background" style="width:357px">Signal Decomposition and Convolution Sum</td><td id="KP@i" class="block-color-blue_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EZ0A7M5UaG9LpvVUF5eiUeoBMJXq08aR-1PNZVK-fSI-rw?e=5VpFzZ">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EW6gkL6CnuhKsWyr0DT4_fIBIDUTObvt94b1XWcU_e_-JA?e=8JWg5D">Post-Note</a></td><td id="lpPz" class="block-color-blue_background" style="width:58px"></td><td id="{yrh" class="block-color-blue_background"></td></tr><tr id="20f3e69d-4e15-4be4-adcb-a8f43e993342"><td id="RS`F" class="block-color-blue_background" style="width:42px">5</td><td id="s\rG" class="block-color-blue_background" style="width:60px">01/17</td><td id="c|FE" class="block-color-blue_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-blue_background" style="width:357px">Graphical Convolution Sum</td><td id="KP@i" class="block-color-blue_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EU757niV0HZFoTPoa9bnQkwBbZx9ud1uATq_opkCo4gH-A?e=eWGUaU">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYF0d9pfEWNNqWMOWb0bFQgBZcykEeb-hzlwvYy0MnkSsg?e=yJNJx8">Post-Note</a></td><td id="lpPz" class="block-color-blue_background" style="width:58px"></td><td id="{yrh" class="block-color-blue_background"></td></tr><tr id="98d9a66e-7123-45e6-983d-01089cca8615"><td id="RS`F" class="block-color-blue_background" style="width:42px">6</td><td id="s\rG" class="block-color-blue_background" style="width:60px">01/18</td><td id="c|FE" class="block-color-blue_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-blue_background" style="width:357px">Graphical Convolution Sum (contd)</td><td id="KP@i" class="block-color-blue_background" style="width:95px"></td><td id="lpPz" class="block-color-blue_background" style="width:58px"></td><td id="{yrh" class="block-color-blue_background"></td></tr><tr id="ee498cc5-5a7e-4573-921d-3058fa28e325"><td id="RS`F" class="block-color-blue_background" style="width:42px">7</td><td id="s\rG" class="block-color-blue_background" style="width:60px">01/19</td><td id="c|FE" class="block-color-blue_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-blue_background" style="width:357px">Convolution and LTI System Properties, FIR &amp; IIR systems</td><td id="KP@i" class="block-color-blue_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Eec378qnuQpHv24mKAZvNFEBuctbK857DPKC8HIXkXgGiA?e=GdLOG9">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETNcrATodqNBk3-PrpbwxhIBXGHL61qkU1cghJGldf5ZTA?e=wh2dHF">Post-Note</a></td><td id="lpPz" class="block-color-blue_background" style="width:58px"></td><td id="{yrh" class="block-color-blue_background">Project 1 Online</td></tr><tr id="89264a0c-9fd3-44ca-9f03-28b635cb704d"><td id="RS`F" class="block-color-teal_background" style="width:42px">8</td><td id="s\rG" class="block-color-teal_background" style="width:60px">01/22</td><td id="c|FE" class="block-color-teal_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-teal_background" style="width:357px">Discrete Time Fourier Transform (DTFT)<br/><br/></td><td id="KP@i" class="block-color-teal_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/personal/bislam_wpi_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE2312%5FDTSP%2FC24%2FNotes%2FPre%2DNotes%2FLecture8%5FFourier%5FDTFT%2Epdf&amp;parent=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE2312%5FDTSP%2FC24%2FNotes%2FPre%2DNotes&amp;ga=1">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EZ8-e3VFaedDvX2ViqyZMusBlBsqeP-6xnF4cJBCgZP6wA?e=RWRKJl">Post-Note</a></td><td id="lpPz" class="block-color-teal_background" style="width:58px"></td><td id="{yrh" class="block-color-teal_background"><mark class="highlight-purple"><strong>Assignment 1 Due 10.00 AM<br/><br/></strong></mark>Assignment 2 Online</td></tr><tr id="46626098-2c2c-4de4-9f14-4ca00b7a02e8"><td id="RS`F" class="block-color-teal_background" style="width:42px">9</td><td id="s\rG" class="block-color-teal_background" style="width:60px">01/23</td><td id="c|FE" class="block-color-teal_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-teal_background" style="width:357px">Discrete Fourier Series</td><td id="KP@i" class="block-color-teal_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ESH8M9yoYeNDka-yqnBcbzQBRio4nl28421M2aJdic_1lA?e=6G7o6K">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EdfJSoS8yytNoKd5qcRf8X4B8jywP86zSwp3C3wKCVR0ZA?e=xWrMCA">Post-Note</a></td><td id="lpPz" class="block-color-teal_background" style="width:58px"></td><td id="{yrh" class="block-color-teal_background"></td></tr><tr id="3cdbf58f-0497-4e37-bcb8-5a98c3ee77d5"><td id="RS`F" class="block-color-teal_background" style="width:42px"></td><td id="s\rG" class="block-color-teal_background" style="width:60px">01/24</td><td id="c|FE" class="block-color-teal_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-teal_background" style="width:357px"><mark class="highlight-blue"><strong>Quiz 1 (Syllabus: Until 01/19)</strong></mark></td><td id="KP@i" class="block-color-teal_background" style="width:95px"></td><td id="lpPz" class="block-color-teal_background" style="width:58px"></td><td id="{yrh" class="block-color-teal_background"></td></tr><tr id="56c8ab08-554e-4d24-a633-6c33b04a3f1d"><td id="RS`F" class="block-color-teal_background" style="width:42px">10</td><td id="s\rG" class="block-color-teal_background" style="width:60px">01/25</td><td id="c|FE" class="block-color-teal_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-teal_background" style="width:357px">Discrete Fourier Transform </td><td id="KP@i" class="block-color-teal_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERL9MAcZCchCpsHHrSmisY4BLZNfBrd7geMr0dIX9Dh0qw?e=ORmD1G">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EVtnEpuylNxEopZAhYGT3ZsBxg_Kg4A0ACN5rsiuR0Ve8Q?e=qUrF9v">Post-Note</a></td><td id="lpPz" class="block-color-teal_background" style="width:58px"></td><td id="{yrh" class="block-color-teal_background"></td></tr><tr id="cc270072-c9a8-48eb-9026-f2b431a1d8a4"><td id="RS`F" class="block-color-teal_background" style="width:42px">11</td><td id="s\rG" class="block-color-teal_background" style="width:60px">01/26</td><td id="c|FE" class="block-color-teal_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-teal_background" style="width:357px">Discrete Fourier Transform (contd)</td><td id="KP@i" class="block-color-teal_background" style="width:95px"></td><td id="lpPz" class="block-color-teal_background" style="width:58px"></td><td id="{yrh" class="block-color-teal_background"></td></tr><tr id="b1d8f3ed-07d8-45fe-b42f-ac36d507818b"><td id="RS`F" class="block-color-yellow_background" style="width:42px">12</td><td id="s\rG" class="block-color-yellow_background" style="width:60px">01/29</td><td id="c|FE" class="block-color-yellow_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-yellow_background" style="width:357px">Discrete Fourier Transform &amp; Properties</td><td id="KP@i" class="block-color-yellow_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EWgMC4_gX-VIhgD-WqKaRkkB9Ga-peQBEYj6YX3Df5n_MQ?e=hkfXvO">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EeI3kpvv6y9Gtc5VxQ8Ly_sBc1l8QOgGUCq6gVfDwn13Wg?e=BRn0Ae">Post-Note</a></td><td id="lpPz" class="block-color-yellow_background" style="width:58px"></td><td id="{yrh" class="block-color-yellow_background"></td></tr><tr id="a8245191-d0cf-4f06-a30c-5422a6f6b0ec"><td id="RS`F" class="block-color-yellow_background" style="width:42px">13</td><td id="s\rG" class="block-color-yellow_background" style="width:60px">01/30</td><td id="c|FE" class="block-color-yellow_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-yellow_background" style="width:357px">Discrete Fourier Transform &amp; Properties (contd)</td><td id="KP@i" class="block-color-yellow_background" style="width:95px"></td><td id="lpPz" class="block-color-yellow_background" style="width:58px"></td><td id="{yrh" class="block-color-yellow_background"></td></tr><tr id="097f9892-adf1-49d1-b20f-f2197f9ed6fd"><td id="RS`F" class="block-color-yellow_background" style="width:42px">14</td><td id="s\rG" class="block-color-yellow_background" style="width:60px">01/31</td><td id="c|FE" class="block-color-yellow_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-yellow_background" style="width:357px">Fast Fourier Transform</td><td id="KP@i" class="block-color-yellow_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EbZqzKzdSGVPiyfxBKIqNqEBuTj2m8BFL6C8JWBl3_qs-w?e=ZEPDAx">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Ef3e0lezow5Ht7QOEGuWdsABzY3Z08RctnvSVNAx0Y7TdQ?e=DiDRb8">Post-Note</a></td><td id="lpPz" class="block-color-yellow_background" style="width:58px"></td><td id="{yrh" class="block-color-yellow_background"></td></tr><tr id="46de09cc-c030-420f-be08-3d19bc66cad3"><td id="RS`F" class="block-color-yellow_background" style="width:42px">15</td><td id="s\rG" class="block-color-yellow_background" style="width:60px">02/01</td><td id="c|FE" class="block-color-yellow_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-yellow_background" style="width:357px">Fast Fourier Transform</td><td id="KP@i" class="block-color-yellow_background" style="width:95px"></td><td id="lpPz" class="block-color-yellow_background" style="width:58px"></td><td id="{yrh" class="block-color-yellow_background"></td></tr><tr id="212c861b-79c8-4c4a-bc87-87048fd3e00b"><td id="RS`F" class="block-color-yellow_background" style="width:42px">16</td><td id="s\rG" class="block-color-yellow_background" style="width:60px">02/02</td><td id="c|FE" class="block-color-yellow_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-yellow_background" style="width:357px">Short Time Fourier Transform<br/>Wavelets and Filter Banks<br/></td><td id="KP@i" class="block-color-yellow_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQDrNCogqoRGktohiVrcCNgB0CjT-SC9eAHLUMLIF8m34A?e=ZeFLcg">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERQHuHUuqEVMl6jaw1acP7EB_gI03hMbC1VNNimbhpDySg?e=RhLDgI">Post-Note</a></td><td id="lpPz" class="block-color-yellow_background" style="width:58px"></td><td id="{yrh" class="block-color-yellow_background"></td></tr><tr id="0a51535a-1a92-4b9e-88d8-e3cf811ead65"><td id="RS`F" class="block-color-orange_background" style="width:42px">17</td><td id="s\rG" class="block-color-orange_background" style="width:60px">02/05</td><td id="c|FE" class="block-color-orange_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-orange_background" style="width:357px">Sampling Theorem</td><td id="KP@i" class="block-color-orange_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EfRTaUhN0ulNm8x0iltobSIBp2quUqquThUDeWik7-JrNA?e=cy4eJw">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EVe2KYpFwrpCmoOkLhNZ-wQBm3dkNuILkVT1_WrTobnV1Q?e=Xd7pIF">Post-Note</a></td><td id="lpPz" class="block-color-orange_background" style="width:58px"></td><td id="{yrh" class="block-color-orange_background"><mark class="highlight-purple"><strong>Assignment 2 Due 10.00 AM</strong></mark><br/>Assignment 3 Online<br/></td></tr><tr id="47a3a095-84bc-4691-8bf2-0b59b3021951"><td id="RS`F" class="block-color-orange_background" style="width:42px">18</td><td id="s\rG" class="block-color-orange_background" style="width:60px">02/06</td><td id="c|FE" class="block-color-orange_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-orange_background" style="width:357px">Digital to Analog Conversion<br/>Reconstruction Using Interpolation<br/></td><td id="KP@i" class="block-color-orange_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EfRTaUhN0ulNm8x0iltobSIBp2quUqquThUDeWik7-JrNA?e=SuDyCH">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EeMxuFpI9gZDtEyD6wGMYDQBzYOlrapOnunMP3jdKsIxxw?e=Cf8vkU">Post-Note</a></td><td id="lpPz" class="block-color-orange_background" style="width:58px"></td><td id="{yrh" class="block-color-orange_background"></td></tr><tr id="9be50ab9-64d3-4f9b-ac98-4187709032c6"><td id="RS`F" class="block-color-orange_background" style="width:42px"></td><td id="s\rG" class="block-color-orange_background" style="width:60px">02/07</td><td id="c|FE" class="block-color-orange_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-orange_background" style="width:357px"><mark class="highlight-blue"><strong>Quiz 2</strong></mark></td><td id="KP@i" class="block-color-orange_background" style="width:95px"></td><td id="lpPz" class="block-color-orange_background" style="width:58px"></td><td id="{yrh" class="block-color-orange_background"></td></tr><tr id="7ca3c8e4-e5de-446d-8320-e49e85aae7a3"><td id="RS`F" class="block-color-orange_background" style="width:42px">19</td><td id="s\rG" class="block-color-orange_background" style="width:60px">02/08</td><td id="c|FE" class="block-color-orange_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-orange_background" style="width:357px">Digital to Analog Conversion<br/>Reconstruction Using Interpolation<br/></td><td id="KP@i" class="block-color-orange_background" style="width:95px"></td><td id="lpPz" class="block-color-orange_background" style="width:58px"></td><td id="{yrh" class="block-color-orange_background"></td></tr><tr id="3e976062-9eda-4644-9c36-0ec10447fc75"><td id="RS`F" class="block-color-gray_background" style="width:42px"></td><td id="s\rG" class="block-color-gray_background" style="width:60px">02/09</td><td id="c|FE" class="block-color-gray_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-gray_background" style="width:357px"><mark class="highlight-red"><strong>NO CLASS (Wellness Day)</strong></mark></td><td id="KP@i" class="block-color-gray_background" style="width:95px"></td><td id="lpPz" class="block-color-gray_background" style="width:58px"></td><td id="{yrh" class="block-color-gray_background"></td></tr><tr id="7e14dad5-1d8b-4add-ab6d-d75decd9beca"><td id="RS`F" class="block-color-red_background" style="width:42px">20</td><td id="s\rG" class="block-color-red_background" style="width:60px">02/12</td><td id="c|FE" class="block-color-red_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-red_background" style="width:357px">Anti-Aliasing, Filters and its Characteristics </td><td id="KP@i" class="block-color-red_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETMUnKUj5pdMk9Cp0G4ipXgBkAka7NLqQJJhcFeoZRfghQ?e=G0Kn8O">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETMUnKUj5pdMk9Cp0G4ipXgBkAka7NLqQJJhcFeoZRfghQ?e=G0Kn8O">Post-Note</a></td><td id="lpPz" class="block-color-red_background" style="width:58px"><a href="https://wpi0-my.sharepoint.com/:v:/g/personal/bislam_wpi_edu/Ea27K1aI5SBPvLoHGUvsJPIBQzOoiiMkirJEPsO1uhi4Cg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=an44Zg">Video</a></td><td id="{yrh" class="block-color-red_background"><mark class="highlight-teal"><strong>Project 1 Due<br/><br/></strong></mark>Project 2 Online</td></tr><tr id="50075257-b37d-4e85-8d22-911f39ee2ec9"><td id="RS`F" class="block-color-red_background" style="width:42px">21</td><td id="s\rG" class="block-color-red_background" style="width:60px">02/13</td><td id="c|FE" class="block-color-red_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-red_background" style="width:357px">Anti-Aliasing, Filters and its Characteristics (contd)</td><td id="KP@i" class="block-color-red_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Eeegs6X5XvlOnO-__nB1B9sBHzQ220hTcC5Uu7f84hi_0Q?e=indANn">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETkiSO4voTVGrPlc8Qz24I8BV_KXbkgZnwTM3O-PLJGRdA?e=AKtLSr">Post-Note</a></td><td id="lpPz" class="block-color-red_background" style="width:58px"><a href="https://wpi.zoom.us/rec/share/qx7V2l3rggCkmhK1WpLWA1BOWd9mVXEAZFH-XgvRkD1-v52xMU_ieUFE7DAPjpYP.JkUF8RMtIvTqrkmC">Video</a></td><td id="{yrh" class="block-color-red_background"></td></tr><tr id="33c47132-bcd0-4175-b7d7-a97dc848a671"><td id="RS`F" class="block-color-red_background" style="width:42px">22</td><td id="s\rG" class="block-color-red_background" style="width:60px">02/14</td><td id="c|FE" class="block-color-red_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-red_background" style="width:357px">Windowed Sinc Filter</td><td id="KP@i" class="block-color-red_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ESJnvT7oKglLgdybgYITuZoBJVojYTIjgwIaQ-bh1Ii_Tg?e=TXEoow">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ETkiSO4voTVGrPlc8Qz24I8BV_KXbkgZnwTM3O-PLJGRdA?e=9c8cav">Post-Note</a></td><td id="lpPz" class="block-color-red_background" style="width:58px"></td><td id="{yrh" class="block-color-red_background"></td></tr><tr id="94bd1da8-87cf-4bed-a4c5-b81b337a4399"><td id="RS`F" class="block-color-red_background" style="width:42px">23</td><td id="s\rG" class="block-color-red_background" style="width:60px">02/15</td><td id="c|FE" class="block-color-red_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-red_background" style="width:357px">Moving Average Filter</td><td id="KP@i" class="block-color-red_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Ec-bURlwPiJPgecqC1ZF5qoBxOsLJMg8-U5I2nBAOGii1w?e=SvUHKU">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EY3NHzDQvG1DhgFF-yBkF3wBnLV7N-HpMgSWVv0gTwhwGg?e=lmMY1W">Post-Note</a></td><td id="lpPz" class="block-color-red_background" style="width:58px"></td><td id="{yrh" class="block-color-red_background"></td></tr><tr id="4d8d963b-e3fd-4b5a-8b69-887199f5a590"><td id="RS`F" class="block-color-red_background" style="width:42px">24</td><td id="s\rG" class="block-color-red_background" style="width:60px">02/16</td><td id="c|FE" class="block-color-red_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-red_background" style="width:357px">Designing Digital Filter</td><td id="KP@i" class="block-color-red_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EX_lrHbv9eFNkVBllnZ7q5sBf1WahSw4UJ9bms8DWCE8YA?e=1c49gC">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EXdePH-QVBFEuz92yLxV9TYBTtLd244cBsZXUw3bs37x6Q?e=xeIH4a">Post-Note</a></td><td id="lpPz" class="block-color-red_background" style="width:58px"></td><td id="{yrh" class="block-color-red_background"></td></tr><tr id="217e9203-4b90-4271-9372-363cae3f9ca1"><td id="RS`F" class="block-color-pink_background" style="width:42px">25</td><td id="s\rG" class="block-color-pink_background" style="width:60px">02/19</td><td id="c|FE" class="block-color-pink_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-pink_background" style="width:357px">Deconvolution Filter</td><td id="KP@i" class="block-color-pink_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Ea8_MvPMt8tNtMybwlY-UA4BAKtVqtIju9-oTt3SVJFtug?e=6eliBB">Pre-Note </a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQ-K7DZOu9tIlENyGOsyuQcBsojc2ZrWwAPhcs_tY9tv3Q?e=9tRg7L">Post-Note</a></td><td id="lpPz" class="block-color-pink_background" style="width:58px"></td><td id="{yrh" class="block-color-pink_background"><mark class="highlight-purple"><strong>Assignment 3 Due 10.00 AM</strong></mark></td></tr><tr id="4b4aae24-cd1f-44b9-b43f-192e1d30e599"><td id="RS`F" class="block-color-pink_background" style="width:42px">26</td><td id="s\rG" class="block-color-pink_background" style="width:60px">02/20</td><td id="c|FE" class="block-color-pink_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-pink_background" style="width:357px">Common Filters and their Properties</td><td id="KP@i" class="block-color-pink_background" style="width:95px"></td><td id="lpPz" class="block-color-pink_background" style="width:58px"></td><td id="{yrh" class="block-color-pink_background"></td></tr><tr id="cad2f70f-8485-46f2-b3a1-755073f63132"><td id="RS`F" class="block-color-pink_background" style="width:42px"></td><td id="s\rG" class="block-color-pink_background" style="width:60px">02/21</td><td id="c|FE" class="block-color-pink_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-pink_background" style="width:357px"><mark class="highlight-blue"><strong>Quiz 3</strong></mark></td><td id="KP@i" class="block-color-pink_background" style="width:95px"></td><td id="lpPz" class="block-color-pink_background" style="width:58px"></td><td id="{yrh" class="block-color-pink_background"></td></tr><tr id="36dbbffd-4959-432d-b6d8-c2197d9c6d20"><td id="RS`F" class="block-color-gray_background" style="width:42px"></td><td id="s\rG" class="block-color-gray_background" style="width:60px">02/22</td><td id="c|FE" class="block-color-gray_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-gray_background" style="width:357px"><mark class="highlight-red"><strong>NO CLASS (Academic Advising Day)</strong></mark></td><td id="KP@i" class="block-color-gray_background" style="width:95px"></td><td id="lpPz" class="block-color-gray_background" style="width:58px"></td><td id="{yrh" class="block-color-gray_background"></td></tr><tr id="3e3ad553-f157-49a6-846e-62d970be047d"><td id="RS`F" class="block-color-pink_background" style="width:42px">27</td><td id="s\rG" class="block-color-pink_background" style="width:60px">02/23</td><td id="c|FE" class="block-color-pink_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-pink_background" style="width:357px">Z-Transform</td><td id="KP@i" class="block-color-pink_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYqybXKQOCFJuN_mLWPM7-gBlN3gbX8Bff_ousGorhl5UA?e=d9hkF1">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EeGrGSPu9EVMmTPOgIYL2ngB0zHpPkDeSg6hTRWrX8IhYQ?e=iUuC9c">Post-Note</a></td><td id="lpPz" class="block-color-pink_background" style="width:58px"></td><td id="{yrh" class="block-color-pink_background"></td></tr><tr id="72a0ce8f-6b04-4a84-988e-75310eec9848"><td id="RS`F" class="block-color-brown_background" style="width:42px">28</td><td id="s\rG" class="block-color-brown_background" style="width:60px">02/26</td><td id="c|FE" class="block-color-brown_background" style="width:115px">Monday</td><td id="BCGh" class="block-color-brown_background" style="width:357px">Rational Z-Transform</td><td id="KP@i" class="block-color-brown_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Ef4n-rfAa35Amk_vP77FJ8kBuWs9G4droHoYw7TfAm5bHA?e=cOQU1E">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQ-K7DZOu9tIlENyGOsyuQcBsojc2ZrWwAPhcs_tY9tv3Q?e=9tRg7L">Post-Note</a></td><td id="lpPz" class="block-color-brown_background" style="width:58px"><a href="https://wpi.zoom.us/rec/share/qx7V2l3rggCkmhK1WpLWA1BOWd9mVXEAZFH-XgvRkD1-v52xMU_ieUFE7DAPjpYP.JkUF8RMtIvTqrkmC">Video</a></td><td id="{yrh" class="block-color-brown_background"></td></tr><tr id="13a6c00b-48ba-494f-8323-f7f5de0be150"><td id="RS`F" class="block-color-brown_background" style="width:42px">29</td><td id="s\rG" class="block-color-brown_background" style="width:60px">02/27</td><td id="c|FE" class="block-color-brown_background" style="width:115px">Tuesday</td><td id="BCGh" class="block-color-brown_background" style="width:357px">Inverse Z-Transform</td><td id="KP@i" class="block-color-brown_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQPO5oSuRHlFrQ0_TgnGr8kBJ4ZeTV1O7MJhO0jSLHtWNw?e=eL5t9C">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EXX1uFae4q5IucBmfFcagi4BX_ZjmMWOlngoA7nydv2yiA?e=pgHApk">Post-Note</a></td><td id="lpPz" class="block-color-brown_background" style="width:58px"></td><td id="{yrh" class="block-color-brown_background"></td></tr><tr id="57169d4a-4628-44b3-9cc0-d6dba4186fc2"><td id="RS`F" class="block-color-brown_background" style="width:42px">30</td><td id="s\rG" class="block-color-brown_background" style="width:60px">02/28</td><td id="c|FE" class="block-color-brown_background" style="width:115px">Wednesday</td><td id="BCGh" class="block-color-brown_background" style="width:357px">FIR Filter Design</td><td id="KP@i" class="block-color-brown_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ES3LmWh5kqFOvh6jHddm8bABWB_9toS2mAr0OsdlDM4StA?e=GQ23MN">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EV-ZieIGBhlPm0lBkiOcTZYB9m7BjkT7FgxZDjIbjYV4OA?e=l1seKp">Post-Note</a></td><td id="lpPz" class="block-color-brown_background" style="width:58px"></td><td id="{yrh" class="block-color-brown_background"></td></tr><tr id="20251ce7-22ff-4aa1-abbe-15d566905cb5"><td id="RS`F" class="block-color-brown_background" style="width:42px">31</td><td id="s\rG" class="block-color-brown_background" style="width:60px">02/29</td><td id="c|FE" class="block-color-brown_background" style="width:115px">Thursday</td><td id="BCGh" class="block-color-brown_background" style="width:357px">System Identification: FIR Model</td><td id="KP@i" class="block-color-brown_background" style="width:95px"></td><td id="lpPz" class="block-color-brown_background" style="width:58px"></td><td id="{yrh" class="block-color-brown_background"></td></tr><tr id="34a536dc-5f87-43cd-af35-90bba8d75bc6"><td id="RS`F" class="block-color-brown_background" style="width:42px">32</td><td id="s\rG" class="block-color-brown_background" style="width:60px">03/01</td><td id="c|FE" class="block-color-brown_background" style="width:115px">Friday</td><td id="BCGh" class="block-color-brown_background" style="width:357px">Modern Time Applications of Signal Processing</td><td id="KP@i" class="block-color-brown_background" style="width:95px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQsS8u2P7UdEociJQt-Cip4BnQE_2SWN8KZYkikSuyShdQ?e=bBfHg9">Pre-Note</a><br/><br/><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERqW80Eaj51LlPxcQYAcHg4B1XMHtro8IvtpyeYzXYLj2A?e=uO5KqY">Post-Note</a></td><td id="lpPz" class="block-color-brown_background" style="width:58px"></td><td id="{yrh" class="block-color-brown_background"><mark class="highlight-teal"><strong>Project 2 Due</strong></mark></td></tr></tbody></table><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="f6cedac7-5a73-4f62-b46c-669ba25da1ee"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Course schedule subject to change<br/>- Exam dates are fixed<br/>- Daily class topics may vary<br/>- Check e-mail (WPI Account!) for class announcement<br/></div></figure><h2 id="546d1816-c4d8-4a58-a984-00a974dab096" class="">Policies:</h2><p id="b054b91b-7b39-4421-9e75-31240efd0e57" class=""><mark class="highlight-red_background"><strong>Academic Honesty</strong></mark><strong> </strong>– WPI values academic honesty. The definition of an act of academic dishonesty is when an individual attempts to obtain academic credit for work that is not his/her own. There exist several forms of academic dishonesty, including plagiarism, which is defined as stealing or “borrowing” someone else’s work or ideas and presenting them as one’s own. Presenting work written by anyone other than you or your team member without properly crediting the source is plagiarism. This includes materials obtained from books, technical papers, websites, solutions<br/>manuals, student laboratory reports from previous offerings of this course, etc. Plagiarism is both illegal and deceitful, and thus, it is totally unacceptable. <br/><strong>If a suspected case of academic dishonesty has occurred, it will be investigated immediately</strong>. One can find the official university policy toward academic honesty at the following URL: <a href="https://www.wpi.edu/about/policies/academic-integrity">https://www.wpi.edu/about/policies/academic-integrity</a></p><p id="7e73e70d-10c5-4284-a795-cb3aa5f5a8db" class="">Note the following:</p><ul id="2d4c6376-bb3a-4b73-9e75-c04d0d6fc822" class="bulleted-list"><li style="list-style-type:disc">Reports of all suspected cases of academic dishonesty for any element of this course will be brought forth to the departmental academic honesty ombudsperson without exception.</li></ul><ul id="18e6dfa8-16be-4a20-a5ea-05c18b1ccbb0" class="bulleted-list"><li style="list-style-type:disc">Discussion with classmates about the material covered in class is permitted and highly encouraged.</li></ul><ul id="24c0859f-a9e7-4096-ab89-d818e50ddcbc" class="bulleted-list"><li style="list-style-type:disc">You are <em><strong>only</strong></em> permitted to work collaboratively on the projects with your respective team members. It is prohibited to work in groups outside of your own team, jointly program solutions with individuals outside your team, and copy code from any source, including those available online.</li></ul><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="e0c8cab8-7f2b-4161-a064-53c3eb429697"><div style="font-size:1.5em"><span class="icon">ℹ️</span></div><div style="width:100%">- What you hand in MUST represent your understanding<strong><br/><br/></strong>- If something feels wrong — DON’T DO IT !!<br/>- <br/><strong>NEVER HESITATE </strong>to speak with me about an ethics/academic honesty issue</div></figure><p id="0a18a9ba-8bcd-4663-95fc-7fed3e6f2727" class=""><mark class="highlight-red_background"><strong>Email Correspondences</strong></mark><strong> </strong>– When sending an email to the course instructor or other course personnel, please remember the following:</p><ul id="26826425-cb04-4bb2-a99e-37fedbe8510c" class="bulleted-list"><li style="list-style-type:disc">All emails regarding questions about the course content and materials must be sent to <a href="mailto:gr-ece2312_c24@wpi.edu"><mark class="highlight-red"><strong>gr-ece2312_c24@wpi.edu</strong></mark></a><mark class="highlight-red"><strong> </strong></mark>without exception. Such emails sent to the individual personnel will go unanswered.</li></ul><ul id="0590a2d0-3aac-40f0-81b5-5e2e60bc0de3" class="bulleted-list"><li style="list-style-type:disc">Subject headings for all emails must begin with <strong>[ECE2312C24], </strong>or they will go unanswered.</li></ul><ul id="54ae0216-8282-4b5a-9f1c-6434697e4103" class="bulleted-list"><li style="list-style-type:disc">The expected email response time is normally one business day.<br/>For example, if an email is sent on Friday afternoon, it is possible that you could get a response by Monday (assuming Monday is not an official holiday).<br/></li></ul><ul id="83051723-cf5c-491a-947e-42c53bde6f14" class="bulleted-list"><li style="list-style-type:disc">Emails with attachments greater than one megabyte in size will automatically be deleted without being read.</li></ul><p id="63d590ce-e5d5-4986-91cf-4d0e2a115573" class=""><mark class="highlight-red_background"><strong>Punctuality</strong></mark><strong> </strong>– Please make every effort to arrive early for the start of each lecture.</p><p id="eff2bab7-a457-476c-ba6f-05548e77afdb" class=""><mark class="highlight-red_background"><strong>Grade Corrections</strong></mark><strong> </strong>– Once a grade has been assigned to specific items, such as an assignment, a student has only one week to indicate to the course instructor any grading anomalies, such as missing grades or miscalculated grades.</p><p id="859bff13-3fd8-49dd-83a2-eb47d17166a0" class=""><mark class="highlight-red_background"><strong>Academic Accommodations</strong></mark><strong> </strong>– If you need course adaptations or accommodations because of a disability or if you have medical information to share with Prof. Islam, please make an appointment with Prof. Islam within one week of the first class (Room AK310). If you have not already done so, students with disabilities who believe that they may need accommodations in this class are encouraged to contact the <em>Disability Services Office </em>(DSO) as soon as possible to ensure that such accommodations are implemented in a timely fashion. The DSO is in Daniels Hall, (508) 831-5235.</p><p id="23967f64-2b9d-4ece-bef6-63c885aa7146" class=""><mark class="highlight-red_background"><strong>Class Environment </strong></mark><strong>—  </strong>We will attempt to provide a <strong>welcoming</strong> class environment</p><ul id="e7a77850-289c-42a3-ae04-7753c83e3b7e" class="bulleted-list"><li style="list-style-type:disc">We desire each of you to learn to the best of your ability<ul id="e4163634-5f73-4eb7-ab58-e6fe38b82138" class="bulleted-list"><li style="list-style-type:circle">Let me know how I can help you do so!</li></ul></li></ul><ul id="5481c8fb-7553-46f9-8d5d-55da6d2d686e" class="bulleted-list"><li style="list-style-type:disc">You should be respected by the instructor and by each other.</li></ul><p id="cdef1c8f-707e-4420-af81-73ba22a2c380" class=""><mark class="highlight-red_background"><strong>Student Mental Health</strong></mark><strong> —  </strong>This course and the WPI environment are quite demanding! </p><ul id="0ef931e3-33c1-410e-b268-367412dd6e9a" class="bulleted-list"><li style="list-style-type:disc">We’ll provide as much support as possible</li></ul><ul id="a78ab501-1d86-41eb-9889-a7235db5ccea" class="bulleted-list"><li style="list-style-type:disc">If overwhelmed, you have many resources<ul id="c609c607-c9c8-44ca-a86a-a3abcba09ed7" class="bulleted-list"><li style="list-style-type:circle">Academic resources within this class (staff, peer students)</li></ul><ul id="50f7ccb9-5eee-4cc6-a1e2-f6567079e383" class="bulleted-list"><li style="list-style-type:circle">Mental health resources on campus»WPI Counseling Center»WPI Health Services</li></ul></li></ul><ul id="e36fdad1-362d-4b17-9d2d-ff0824b85058" class="bulleted-list"><li style="list-style-type:disc"><strong>Take care of yourself.</strong> You don’t need to struggle alone.</li></ul><p id="b9763f2d-667c-45eb-b07f-7fe529d18d6a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

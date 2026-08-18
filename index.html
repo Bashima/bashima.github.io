@@ -1,0 +1,1542 @@
+<!doctype html>
+<html class="" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Bashima Islam</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- inject:css -->
+  <!-- CSS | STYLE -->
+
+  <link rel="stylesheet" type="text/css" href="pub_css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="pub_css/linecons.css" />
+  <link rel="stylesheet" type="text/css" href="pub_css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="pub_css/colors/blue.css" />
+  <link rel="stylesheet" type="text/css" href="pub_css/style.css" />
+
+  <!-- endinject -->
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Lora:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <link rel="stylesheet" href="css/main-blue.css" data-pin="img/icofont-location-pin--blue.png">
+
+  <!-- Custom styles for publications section -->
+  <style>
+    .c-screen-publications {
+      color: #333;
+    }
+
+    .c-screen-publications p,
+    .c-screen-publications li,
+    .c-screen-publications span,
+    .c-screen-publications div {
+      color: #333 !important;
+    }
+
+    .c-screen-publications a {
+      color: #2066a1 !important;
+    }
+
+    .c-screen-publications a:hover {
+      color: #1a5490 !important;
+    }
+
+    .c-screen-publications .well {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+    }
+
+    .c-screen-publications .well pre {
+      color: #333 !important;
+      background: transparent;
+      border: none;
+    }
+
+    .c-screen-publications .bibtexentry {
+      margin-bottom: 15px;
+    }
+
+    .c-screen-publications .bibtexentry ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .c-screen-publications .bibtexentry li {
+      margin-bottom: 10px;
+    }
+
+    /* Year styling - same size as news timeline */
+    .c-screen-publications h1.YEAR {
+      font-size: 1em !important;
+      font-weight: bold !important;
+      color: #333 !important;
+      margin-bottom: 8px !important;
+      margin-top: 20px !important;
+      display: block;
+    }
+
+    /* Also target any h1 elements in the year group */
+    .c-screen-publications .group.year h1 {
+      font-size: 1em !important;
+      font-weight: bold !important;
+      color: #333 !important;
+      margin-bottom: 8px !important;
+      margin-top: 20px !important;
+    }
+
+    /* Contact section styling */
+    .c-screen-contacts {
+      color: #333;
+    }
+
+    .c-contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .c-contact-item {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .c-contact-item__header {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2066a1;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .c-contact-item__header i {
+      font-size: 1.5em;
+    }
+
+    .c-contact-item__text {
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .c-contact-item__text a {
+      color: #2066a1;
+      text-decoration: none;
+    }
+
+    .c-contact-item__text a:hover {
+      color: #1a5490;
+      text-decoration: underline;
+    }
+
+    /* Animated SVG icon enhancements */
+    .publications-icon:hover .svg-icon__item {
+      animation: publications-bounce 0.6s ease-in-out;
+    }
+
+    .contact-icon:hover .svg-icon__item {
+      animation: contact-pulse 0.8s ease-in-out;
+    }
+
+    @keyframes publications-bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes contact-pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Enhance existing SVG icon animations */
+    .svg-icon:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    /* Social media and BASH Lab container */
+    .social-and-lab-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .c-socials {
+      margin-bottom: 0;
+    }
+
+    /* BASH Lab button styling */
+    .bash-lab-link {
+      background-color: #2066a1;
+      color: white !important;
+      padding: 4px 8px;
+      border-radius: 3px;
+      text-decoration: none !important;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      font-size: 0.9em;
+      line-height: 1.2;
+    }
+
+    .bash-lab-link:hover {
+      background-color: white !important;
+      color: #2066a1 !important;
+      text-decoration: none !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(32, 102, 161, 0.3);
+      border: 2px solid #2066a1;
+    }
+
+    /* Change contact and publication SVG icons to blue */
+    .publications-icon .svg-icon__item,
+    .contact-icon .svg-icon__item {
+      color: #2066a1;
+    }
+
+    .publications-icon .svg-icon__border,
+    .contact-icon .svg-icon__border {
+      stroke: #2066a1;
+    }
+
+    /* Collaborators grid styling */
+    .collaborators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .collaborator-item {
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      background: #f8f9fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .collaborator-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(32, 102, 161, 0.15);
+    }
+
+    .collaborator-logo {
+      width: 80px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      border-radius: 4px;
+    }
+
+    .collaborator-name {
+      font-size: 0.85em;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+      line-height: 1.2;
+    }
+  </style>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <!-- Yandex.Metrika counter -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Publications bibtex functionality -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bashlab/bibtex_js_v2.js" type="text/javascript" charset="utf-8"></script>
+  <bibtex src="https://raw.githubusercontent.com/BASHLab/publications/main/publications.bib"></bibtex>
+  <script type="text/javascript">
+    (function (d, w, c) {
+      (w[c] = w[c] || []).push(function () {
+        try {
+          w.yaCounter42961429 = new Ya.Metrika({
+            id: 42961429,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+            trackHash: true
+          });
+        } catch (e) { }
+      });
+
+      var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+      if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+      } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/42961429" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+<!--PRERENDER:head-->
+<meta name="description" content="Bashima Islam — Assistant Professor at UMass Amherst, director of the BASH Lab (Bridging AI and Sensing for Health). Research in ubiquitous AI, multimodal sensing, sensor-grounded language models, and low-power edge machine learning.">
+<meta property="og:title" content="Bashima Islam">
+<meta property="og:description" content="Bashima Islam — Assistant Professor at UMass Amherst, director of the BASH Lab (Bridging AI and Sensing for Health). Research in ubiquitous AI, multimodal sensing, sensor-grounded language models, and low-power edge machine learning.">
+<meta property="og:type" content="profile">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bashima Islam",
+      "jobTitle": "Assistant Professor",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Massachusetts Amherst"
+      },
+      "url": "https://bashima.github.io",
+      "sameAs": [
+        "https://bashlab.github.io",
+        "https://github.com/BASHLab",
+        "https://scholar.google.com/citations?user=",
+        "https://www.youtube.com/@BASHLab_UMass"
+      ],
+      "description": "Assistant Professor at UMass Amherst leading the BASH Lab (Bridging AI and Sensing for Health): ubiquitous AI, multimodal sensing, sensor-grounded language models, and low-power edge ML."
+    }
+  ]
+}
+</script>
+<!--/PRERENDER:head-->
+</head>
+
+<body>
+  <!--[if lt IE 10]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  <div class="ie-overflow-fix" style="overflow:hidden;">
+
+
+
+    <link rel="stylesheet" href="css/main-blue.css" data-pin="img/icofont-location-pin--blue.png">
+
+
+
+
+
+    <header class="c-main-header">
+
+      <div class="o-container">
+
+        <!-- NAVIGATION -->
+        <div class="c-main-header__nav-wrapper" data-menuAnimated="true">
+          <nav class="c-main-nav js-main-nav">
+            <ul class="c-main-nav__list nav-fixed--is-active js-main-nav__list">
+              <li class="c-main-nav__item"><a href="#section-about" class="c-main-nav__link"
+                  data-navPosition="1">about</a></li>
+              <!-- <li class="c-main-nav__item"><a href="#section-news" class="c-main-nav__link" data-navPosition="2">news</a></li> -->
+              <li class="c-main-nav__item"><a href="#section-education" class="c-main-nav__link"
+                  data-navPosition="2">education & awards</a></li>
+              <li class="c-main-nav__item"><a href="#section-research" class="c-main-nav__link"
+                  data-navPosition="3">research</a></li>
+              <li class="c-main-nav__item"><a href="#section-publications" class="c-main-nav__link"
+                  data-navPosition="4">publications</a></li>
+              <li class="c-main-nav__item"><a href="#section-teaching" class="c-main-nav__link"
+                  data-navPosition="5">teaching</a></li>
+              <li class="c-main-nav__item"><a href="#section-contacts" class="c-main-nav__link"
+                  data-navPosition="5">contacts</a></li>
+            </ul>
+            <div class="c-main-nav__bars js-main-nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </nav>
+        </div>
+        <!-- NAVIGATION END -->
+
+        <!-- ABOUT SECTION-->
+        <div id="section-about" class="c-screen-about o-screen-about" data-contentPosition="1">
+          <div class="o-screen-about__col">
+            <figure class="c-screen-about__image">
+              <span></span>
+              <img src="pic/Bashima.png" alt="">
+
+            </figure>
+            <!-- <a class="c-button c-button--bold-text u-mb-30" href="https://youtu.be/-QnG1Qs_boQ">short video of my vision</a> -->
+            <!-- <ul class="c-socials u-mb-35">
+          <li class="c-socials__item">
+            <a href="https://youtu.be/-QnG1Qs_boQ" class="c-socials__link">
+              <i class="icofont icofont-youtube-play"></i>
+            </a>
+          </li>
+          <a class="c-button c-button--bold-text u-mb-30" href="https://youtu.be/-QnG1Qs_boQ">short video of my vision</a>
+        </ul> -->
+
+            <!-- <div class="c-screen-about__image">
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="https://www.youtube.com/embed/-QnG1Qs_boQ"" frameborder="0" allowfullscreen
+              style="position:absolute;top:0;left:0;width:87%;height:100%;"></iframe>
+          </div>
+        </div> -->
+            <!-- <iframe  src="https://www.youtube.com/embed/-QnG1Qs_boQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe> -->
+            <div style="margin-top: 20px;">
+              <i class="icofont icofont-2x icofont-newspaper"> <span style="font-size: x-large;">Media
+                  Coverage:</span></i>
+            </div>
+            <span>
+              <a class="c-button c-button--bold-text u-mb-30"
+                href="https://open.spotify.com/episode/3e5buFnRg2oh5k3RtuyKqU?si=1H2yzKQXRCqnFxSkiDDsbw">Stanford
+                Longevity</a>
+              <span> || </span>
+              <a class="c-button c-button--bold-text u-mb-30"
+                href="https://www.forbes.com/profile/bashima-islam/?sh=4034b1a3b2ef">Forbes</a>
+              <span> || </span>
+              <a class="c-button c-button--bold-text u-mb-30"
+                href="https://www.hackster.io/news/zygarde-task-scheduler-boosts-accuracy-performance-of-tinyml-tasks-running-on-battery-free-mcus-d09a8ec91b28">Hackstar.io</a>
+              <span> || </span>
+              <a class="c-button c-button--bold-text u-mb-30"
+                href="https://spectrum.ieee.org/cars-that-think/transportation/safety/ai-headphone-pedestrians-safety-warning-cars">IEEE
+                Sprectrum</a>
+            </span>
+          </div>
+          <div class="o-screen-about__col">
+            <h2 class="u-mb-4">Bashima Islam</h2>
+            <span class="c-screen-about__caption">Assistant Professor of <a
+                href="https://www.wpi.edu/academics/departments/electrical-computer-engineering">ECE</a>, <a
+                href="https://www.wpi.edu/academics/departments/computer-science">CS</a>, & <a
+                href="https://www.wpi.edu/academics/departments/data-science">DS</a> <br /> <a
+                href="https://www.wpi.edu">Worcester Polytechnic Institute</a></span>
+            <div class="social-and-lab-container u-mb-35">
+              <ul class="c-socials">
+                <li class="c-socials__item">
+                  <a href="https://scholar.google.com/citations?user=Ft_8Ju8AAAAJ&hl=en" class="c-socials__link">
+                    <i class="ai ai-google-scholar"></i>
+                  </a>
+                </li>
+                <li class="c-socials__item">
+                  <a href="https://dblp.org/pid/188/6243.html" class="c-socials__link">
+                    <i class="ai ai-dblp"></i>
+                  </a>
+                </li>
+                <!-- <li class="c-socials__item">
+              <a href="https://bitbucket.org/Bashima/" class="c-socials__link">
+                <i class="ai ai-github"></i>
+              </a>
+            </li> -->
+                <li class="c-socials__item">
+                  <a href="https://www.linkedin.com/in/bashimaislam" class="c-socials__link">
+                    <i class="icofont icofont-brand-linkedin"></i>
+                  </a>
+                </li>
+                <li class="c-socials__item">
+                  <a href="https://twitter.com/BashimaI" class="c-socials__link">
+                    <span style="font-weight: bold; font-size: 16px;">𝕏</span>
+                  </a>
+                </li>
+                <li class="c-socials__item">
+                  <a href="pdf/Bashima_CV.pdf" class="c-socials__link">
+                    <span style="font-weight: bold; font-size: 14px;">CV</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="bash-lab-button">
+                <a href="https://bashlab.wpi.edu" target="_blank" class="bash-lab-link">
+                  <i class="icofont icofont-laboratory"></i> BASH Lab
+                </a>
+              </div>
+            </div>
+            <p class="u-mb-10"> I am an <b>Assistant Professor</b> in the <a
+                href="https://www.wpi.edu/academics/departments/electrical-computer-engineering"><b>Department of
+                  Electrical and Computer Engineering</b></a> with an affiliated position at the <a
+                href="https://www.wpi.edu/academics/departments/computer-science"><b>Compter Science Department</b></a>,
+              and <a href="https://www.wpi.edu/academics/departments/data-science"><b>Data Science Department</b></a> at
+              <a href="https://www.wpi.edu"><b>Worcester Polytechnic Institute</b></a>. I will direct the
+              <strong>B</strong>ringing <strong>A</strong>wareness through <strong>S</strong>ystems for
+              <strong>H</strong>umans Lab (<a style="color: #2066a1;" href="https://bashlab.wpi.edu"><strong>BASH
+                  Lab</strong></a>).
+            </p>
+            <p>
+              My mission is to enable individuals, caregivers, and clinicians to understand and act on continuous
+              multimodal sensor data that captures everyday human behavior. I build ubiquitous AI systems that learn
+              from motion, audio, physiological, and ambient signals to generate insights that support behavioral
+              well-being. My work spans key layers of the intelligence stack for real-world sensing, including
+              multimodal representation learning, natural-language interaction, and resource-constrained inference on
+              edge devices. I develop signal-processing informed neural architectures and sensor-grounded language
+              models that reason about the physical and physiological processes underlying behavior, alongside edge
+              machine learning methods designed for computation, energy, memory, time, and privacy constraints. These
+              integrated efforts support applications such as infant development, sleep and self-regulation, and the
+              dynamics of attention and emotional clarity during mindfulness practice.
+            </p>
+
+            <!-- <p>My work focuses on building sustainable intelligent systems by combining sensor data with large language
+              models, creating energy-efficient AI for audio and speech, developing innovative TinyML solutions for
+              batteryless edge devices, and using AI to enhance behavioral health outcomes. Together, these efforts aim
+              to advance technology in an eco-conscious and impactful way. The interdisciplinary nature of my research
+              involves diverse domains including <i>Machine Learning, Mobile Computing, Embedded Systems, and Ubiquitous
+                Computing</i>.</p> -->
+
+            <br />
+            <p>After recieving my B.Sc. in Computer Science and Engineering from <b>Bangladesh University of Engineering
+                and Technology (BUET)</b> in 2016, I finished my Ph.D. in Computer Science under the supervision of
+              <ahref="https: //www.cs.unc.edu/~nirjon/">Prof. Shahriar Nirjon</a> at <b>University of North Carolina at
+                  Chapel Hill (UNC)</b> in 2021. After that, I have spent a year as a a <i>Visiting Postdoctoral
+                  Research Associate</i> working with Prof. Romit Roy Choudhury and Prof. Nancy McElwain at
+                <b>University of Illinois at Urbana Champaign</b>.
+            </p>
+
+
+
+            <!-- <p style="color: #2066a1;"><b>I am looking for highly motivated students to join my lab. Please contact me if you want to work on machine learning and computation on trillions of sustainable IoT devices.</b></p>  -->
+
+          </div>
+        </div>
+
+
+
+        <!-- News -->
+        <div id="section-news" class="" data-contentPosition="4" style="margin-top: 60px;"></div>
+
+
+        <div class="c-screen-education o-screen-education">
+          <div class="o-screen-education__col">
+            <div>
+              <i class="icofont icofont-2x icofont-news"> <span style="font-size: x-large;">News:</span></i>
+            </div>
+            <div id="recent-news">
+<!--PRERENDER:news-->
+<a href="https://bashlab.github.io" target="_blank"><p class="u-mb-10">BASH Lab moves to <b style="color: #2066a1;">UMass Amherst</b></p></a><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781" target="_blank"><p class="u-mb-10">Prof. Bashima Islam receives <b style="color: #2066a1;">NSF CAREER Award</b></p></a><a href=""><p class="u-mb-10">Subrata joins <b style="color: #2066a1;">Amazon AWS</b> as Summer Research Intern</p></a><a href=""><p class="u-mb-10">Subrata joins <b style="color: #2066a1;">Mitsubishi Electric Research Laboratories (MERL)</b> as Research Intern</p></a><a href="https://bashlab.github.io/owl_project/" target="_blank"><p class="u-mb-10">OWL got accepted in <b style="color: #2066a1;">ICLR 2026</b></p></a><a href="https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf" target="_blank"><p class="u-mb-10">Our paper got accepted in <b style="color: #2066a1;">ICASSP 2026</b></p></a><a href="https://www.linkedin.com/posts/wpi-electrical-and-computer-engineering-4385b2225_wpi-phd-excellence-activity-7379196307317465088-Tih-?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAgjZbABO4TS_kXaa2F6FK-u5Ex7vOyAWVg" target="_blank"><p class="u-mb-10">Subrata receives <b style="color: #2066a1;">Peter B. Meyers Fellowship</b></p></a><a href="https://jta2021.wixsite.com/efficientmic" target="_blank"><p class="u-mb-10">EfficientMic got accepted in <b style="color: #2066a1;">BuildSys'25</b></p></a><a href="https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482" target="_blank"><p class="u-mb-10"><b style="color: #2066a1;">NIH NIMH SBIR</b> Phase 2 Awarded</p></a><a href="https://bashlab.github.io/meditite_project/" target="_blank"><p class="u-mb-10">Mindfulness Meditation and Respiration got accepted in <b style="color: #2066a1;">IMWUT/UbiComp'25</b></p></a>
+<!--/PRERENDER:news-->
+              <!-- Recent news items will be populated here -->
+            </div>
+            <a href=".publication-detail_more_news" class="ex-link open_popup c-button c-button--bold-text u-mb-30"
+              data-effect="mfp-zoom-out">more news</a>
+
+            <div class="mfp-hide mfp-with-anim publication-detail_more_news publication-detail">
+              <div class="project_content">
+                <ul class="timeline">
+                  <li>
+                    <div class="date"> 2022</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>
+                        &bull; Our paper<b> Protean: An Energy-Efficient and Heterogeneous Platform for Adaptive and
+                          Hardware-Accelerated Battery-free Computing</b> got published in <b>SenSys</b> 2022.<br />
+                        &bull; Our poster<b> Poster Abstract: Studying the Security Threats of Partially Processed
+                          Deep Neural Inference Data in an IoT Device</b> got published in <b>SenSys</b> 2022.<br />
+                        &bull; Started at Worcester Polytechnic Institute as an Assistant Professor from August
+                        2022.<br />
+                        &bull; Taught WPI Summer Frontier Course for Pre-Collegiate Outreach.<br />
+                        &bull; Our paper <b>Cyber-Physical Verification of Intermittently Powered Embedded Systems</b>
+                        got published at <b>EMSOFT</b> 2022.
+                      </p>
+                    </div>
+
+                  </li>
+                  <li>
+                    <div class="date"> 2021</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>
+                        &bull; Featured in <b>Forbes 30 under 30</b> for contribution in <b>Science</b> 2021.<br />
+                        &bull; Paper on <b>BreathTrack: Detecting Regular Breathing Phases from Unannotated Acoustic
+                          Data</b> got accepted in <b>IMWUT/UbiComp</b> 2021.<br />
+                        &bull; Started at University of Illinois at Urbana-Champaign (UIUC) as a Visiting Postdoctoral
+                        Research Associate from June 2021.<br />
+                        &bull; Accepted a Tenure-Track Assistant Professor position at the Electrical and Computer
+                        Engineering Department of Worcester Polytechnic Institute (WPI). Joining from Fall 2022.<br />
+                        &bull; Defended my dissertation <b>"Scheduling Tasks on Intermittently-Powered Real-Time
+                          Systems"</b> on April 1.<br />
+                        &bull; Giving a talk at the <b>Auburn University (CSSE)</b> on March 30 on <i>Computing on the
+                          Extreme Edge</i>.<br />
+                        &bull; Giving a talk at the <b><a
+                            href="https://cs.njit.edu/sites/cs/files/CS%20seminar%20Bashima%20Islam%20-%2003.24.2021_0.pdf">
+                            New Jersey Institute of Technology (CS)</a></b> on March 24 on <i>Computing on the Extreme
+                          Edge</i>.<br />
+                        &bull; Giving a talk at the <b><a
+                            href="https://www.cs.utah.edu/calendar/colloquium-bashima-islam/">University of
+                            Utah</a></b> on March 16 on <i>Computing on the Extreme Edge</i>.<br />
+                        &bull; Giving a talk at the <b><a
+                            href="https://www.ece.utexas.edu/events/seminars/ece-general-seminars">University of Texas
+                            Austin (ECE)</a></b> on March 10 on <i>Computing on the Extreme Edge</i>.<br />
+                        &bull; Giving a talk at the <b>Worchester Polytechnic Institute (ECE)</b> on March 8 on
+                        <i>Computing on the Extreme Edge</i>.<br />
+                        &bull; Giving a talk at <b>Vanderbilt University (EECS)</b> on March 2 on <i>Computing on the
+                          Extreme Edge</i>.<br />
+                        &bull; Giving a talk at <b><a
+                            href="https://planitpurple.northwestern.edu/event/572944">Northwestern University
+                            (CS)</a></b> on February 22 on <i>Computing on the Extreme Edge</i>.<br />
+                        &bull; Giving a talk at <b>Syracuse University (EECS)</b> on February 18 on <i>Computing on
+                          the Extreme Edge</i>.<br />
+                        &bull; Giving a talk at <b>Carnegie Mellon University (ECE)</b> on January 25 on <i>Computing
+                          on the Extreme Edge</i>.
+                      </p>
+                    </div>
+
+                  </li>
+                  <li class="">
+                    <div class="date">2020</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>&bull; Giving a talk at <b>Portland State University (CS)</b> on December 16 on <i>Computing
+                          on the Extreme Edge</i>.<br />
+                        &bull; Invited to give a talk at <b>Northwestern University</b> on December 9.<br />
+                        &bull; Invited to give a talk at <b>Georgia Institute of Technology</b> on October 26 on
+                        <i>Zygarde: Time-Sensitive On-Device Deep Inference and Adaptationon Intermittently-Powered
+                          Systems</i>.<br />
+                        &bull; Session Chair of <b>BuildSys 2020</b> and <b>ENSsys 2020</b> in conjunction with <b>ACM
+                          SenSys</b>.<br />
+                        &bull; Selected for the EECS <b>Rising Stars</b>, 2020 at UC Berkley.<br />
+                        &bull; Selected for ACM CRA-WP Career Mentoring Workshop, 2020.<br />
+                        &bull; I became the finalist of the prestigious <b>Gaetano Borriello Outstanding Student
+                          Award</b>, UbiComp 2020.<br />
+                        &bull; We got the Best Presentation, Judges Award at UbiComp 2020. <br />
+                        &bull; Successfully finished my internship at Digital Health Lab in Samsung Research
+                        America.<br />
+                        &bull; Two papers co-authored with Digital Health Lab, SRA on breath monitoring and time
+                        synchronization for cough monitoring got accepted in ICMI 2020.<br />
+                        &bull; My work on Time-Sensitive On-Device Deep Inference in Intermittent Systems got accepted
+                        in IMWUT/UBICOMP'20.<br />
+                        &bull; Our work on Intelligent Charger got accepted in IEEE Design & Test.<br />
+                        &bull; My paper on Real-Time Intermittent Systems got accepted in RTAS 2020.<br />
+                        &bull; Our paper on Intermittent Learning got accepted in IMWUT-UbiComp 2020.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="">
+                    <div class="date">2019</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>&bull; Our work on Pedestrian Safety got featured in <a
+                          href="https://spectrum.ieee.org/cars-that-think/transportation/safety/ai-headphone-pedestrians-safety-warning-cars">IEEE
+                          Sprectrum</a>.<br />
+                        &bull; I will present my poster(IPSN) and WiP(RTAS) on Intermittent Intelligence in CPS-IoT
+                        Week 2019.<br />
+                        &bull; My WiP on Indoor Localization with LORA got accepted in PerCom 2019.</p>
+                    </div>
+                  </li>
+                  <li class="">
+                    <div class="date">2018</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>&bull; Our paper on Real-Time LORAWAN got accepted in DCOSS 2018.<br />
+                        &bull; My papers on Approximate 3D Reconstruction got accepted in IPSN 2018.<br />
+                        &bull; My papers on Passive BLE Localization got accepted in MMSys 2018.<br />
+                        &bull; Two of our papers got accepted in IoTDI 2018.<br />
+                        &bull; We have received <b>Runner-Up Best App Award</b> and <b>Best Presentation Award</b> in
+                        VNC 2018.</p>
+                    </div>
+                  </li>
+                  <li class="">
+                    <div class="date">2017</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>&bull; I have received <b>Best Intern Presentation Award</b> at Nokia Bell Labs.<br />
+                        &bull; I have received MobiSys N2Women <b>Young Researcher Fellowship</b>.<br />
+                        &bull; Our paper on Privacy-Aware Homehub Devices got accepted in MobiSys 2017.</p>
+                    </div>
+                  </li>
+                  <li class="">
+                    <div class="date">2016</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                      <p>&bull; We received <b>Best Demo Runner Up</b> Award for our work on Pedestrian Safety in
+                        SenSys 2016.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div style="clear:both"></div>
+            </div>
+
+          </div>
+          <div class="o-screen-education__col--narrow">
+            <div>
+              <i class="icofont icofont-2x icofont-bank-alt"> <span style="font-size: x-large;">Professional
+                  Activities:</span></i>
+            </div>
+            <p class="u-mb-10"><b>Faculty Advisor:</b> WPI Women in Electrical and Computer Engineering</p>
+            <p class="u-mb-10"><b>Program Committees Chair:</b> ISWC-IMWUT, ENSys, IASA-MobiSys</p>
+            <p class="u-mb-10"><b>Publication Chair:</b> IPSN</p>
+            <p class="u-mb-10"><b>Program Committees:</b> IPSN, SenSys, MobiCom, EuroSys, EWSN, IoTDI, ICDCS,
+              ISWC-IMWUT, DigiBiom
+              Workshop, DATA Workshop, ENSys, LPIoT Workshop, SenSys Poster-Demo Session</p>
+            <!-- <p class="u-mb-10" ><b>Associate Editor:</b> Sensors (2023) [Guest]</p> -->
+            <p class="u-mb-10"><b>General Chair:</b> SigComm N2Women Workshop (2023), ENSSys Workshop (2023, 2022)</p>
+            <!--<p class="u-mb-10" ><b>Student Mentoring:</b> MobiSys Mentorship Program (2021), North Carolina School of Science and Mathematics -- Mentoring Program (2018).</p>
+        <p class="u-mb-10" ><b>Reviewer:</b> IMWUT-UbiComp (2021-2023), IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (2022), IEEE Sensors (2022), IEEE Transactions on Mobile Computing (2022), IEEE PerCom (2021), IEEE ACCESS (2021), IMWUT (2020), IEEE IoT Journal (2020), CHASE (2020), Transactions on Network Science & Engineering (2018), MobiSys Women’s Workshop (2017)</p> -->
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+    </header>
+
+
+
+    <main class="o-main">
+
+      <!-- EDUCATION -->
+      <div id="section-education" class="o-container js-main-container  wow1 fadeIn" data-contentPosition="2">
+
+
+        <div class="c-screen-education o-screen-education">
+          <div class="o-screen-education__col">
+            <div class="c-section-heading">
+              <svg class="c-section-heading__icon svg-icon" xmlns="http://www.w3.org/2000/svg" width="91" height="91"
+                viewBox="0 0 91 91">
+                <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+                <path class="svg-icon__item"
+                  d="M440.894,931.53a1,1,0,0,0,.875-0.325,1.027,1.027,0,0,0,.025-0.925q-0.6-1.749-1-2.8a0.455,0.455,0,0,1-.05-0.35,0.482,0.482,0,0,1,.2-0.25,2.786,2.786,0,0,0,1.075-1.575,2.6,2.6,0,0,0-.175-1.775,2.709,2.709,0,0,0-1.35-1.3,0.48,0.48,0,0,1-.3-0.45V909.43a0.5,0.5,0,0,1,.075-0.3,0.784,0.784,0,0,1,.325-0.2l5.1-1.25a0.922,0.922,0,0,0,.8-0.825,0.789,0.789,0,0,0-.75-0.825l-0.25-.1q-4.85-1.6-10.75-3.25-4.25-1.149-10.85-2.85a8.584,8.584,0,0,0-4.4-.05l-7.75,1.95q2.8-.75-7.25,1.85-4.25,1.1-7.2,1.95a1.447,1.447,0,0,0-.6.275,0.856,0.856,0,0,0,0,1.1,1.957,1.957,0,0,0,.6.325q5.051,1.551,11.45,3.3,3.9,1.05,11.55,3.05a4.679,4.679,0,0,0,2.25-.05l15.55-3.95a0.772,0.772,0,0,1,.4,0,0.474,0.474,0,0,1,.1.4v11.85a0.626,0.626,0,0,1-.3.55,2.7,2.7,0,0,0-1.125,1.35,2.588,2.588,0,0,0-.075,1.7,2.78,2.78,0,0,0,1.05,1.45,0.37,0.37,0,0,1,.225.225,0.766,0.766,0,0,1-.025.325q-0.45,1.2-1.05,2.95a0.987,0.987,0,0,0,.05.825,0.754,0.754,0,0,0,.7.325h2.85Zm-35.5-15.25a2.984,2.984,0,0,0,.85,2.25,8.331,8.331,0,0,0,2.45,1.7,25.045,25.045,0,0,0,6.75,1.75,42.519,42.519,0,0,0,9.15.325,32.329,32.329,0,0,0,8.25-1.525,9.633,9.633,0,0,0,3.7-2.1,3.251,3.251,0,0,0,1.05-2.45v-4.35a0.9,0.9,0,0,0-.1-0.575,1.04,1.04,0,0,0-.6.025l-6.65,1.7q-4,1-6.65,1.7a7.824,7.824,0,0,1-1.35.3,3.532,3.532,0,0,1-1.45,0l-5.35-1.3q-4-.95-9.55-2.55a0.487,0.487,0,0,0-.4-0.025,0.436,0.436,0,0,0-.1.35v4.775Z"
+                  transform="translate(-375.5 -865.5)" />
+              </svg>
+              <h2 class="c-section-heading__header">Education.</h2>
+            </div>.
+            <div class="c-timeline">
+              <ul class="c-timeline__list">
+                <li class="c-timeline__item">
+                  <header class="c-timeline__header">
+                    <span class="c-timeline__time">2021</span>
+                    <span class="c-timeline__line"></span>
+                    <h4 class="c-timeline__heading">Ph.D. in Computer Science</h4>
+                  </header>
+                  <p class="c-timeline__body">UNIVERSITY OF NORTH CAROLINA AT CHAPEL HILL</p>
+                </li>
+                <li class="c-timeline__item">
+                  <header class="c-timeline__header">
+                    <span class="c-timeline__time">2016</span>
+                    <span class="c-timeline__line"></span>
+                    <h4 class="c-timeline__heading">B.Sc. in Computer Science & Engineering</h4>
+                  </header>
+                  <p class="c-timeline__body">BANGLADESH UNIVERSITY OF ENGINEERING & TECHNOLOGY</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="o-screen-education__col o-screen-education__col--narrow">
+            <div class="c-section-heading">
+              <svg class="c-section-heading__icon svg-icon" xmlns="http://www.w3.org/2000/svg" width="91" height="91"
+                viewBox="0 0 91 91" preserveAspectRatio="xMidYMin">
+                <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+
+                <path class="svg-icon__item"
+                  d=M34.44,11.19,28,8l-6.43,3.19-7.17,1-3.25,6.19L6,23.29l1.18,6.83L6,37l5.16,4.87L14.4,48l7.17,1L28,52.25l6.44-3.19,7.15-1,3.25-6.19L50,37l-1.18-6.84L50,23.29l-5.16-4.87-3.25-6.19Zm4.62,4.42,2.64,5,4.19,4-1,5.52.95,5.56-4.19,4-2.63,5-5.83.85L28,48.1l-5.22-2.59L17,44.66l-2.64-5-4.19-4,1-5.56-1-5.55,4.19-3.95,2.64-5,5.82-.84L28,12.15l5.23,2.59Z"
+                  transform="translate(15 8)" />
+                <path class="svg-icon__item" d="M12.58,51.51V67L28,63.31,43.42,67V51.51l-7.78,1.11L28,56.4l-7.64-3.78Z"
+                  transform="translate(15 8)" />
+
+              </svg>
+              <h2 class="c-section-heading__header">Award.</h2>
+            </div>
+            <!-- <h4>2020</h4> -->
+            <p> &bull; Forbes 30 under 30 (Science) 2021. </p>
+            <p> &bull; EECS Rising Star, University of California Berkley 2020. </p>
+            <p> &bull; Finalist Gaetano Borriello Outstanding Student Award, UBICOMP/ISWC 2020.</p>
+            <p> &bull; Best Presentation, Judge's Award, UBICOMP 2020.</p>
+            <p> &bull; Runner-Up Best App Award & Best Presentation Award, VNC 2018.</p>
+            <p> &bull; Best Summer Intern Presentation Award, Nokia Bell Labs 2017.</p>
+            <p> &bull; N2Women Young Researcher Fellowship Award, MobiSys 2017.</p>
+            <p> &bull; Runner-Up Best Demo Award, SenSys 2016.</p>
+            <p> &bull; World Finalist & National Champion, Microsoft Imagine Cup 2013.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESEARCH -->
+      <div id="section-research" class="o-container   wow1 fadeIn" data-contentPosition="3">
+        <div class="c-section-heading">
+          <svg class="c-section-heading__icon svg-icon" xmlns="http://www.w3.org/2000/svg" width="91" height="91"
+            viewBox="0 0 91 91">
+            <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+            <path class="svg-icon__item"
+              d="M441.844,1714.1a3.587,3.587,0,0,1-1.175,2.18,4.8,4.8,0,0,1-2.425,1.12,9.54,9.54,0,0,1-1.5.1,12.291,12.291,0,0,1-1.5,0h-30a5.209,5.209,0,0,1-2.25-.45,3.054,3.054,0,0,1-1.65-1.7,4.191,4.191,0,0,1-.05-2.65,14.023,14.023,0,0,1,.75-1.75l10.95-20.3a2.556,2.556,0,0,0,.25-1.05v-4.65a0.605,0.605,0,0,0-.075-0.35,0.574,0.574,0,0,0-.375-0.15,3.05,3.05,0,0,1-2.175-.97,3.2,3.2,0,0,1-.875-2.28l-0.05-1.65c0.033-.27.067-0.53,0.1-0.8a3.232,3.232,0,0,1,1.125-1.87,3.119,3.119,0,0,1,2.075-.73h16.25a3.213,3.213,0,0,1,2.4.98,3.157,3.157,0,0,1,.9,2.42c0-.5.017-0.12,0.05,1.15a6.137,6.137,0,0,1-.1,1.2,3.257,3.257,0,0,1-1.075,1.8,3.076,3.076,0,0,1-1.925.75,0.574,0.574,0,0,0-.375.15,0.605,0.605,0,0,0-.075.35v4.85a1.7,1.7,0,0,0,.3.8l11.8,20.4a4.6,4.6,0,0,1,.7,3.1h0Zm-2.425.05a4.446,4.446,0,0,0-.675-2.25l-11.2-20.85a1.941,1.941,0,0,1-.25-0.7q0.05-3.645,0-7.2a0.379,0.379,0,0,1,.1-0.32,0.5,0.5,0,0,1,.3-0.08h1.55a1.474,1.474,0,0,0,1.125-.45,1.8,1.8,0,0,0,.475-1.15v-1.65a1.552,1.552,0,0,0-.45-1.15,1.622,1.622,0,0,0-1.2-.45h-16.05a1.722,1.722,0,0,0-1.25.43,1.652,1.652,0,0,0-.45,1.27v1.6a1.755,1.755,0,0,0,.475,1.1,1.474,1.474,0,0,0,1.125.45,9.973,9.973,0,0,0,1.375,0,0.519,0.519,0,0,1,.475.08,0.781,0.781,0,0,1,.1.47q-0.05,3.345,0,6.65a2.09,2.09,0,0,1-.3,1.1l-11.1,20.7a6.541,6.541,0,0,0-.7,1.7,1.652,1.652,0,0,0,1.45,2.2,5.753,5.753,0,0,0,1.3.1h31.25a3.855,3.855,0,0,0,1.5-.25A1.369,1.369,0,0,0,439.419,1714.15Zm-22.2-40.52a1.953,1.953,0,0,1-.575-1.43,2.015,2.015,0,0,1,.575-1.45,1.948,1.948,0,0,1,1.425-.62,1.833,1.833,0,0,1,1.45.6,2.031,2.031,0,0,1,.6,1.47,2.049,2.049,0,0,1-2.05,2.05A2.115,2.115,0,0,1,417.219,1673.63Zm5.05-3.13a1.616,1.616,0,0,1-.525-1.22,1.8,1.8,0,0,1,1.75-1.78,1.734,1.734,0,0,1,1.225.5,1.65,1.65,0,0,1,.525,1.25,1.709,1.709,0,0,1-1.75,1.75A1.734,1.734,0,0,1,422.269,1670.5Zm4.625,23.45,10.3,18.8a3.751,3.751,0,0,1,.45.88,0.2,0.2,0,0,1-.175.27,6.171,6.171,0,0,1-.975.05h-31.1a1.131,1.131,0,0,1-.725-0.12,1.032,1.032,0,0,1,.225-0.68q0.649-1.245,2.6-4.8l4.85-8.85a0.933,0.933,0,0,1,.325-0.4,0.6,0.6,0,0,1,.525.05,19.047,19.047,0,0,0,3.775.75,4.321,4.321,0,0,0,3.775-1.3c0.3-.3.933-0.98,1.9-2.05a13.925,13.925,0,0,1,3.6-2.8,0.712,0.712,0,0,1,.4-0.07,0.463,0.463,0,0,1,.3.27h-0.05Zm-2.35,15.13a1.943,1.943,0,0,0,.2-1.6,2.054,2.054,0,0,0-1.025-1.25,2.132,2.132,0,0,0-2.875.8,2.1,2.1,0,0,0-.175,1.6,2,2,0,0,0,1,1.3,2.05,2.05,0,0,0,1.625.17A2.189,2.189,0,0,0,424.544,1709.08Zm5.025-4.8a2.386,2.386,0,0,0,.2-1.85,2.476,2.476,0,0,0-1.15-1.5,2.325,2.325,0,0,0-1.85-.28,2.352,2.352,0,0,0-1.5,1.18,2.394,2.394,0,0,0-.25,1.9,2.454,2.454,0,0,0,1.175,1.5,2.3,2.3,0,0,0,1.9.22A2.389,2.389,0,0,0,429.569,1704.28Zm-10.725-18.08a3.5,3.5,0,0,1-1.05-2.57,3.465,3.465,0,0,1,1.075-2.58,3.682,3.682,0,0,1,5.15,0,3.622,3.622,0,0,1,0,5.15A3.713,3.713,0,0,1,418.844,1686.2Zm-0.7,7.53a2.643,2.643,0,0,1,1.825-4.53,2.568,2.568,0,0,1,1.85.75,2.477,2.477,0,0,1,.775,1.85,2.62,2.62,0,0,1-.75,1.88,2.493,2.493,0,0,1-1.85.77A2.435,2.435,0,0,1,418.144,1693.73Z"
+              transform="translate(-375.5 -1649.5)" />
+          </svg>
+          <h2 class="c-section-heading__header">Research.</h2>
+        </div>
+        <div class="c-screen-research o-screen-research">
+          <div class="o-screen-research__col">
+            <div class="c-card o-screen-research__cards js-cards">
+
+              <div class="c-card__item js-toggle-modal">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <div class="c-card__icon">
+
+                    <i class="icofont icofont-autism"></i>
+                  </div>
+                  <h4 class="c-card__header">Mind Meets Machine: AI Transforming Behavioral Health</h4>
+                  <div class="c-card__modal-content js-card-modal-content">
+                    <p class="c-card__text"></p>
+                    <h5 class="c-card__link-caption">Leveraging artificial intelligence to revolutionize behavioral
+                      health, providing innovative tools for diagnosis, monitoring, and treatment to improve
+                      developmental and mental well-being.</h5>
+                    <a href="https://bashlab.wpi.edu/research.html" target="_blank" rel="noopener">
+                      <button class="c-button--bold-text" type="button">Details</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="c-card__button">
+                  <button class="c-card__button-field" type="button"></button>
+                </div>
+              </div>
+
+
+
+
+              <div class="c-card__item js-toggle-modal">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <div class="c-card__icon">
+                    <i class="icofont icofont-pixels"></i>
+                  </div>
+                  <h4 class="c-card__header">Sensing the Future: Bridging Sensors and Language Intelligence</h4>
+                  <div class="c-card__modal-content js-card-modal-content">
+                    <p class="c-card__text">Exploring the synergy between sensor data and large language models to
+                      create intelligent systems that understand and interpret the world through a fusion of modalities.
+                    </p>
+                    <a href="https://bashlab.wpi.edu/research.html" target="_blank" rel="noopener">
+                      <button class="c-button--bold-text" type="button">Details</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="c-card__button">
+                  <button class="c-card__button-field" type="button"></button>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="c-card__item js-toggle-modal">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <div class="c-card__icon">
+                    <i class="icofont icofont-micro-chip"></i>
+                  </div>
+                  <h4 class="c-card__header">Tiny Power, Big Impact: ML for Sustainable Edge Innovation</h4>
+                  <div class="c-card__modal-content js-card-modal-content">
+                    <p class="c-card__text">Pioneering the development of efficient machine learning algorithms for
+                      ultra-low-power edge devices (specially battery-free devices), enabling intelligent sensing in
+                      resource-constrained environments.</p>
+                    <a href="https://bashlab.wpi.edu/research.html" target="_blank" rel="noopener">
+                      <button class="c-button--bold-text" type="button">Details</button>
+                    </a>
+                  </div>
+                </div>
+                <div class="c-card__button">
+                  <button class="c-card__button-field" type="button"></button>
+                </div>
+              </div>
+              <div class="c-card__item js-toggle-modal">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <!-- <div class="chart-container"> -->
+                  <h4 class="c-card__header">Research Funding</h4>
+                  <canvas id="fundingChart" style="max-width: 300px; max-height: 300px;"></canvas>
+                  <!-- </div> -->
+                  <div class="c-card__modal-content js-card-modal-content">
+                    <p class="c-card__text">Current research funding supporting our work in AI, machine learning, and
+                      ubiquitous computing across multiple federal agencies and industry partners.</p>
+                    <!-- <h4 class="c-card__header">Research Funding</h4> -->
+                    <!-- <canvas id="fundingChart"></canvas> -->
+                    <div id="funding-grants" style="text-align: left;">
+<!--PRERENDER:grants-->
+<p class="u-mb-10">1. NSF CAREER, $636K, Role: Lead PI</p><p class="u-mb-10">2. NIH NIMH SBIR (Phase2), $170K (Total: $918K), Role: Co-I</p><p class="u-mb-10">3. Wadsworth Acoustic Laboratory, $9K, Role: Lead PI</p><p class="u-mb-10">4. NSF CSR CRII, $175K, Role: Lead PI</p><p class="u-mb-10">5. NIH NIDA R01, $157K (Total: $2.7M), Role: Co-I</p><p class="u-mb-10">6. NIH NIDDK R01, $533K (Total: $2.7M), Role: Co-I</p><p class="u-mb-10">7. NIH NIMH SBIR (Phase1), $82K (Total: $290K), Role: Co-I</p>
+<!--/PRERENDER:grants-->
+                      <!-- Funding grants will be loaded here -->
+                    </div>
+
+                  </div>
+                </div>
+                <div class="c-card__button">
+                  <button class="c-card__button-field" type="button"></button>
+                </div>
+              </div>
+
+              <div class="c-card__item c-card__item--text-only"
+                style="background-image:url(img/deco-triangle--blue.png)">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <div class="c-card__content">
+                    <p class="c-card__text">Transforming AI with sensor fusion, speech intelligence, edge TinyML for
+                      sustainability, and breakthroughs in behavioral health.</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Collaborators Card -->
+              <div class="c-card__item js-toggle-modal">
+                <div class="c-card__sizer"></div>
+                <div class="c-card__inner">
+                  <div class="c-card__icon">
+                    <i class="icofont icofont-users-alt-4"></i>
+                  </div>
+                  <h4 class="c-card__header">Research Collaborators</h4>
+                  <div class="c-card__modal-content js-card-modal-content">
+                    <p class="c-card__text">Partnering with leading institutions worldwide to advance research in AI,
+                      machine learning, and ubiquitous computing.</p>
+                    <div id="collaborators-grid" class="collaborators-grid">
+<!--PRERENDER:collaborators-->
+<div class="collaborator-item"><img src="https://bashlab.github.io/img/cmu.png" alt="Carnegie Mellon University" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Carnegie Mellon University</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/uiuc.jpg" alt="University of Illinois Urbana-Champaign" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">University of Illinois Urbana-Champaign</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/gtech.png" alt="Georgia Tech" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Georgia Tech</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/trento.png" alt="University of Trento" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">University of Trento</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/meta.png" alt="Meta Reality Lab" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Meta Reality Lab</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/asu.png" alt="Arizona State University" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Arizona State University</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/utk.png" alt="University of Tennessee, Knoxville" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">University of Tennessee, Knoxville</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/bosch.png" alt="Bosch Research America" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Bosch Research America</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/equa.png" alt="Equa Health" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Equa Health</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/northwestern.png" alt="Northwestern University" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Northwestern University</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/delft.png" alt="Delft University of Technology" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Delft University of Technology</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/ucsd.png" alt="University of California San Diego" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">University of California San Diego</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/umass_medical.png" alt="UMass Chan Medical School" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">UMass Chan Medical School</p></div><div class="collaborator-item"><img src="https://bashlab.github.io/img/columbia.png" alt="Columbia University" class="collaborator-logo" onerror="this.style.display='none'"><p class="collaborator-name">Columbia University</p></div>
+<!--/PRERENDER:collaborators-->
+                      <!-- Collaborators will be loaded here -->
+                    </div>
+                  </div>
+                </div>
+                <div class="c-card__button">
+                  <button class="c-card__button-field" type="button"></button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PUBLICATIONS -->
+      <div id="section-publications" class="o-container   wow1 fadeIn" data-contentPosition="4">
+        <div class="c-section-heading">
+          <svg class="c-section-heading__icon svg-icon publications-icon" xmlns="http://www.w3.org/2000/svg" width="91"
+            height="91" viewBox="0 0 91 91">
+            <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+            <!-- Document stack with animation -->
+            <g class="svg-icon__item">
+              <!-- Back document -->
+              <rect x="20" y="25" width="40" height="50" rx="2" fill="none" stroke="currentColor" stroke-width="2"
+                opacity="0.6">
+                <animateTransform attributeName="transform" type="translate" values="0,0; 2,2; 0,0" dur="3s"
+                  repeatCount="indefinite" />
+              </rect>
+              <!-- Middle document -->
+              <rect x="18" y="22" width="40" height="50" rx="2" fill="none" stroke="currentColor" stroke-width="2"
+                opacity="0.8">
+                <animateTransform attributeName="transform" type="translate" values="0,0; -1,1; 0,0" dur="3s"
+                  repeatCount="indefinite" />
+              </rect>
+              <!-- Front document -->
+              <rect x="16" y="19" width="40" height="50" rx="2" fill="none" stroke="currentColor" stroke-width="2">
+                <animateTransform attributeName="transform" type="translate" values="0,0; -2,-1; 0,0" dur="3s"
+                  repeatCount="indefinite" />
+              </rect>
+              <!-- Document lines -->
+              <g opacity="0.7">
+                <line x1="22" y1="28" x2="48" y2="28" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" repeatCount="indefinite" />
+                </line>
+                <line x1="22" y1="33" x2="45" y2="33" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" begin="0.5s"
+                    repeatCount="indefinite" />
+                </line>
+                <line x1="22" y1="38" x2="50" y2="38" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" begin="1s" repeatCount="indefinite" />
+                </line>
+                <line x1="22" y1="43" x2="42" y2="43" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" begin="1.5s"
+                    repeatCount="indefinite" />
+                </line>
+              </g>
+            </g>
+          </svg>
+          <h2 class="c-section-heading__header">Publications.</h2>
+        </div>
+
+        <div class="c-screen-publications o-screen-publications">
+
+          <!--PRERENDER:publications-->
+<div id="pub-fallback"><h3>2026</h3><ul><li style='margin-bottom:10px;'><strong>OWL: Geometry-Aware Spatial Reasoning for Audio Large Language Models</strong>. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. <em>International Conference on Learning Representations (ICLR)</em>, 2026. [<a href="https://arxiv.org/pdf/2509.26140?" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Hair Noise Analysis and Mitigation for Smart Glasses Audio Captures</strong>. Subrata Biswas, Daniel Wong, Bashima Islam, Sanjeel Parekh, Vladimir Tourbabin. <em>ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 2026. [<a href="https://ieeexplore.ieee.org/document/11464268" target="_blank">link</a>]</li></ul><h3>2025</h3><ul><li style='margin-bottom:10px;'><strong>RAVEN: Query-Guided Representation Alignment for Question Answering over Audio, Video, Embedded Sensors, and Natural Language</strong>. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. <em>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 2025. [<a href="https://aclanthology.org/2025.emnlp-main.96/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Mindfulness Meditation and Respiration: Accelerometer-Based Respiration Rate and Mindfulness Progress Estimation to Enhance App Engagement and Mindfulness Skills</strong>. Mohammad Nur Hossain Khan, David creswell, Jordan Albert, Patrick O&#x27;Connell, Shawn Fallon, Mathew Polowitz, Xuhai orson Xu, Bashima Islam. <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT/Ubicomp)</em>, 2025. [<a href="https://bashlab.github.io/meditite_project/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>QUADS: Quantized Distillation Framework for Efficient Speech Language Understanding</strong>. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. <em>Interspeech 2025</em>, 2025. [<a href="https://www.isca-archive.org/interspeech_2025/biswas25b_interspeech.pdf" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>LOCUS: LOcalization with Channel Uncertainty and Sporadic Energy</strong>. Subrata Biswas, Mohammad Nur Hossain Khan, Alex Colwell, Jack Adiletta, Bashima Islam. <em>22nd International Conference on Embedded Wireless Systems and Networks (EWSN)</em>, 2025. [<a href="https://bashlab.github.io/locus_project/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>EfficientMic: Adaptive Acoustic Sensing with a Single Microphone for Smart Infrastructure</strong>. Jack Adiletta, Mohammad Nur Hossain Khan, Shiwei Fang, Bashima Islam. <em>12th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation (BuildSys)</em>, 2025. [<a href="https://jta2021.wixsite.com/efficientmic" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>LLaSA: A Multimodal LLM for Human Activity Analysis Through Wearable and Smartphone Sensors</strong>. Sheikh Asif Imran, Mohammad Nur Hossain Khan, Subrata Biswas, Bashima Islam. <em>Generative AI and Foundation Models for Human Sensing Workshop, UbiComp</em>, 2025. [<a href="https://bashlab.github.io/llasa_project/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>UNIT: Scalable unstructured inference-time pruning for MAC-efficient neural inference on MCUs</strong>. Ashe Neth, Sawinder Kaur, Mohammad Nur Hossain Khan, Subrata Biswas, Asif Salekin, Bashima Islam. <em>arXiv preprint</em>, 2025. [<a href="https://arxiv.org/abs/2507.07885" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Machine learning-based estimation of EMG baseline noise standard deviation without rest trials</strong>. Naisargi Mehta, Bashima Islam, Edward A. Clancy. <em>Journal of Electromyography and Kinesiology</em>, 2025. [<a href="https://doi.org/https://doi.org/10.1016/j.jelekin.2025.103097" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>FATE: A Fourier Accelerated Tensor Engine for Neural Networks</strong>. Jack Adiletta, Bashima Islam, Ulkuhan Guler. <em>IEEE International Midwest Symposium on Circuits and Systems MWSCAS</em>, 2025. [<a href="https://bashlab.github.io/fate_project/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Anti-Sensing: Defense Against Unauthorized Radar-Based Human Vital Sign Sensing with Physically Realizable Wearable Oscillators</strong>. Md Farhan Tasnim Oshim, Nigel Doering, Bashima Islam, Tsui-Wei Weng, Tauhidur Rahman. <em>2025 IEEE International Conference on Robotics and Automation (ICRA)</em>, 2025. [<a href="https://doi.org/10.1109/ICRA55743.2025.11127941" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Poster: LYNX: An Open-Source Platform for In-Ear Multimodal Sensing</strong>. Musa Guler, Hikmet Bisen, Pranav Khurana, Bashima Islam. <em>MIT Undergraduate Research Technology Conference (MIT URTC)</em>, 2025.</li><li style='margin-bottom:10px;'><strong>Biobehavioral sensing platform for capturing infant states/health and environmental input via ecg, motion, and audio signals</strong>. Nancy L McElwain, Mark A Hasegawa-Johnson, Romit Roy Choudhury, Ashutosh Dhekne, Bashima Islam. <em>Google Patents</em>, 2025.</li><li style='margin-bottom:10px;'><strong>ECG Statement Classification and Lead Reconstruction using CNN-based Models</strong>. Kiriaki J Rajotte, Bashima Islam, Xinming Huang, David D McManus, Edward A Clancy. <em>IEEE Journal of Biomedical and Health Informatics</em>, 2025.</li><li style='margin-bottom:10px;'><strong>Comparing Quantization Methods for On-Edge ECG Interpretation using Multi-Task CNN</strong>. Kiriaki J Rajotte, Bashima Islam, David McManus, Xinming Huang, Edward A Clancy. <em>IEEE-EMBS International Conference on Body Sensor Networks (BSN)</em>, 2025.</li><li style='margin-bottom:10px;'><strong>Dataset: A Novel Aliasing vs Non Aliasing Audio Dataset for Always-On IoT Microphone Experimentation</strong>. Jack Adiletta, Khan Mohammad Nur Hossain, Matthew Reynolds, Shiwei Fang, Bashima Islam. <em>Proceedings of the 12th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation</em>, 2025.</li></ul><h3>2024</h3><ul><li style='margin-bottom:10px;'><strong>Preliminary Technical Validation of LittleBeats™: A Multimodal Sensing Platform to Capture Cardiac Physiology, Motion, and Vocalizations</strong>. Bashima Islam, Nancy L McElwain, Jialu Li, Maria I Davila, Yannan Hu, Kexin Hu, Jordan M Bodway, Ashutosh Dhekne, Romit Roy Choudhury, Mark Hasegawa-Johnson. <em>Sensors</em>, 2024.</li><li style='margin-bottom:10px;'><strong>InfantMotion2Vec: Unlabeled Data-Driven Infant Pose Estimation Using a Single Chest IMU</strong>. Mohammad Nur Hossain Khan, Nancy L McElwain, Mark Hasegawa-Johnson, Bashima Islam. <em>2024 IEEE 20th International Conference on Body Sensor Networks (BSN)</em>, 2024. [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10780750" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Sound Tagging in Infant-centric Home Soundscapes</strong>. Mohammad Nur Hossain Khan, Jialu Li, Nancy L McElwain, Mark Hasegawa–Johnson, Bashima Islam. <em>2024 IEEE/ACM Conference on Connected Health: Applications, Systems and Engineering Technologies (CHASE)</em>, 2024. [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10614412" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Bootstrapping Health Wearables Powered by Intra-Body Power Transfer</strong>. Saad Ahmed, Eren Yildiz, Shashank Holla, Noor Mohammed, Bashima Islam, Kasim Sinan Yildirim, Jeremy Gummeson, Sunghoon Ivan Lee, Josiah Hester. <em>IEEE-EMBS International Conference on Body Sensor Networks (BSN)</em>, 2024. [<a href="https://ieeexplore.ieee.org/document/10780616" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>The Internet of Batteryless Things</strong>. Saad Ahmed, Bashima Islam, Kasim Sinan Yildirim, Marco Zimmerling, Przemys Pawe, Muhammad Hamad Alizai, Brandon Lucia, Luca Mottola, Jacob Sorber, Josiah Hester. <em>Communications of the ACM</em>, 2024.</li><li style='margin-bottom:10px;'><strong>Forearm Ultrasound based Gesture Recognition on Edge</strong>. Keshav Bimbraw, Haichong K Zhang, Bashima Islam. <em>IEEE-EMBS International Conference on Body Sensor Networks (BSN)</em>, 2024. [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10780669&amp;tag=1" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Memory-efficient Energy-adaptive Inference of Pre-Trained Models on Batteryless Embedded Systems</strong>. Pietro Farina, Subrata Biswas, Eren Y, Khakim Akhunov, Saad Ahmed, Bashima Islam, Kas Sinan Y. <em>International Conference on Embedded Wireless Systems and Networks (EWSN)</em>, 2024. [<a href="https://ewsn.org/file-repository/ewsn2024/ewsn24-final16.pdf" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Evaluating Users’ Experiences of a Child Multimodal Wearable Device: Mixed Methods Approach</strong>. Nancy L McElwain, Meghan C Fisher, Camille Nebeker, Jordan M Bodway, Bashima Islam, Mark Hasegawa-Johnson. <em>JMIR Human Factors</em>, 2024.</li><li style='margin-bottom:10px;'><strong>Missingness-resilient Video-enhanced Multimodal Disfluency Detection</strong>. Payal Mohapatra, Shamika Likhite, Subrata Biswas, Bashima Islam, Qi Zhu. <em>Interspeech</em>, 2024. [<a href="https://www.isca-archive.org/interspeech_2024/mohapatra24_interspeech.pdf" target="_blank">link</a>]</li></ul><h3>2023</h3><ul><li style='margin-bottom:10px;'><strong>EchoSense: Acoustic Sensing for Enclosed Structure Monitoring and Recognition</strong>. Michael Rothstein, Zhuolin Liu, Bashima Islam. <em>IEEE MIT Undergraduate Research Technology Conference (MIT URTC)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>An Empirical Study of Interference Features in Licensed and Unlicensed Bands for Intelligent Spectrum Management</strong>. Zhuoran Su, Kaveh Pahlavan, Bashima Islam. <em>24th IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Protean: Adaptive Hardware-Accelerated Intermittent Computing</strong>. Abu Bakar, Rishabh Goel, Jasper de Winkel, Jason Huang, Saad Ahmed, Bashima Islam, Przemyslaw Pawelczak, Kasim Sinan Yildirim, Josiah Hester. <em>GetMobile: Mobile Computing and Communications</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Classification of infant sleep/wake states: cross-attention among large scale pretrained transformer networks using audio, ECG, and IMU data</strong>. Kai Chieh Chang, Mark Hasegawa-Johnson, Nancy L McElwain, Bashima Islam. <em>2023 Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Amalgamated Intermittent Computing Systems</strong>. Bashima Islam, Yubo Luo, Shahriar Nirjon. <em>IEEE/ACM International Conference on Internet-of-Things Design and Implementation (IoTDI)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Efficient Stuttering Event Detection using Siamese Networks</strong>. Payal Mohapatra, Md Tamzeed Islam, Bashima Islam, Qi Zhu. <em>IEEE International Conference on Acoustic Speech and Signal Processing (ICASSP)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Characteristics of Mid-Bands Interference in Wireless Spectrum Sharing for Mobility Support in 6G, Wi-Fi 7, and Beyond</strong>. Kaveh Pahlavan, Bashima Islam, Zhuoran Su, Edward Morgan. <em>International Journal of Wireless Information Networks</em>, 2023.</li><li style='margin-bottom:10px;'><strong>An Empirical Study of Interference Features in Licensed and Unlicensed Bands for Intelligent Spectrum Management</strong>. Zhuoran Su, Kaveh Pahlavan, Bashima Islam. <em>2023 IEEE 24th International Symposium on a World of Wireless, Mobile and Multimedia Networks (WoWMoM)</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Self-Supervised Speech Enhancement using Multi-Modal Data</strong>. Yu-Lin Wei, Rajalaxmi Rajagopalan, Bashima Islam, Romit Roy Choudhury. <em>NeurIPS Workshop on ML for Audio</em>, 2023.</li><li style='margin-bottom:10px;'><strong>Efficient and Safe I/O Operations for Intermittent Systems</strong>. Eren Yildiz, Saad Ahmed, Bashima Islam, Josiah Hester, Kasim Sinan Yildirim. <em>European Conference on Computer Systems (EuroSys)</em>, 2023.</li></ul><h3>2022</h3><ul><li style='margin-bottom:10px;'><strong>Protean: An Energy-Efficient and Heterogeneous Platform for Adaptive and Hardware-Accelerated Battery-free Computing</strong>. Abu Bakar, Rishabh Goel, Jasper De Winkel, Jason Huang, Saad Ahmed, Bashima Islam, Przemys Pawe, Kas Sinan Y, Josiah Hester. <em>Proceedings of the 20th ACM Conference on Embedded Networked Sensor Systems (SenSys)</em>, 2022.</li><li style='margin-bottom:10px;'><strong>Cyber–Physical Verification of Intermittently Powered Embedded Systems</strong>. Rose Bohrer, Bashima Islam. <em>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</em>, 2022.</li><li style='margin-bottom:10px;'><strong>Poster: Studying the Security Threats of Partially Processed Deep Neural Inference Data in an IoT Device</strong>. Argha Dhar, Arna Roy, Subrata Biswas, Bashima Islam. <em>ACM Conference on Embedded Networked Sensor Systems (SenSys)</em>, 2022.</li><li style='margin-bottom:10px;'><strong>Speech disfluency detection with contextual representation and data distillation</strong>. Payal Mohapatra, Akash Pandey, Bashima Islam, Qi Zhu. <em>Proceedings of the 1st ACM international workshop on intelligent acoustic systems and applications</em>, 2022.</li><li style='margin-bottom:10px;'><strong>Breathing measurement and management using an electronic device</strong>. Md Mahbubur Rahman, Bashima Islam, Tousif Ahmed, Nathan Robert Folkman, Anh Minh Dinh, Sean Bornheimer, Ebrahim Nematihosseinabadi, Jilong Kuang, Jun Gao. <em>Google Patents</em>, 2022.</li></ul><h3>2021</h3><ul><li style='margin-bottom:10px;'><strong>BreathTrack: detecting regular breathing phases from unannotated acoustic data captured by a smartphone</strong>. Bashima Islam, Md Mahbubur Rahman, Tousif Ahmed, Mohsin Yusuf Ahmed, Md Mehedi Hasan, Viswam Nathan, Korosh Vatanparvar, Ebrahim Nemati, Jilong Kuang, Jun Alex Gao. <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT/UbiComp)</em>, 2021.</li></ul><h3>2020</h3><ul><li style='margin-bottom:10px;'><strong>Automated time synchronization of cough events from multimodal sensors in mobile devices</strong>. Tousif Ahmed, Mohsin Y Ahmed, Md Mahbubur Rahman, Ebrahim Nemati, Bashima Islam, Korosh Vatanparvar, Viswam Nathan, Daniel McCaffrey, Jilong Kuang, Jun Alex Gao. <em>Proceedings of the 2020 International Conference on Multimodal Interaction (ICMI)</em>, 2020.</li><li style='margin-bottom:10px;'><strong>Scheduling Computational and Energy Harvesting Tasks in Deadline-Aware Intermittent Systems</strong>. Bashima Islam, Shahriar Nirjon. <em>IEEE International Conference on Real-Time and Embedded Technology and Applications Symposium (RTAS)</em>, 2020. [<a href="https://ieeexplore.ieee.org/document/9113096" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>PhD Forum Abstract: Scheduling Tasks on Intermittently Powered Systems</strong>. Bashima Islam. <em>2020 19th ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)</em>, 2020.</li><li style='margin-bottom:10px;'><strong>Zygarde: Time-Sensitive On-Device Deep Inference and Adaptation on Intermittently-Powered Systems</strong>. Bashima Islam, Shahriar Nirjon. <em>Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT/Ubicomp)</em>, 2020. [<a href="https://dl.acm.org/doi/10.1145/3411808" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Intelligent Chargers will Make Mobile Devices Live Longer</strong>. Alma Probstl, Bashima Islam, Shahriar Nirjon, Naehuck R Chang, Samarjit Chakraborty. <em>IEEE Design and Test Journal</em>, 2020. [<a href="https://ieeexplore.ieee.org/document/9133188" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>BreathEasy: Assessing Respiratory Diseases Using Mobile Multimodal Sensors</strong>. Md Mahbubur Rahman, Mohsin Yusuf Ahmed, Tousif Ahmed, Bashima Islam, Viswam Nathan, Korosh Vatanparvar, Ebrahim Nemati, Daniel McCaffrey, Jilong Kuang, Jun Alex Gao. <em>ACM International Conference on Multimodal Interaction (ICMI)</em>, 2020.</li><li style='margin-bottom:10px;'><strong>Differences in reliability and predictability of harvested energy from battery-less intermittently powered systems</strong>. Nithya Sampath, Bashima Islam, Shahriar Nirjon. <em>Journal of Emerging Investigators. www. emerginginvestigators. org</em>, 2020.</li></ul><h3>2019</h3><ul><li style='margin-bottom:10px;'><strong>WiP: On-device training from sensor data on batteryless platforms</strong>. Bashima Islam, Yubo Luo, Seulki Lee, Shahriar Nirjon. <em>Proceedings of the 18th International Conference on Information Processing in Sensor Networks (IPSN)</em>, 2019.</li><li style='margin-bottom:10px;'><strong>LoRaIn: Making a Case for LoRa in Indoor Localization. Work in Progress Paper</strong>. Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon. <em>IEEE International Conference on Pervasive Computing and Communications, (PerCom)</em>, 2019. [<a href="https://ieeexplore.ieee.org/document/8730767" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Time-Aware Deep Intelligence on Batteryless Systems. Work in Progress Paper</strong>. Bashima Islam, Yubo Luo, Seulki Lee, Shahriar Nirjon. <em>Brief Presentations Proceedings (RTAS 2019)</em>, 2019. [<a href="http://2019.rtas.org/wp-content/uploads/2019/04/RTAS19_BP_proceedings.pdf" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Intermittent Learning: On-Device Machine Learning on Intermittently Powered System</strong>. Seulki Lee, Bashima Islam, Yubo Luo, Shahriar Nirjon. <em>ACM Proceedings on Interactive, Mobile, Wearable and Ubiquitous Technologies (IMWUT/UBICOMP), Volume 3, Issue 4</em>, 2019. [<a href="https://arxiv.org/pdf/1904.09644.pdf" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Poster Abstract: On-Device Training from Sensor Data on Batteryless Platforms</strong>. Bashima Islam, Yubo Luo, Shahriar Nirjon. <em>ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)</em>, 2019. [<a href="https://ieeexplore.ieee.org/document/8732490" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Improving pedestrian safety in cities using intelligent wearable systems</strong>. Stephen Xia, Daniel de Godoy Peixoto, Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon, Peter R Kinget, Xiaofan Jiang. <em>IEEE Internet of Things Journal</em>, 2019.</li></ul><h3>2018</h3><ul><li style='margin-bottom:10px;'><strong>Paws: A Wearable Acoustic System for Pedestrian Safety</strong>. Daniel de Godoy, Bashima Islam, Stephen Xia, Md Tamzeed Islam, Rishikanth Chandrasekaran, Yen-Chun Chen, Shahriar Nirjon, Peter R Kinget, Xiaofan Jiang. <em>Orlando, USA</em>, 2018. [<a href="https://ieeexplore.ieee.org/abstract/document/8366992" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Demo Abstract: A Motion-Triggered Stereo Camera for 3D Experience Capture</strong>. Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon. <em>2018 17th ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)</em>, 2018.</li><li style='margin-bottom:10px;'><strong>Duty-Cycle-Aware Real-Time Scheduling of Wireless Links in Low Power WANs</strong>. Md Tamzeed Islam, Bashima Islam, Shahriar Nirjon. <em>IEEE International Conference on Distributed Computing in Sensor Systems (DCOSS)</em>, 2018. [<a href="https://ieeexplore.ieee.org/abstract/document/8510960/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Glimpse.3D: A Motion-Triggered Stereo Body Camera for 3D Experience Capture and Preview</strong>. Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon. <em>ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN)</em>, 2018. [<a href="https://dl.acm.org/citation.cfm?id=3207991" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Rethinking Ranging of Unmodified BLE Peripherals in Smart City Infrastructure</strong>. Bashima Islam, Mostafa Uddin, Sarit Mukherjee, Shahriar Nirjon. <em>ACM Multimedia Systems Conference (MMSys)</em>, 2018. [<a href="https://dl.acm.org/citation.cfm?id=3204950" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>A Smartphone-Based System for Improving Pedestrian Safety</strong>. Stephen Xia, Daniel de Godoy, Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon, Peter R. Kinget, Xiaofan Jiang. <em>IEEE Vehicular Networking Conference (VNC)</em>, 2018. [<a href="https://ieeexplore.ieee.org/document/8628320" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Marble: Mobile Augmented Reality using a Distributed BLE Beacon Infrastructure</strong>. Chong Shao, Bashima Islam, Shahriar Nirjon. <em>IEEE/ACM International Conference on Internet-of-Things Design and Implementation (IoTDI)</em>, 2018. [<a href="https://ieeexplore.ieee.org/abstract/document/8366977/" target="_blank">link</a>]</li></ul><h3>2017</h3><ul><li style='margin-bottom:10px;'><strong>SoundSifter: Mitigating Overhearing of Continuous Listening Devices</strong>. Md Tamzeed Islam, Bashima Islam, Shahriar Nirjon. <em>ACM Proceedings Conference on Mobile Systems, Applications, and Services (MobiSys)</em>, 2017. [<a href="https://dl.acm.org/citation.cfm?id=3081338" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Trusted Worrier: A low-cost and high-accuracy user authentication system for firearm exploiting dynamic hand pressure biometrics</strong>. Md Shihabul Islam, Mohammad Ali, Kazi Hasan Zubaer, Saiyma Sarmin, Md Tamzeed Islam, Bashima Islam, ABM Alim Al Islam, Asif Mohaisin Sadri. <em>2017 International Conference on Networking, Systems and Security (NSysS)</em>, 2017.</li><li style='margin-bottom:10px;'><strong>Preventive maintenance of centralized HVAC systems: use of acoustic sensors, feature extraction, and unsupervised learning</strong>. Ravi Srinivasan, Md Tamzeed Islam, Bashima Islam, Zeyu Wang, Tamim Sookoor, Omprakash Gnawali, Shahriar Nirjon. <em>Building Simulation 2017</em>, 2017.</li></ul><h3>2016</h3><ul><li style='margin-bottom:10px;'><strong>High Performance Approximate Computing by Adaptive Relaxed Synchronization</strong>. Bashima Islam, Faysal Hossain, Rifat Shahriyar. <em>IEEE International Conference on High Performance Computing and Communication (HPCC)</em>, 2016. [<a href="https://ieeexplore.ieee.org/abstract/document/7828509/" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>A System for Identifying and Visualizing Influential Communities</strong>. Md Tamzeed Islam, Bashima Islam, Mohammed Eunus Ali. <em>Workshop on Social Data Analytics and Management, (VLDB)</em>, 2016. [<a href="https://arxiv.org/abs/1610.06298" target="_blank">link</a>]</li><li style='margin-bottom:10px;'><strong>Demo Abstract: SEUS: A Wearable Multi-Channel Acoustic Headset Platform to Improve Pedestrian Safety</strong>. Rishikanth Chandrasekaran, Daniel de Godoy, Stephen Xia, Bashima Islam, Md Tamzeed Islam, Shahriar Nirjon, Peter R. Kinget, Xiaofan Jiang. <em>ACM Conference on Embedded Network Sensor Systems (Sensys)</em>, 2016. [<a href="https://dl.acm.org/doi/10.1145/2994551.2996547" target="_blank">link</a>]</li></ul><h3>2014</h3><ul><li style='margin-bottom:10px;'><strong>Poster Abstract: Super-savior: A System to Aid Combating Harassment and Violence Against Women</strong>. Tanzila Choudhury, Bashima Islam, A. B. M. Alim Al Islam. <em>Proceedings of Workshop on Women Empowerment through ICT: Higher Studies, Research and Career (WE-ICT)</em>, 2014. [<a href="https://www.cs.unc.edu/ bashima/publications/pdf/super_savior.pdf" target="_blank">link</a>]</li></ul><h3>2013</h3><ul><li style='margin-bottom:10px;'><strong>Demo Abstract: Happy Watch: A Portable Health Monitoring System</strong>. Bashima Islam, Md Tamzeed Islam, Zaheen Mustakin, MM Haque, Hasan Shahid Ferdous. <em>Workshop on Design and Implementation of Emerging &amp; Computing Systems (WDIECS)</em>, 2013.</li></ul></div>
+<!--/PRERENDER:publications-->
+<div class="bibtex_structure">
+            <div class="group year" extra="ASC number">
+              <div style="padding-bottom:10px;"></div>
+              <div class="templates"></div>
+            </div>
+          </div>
+
+          <div id="bibtex_display">
+            <div class="if bibtex_template" style="display: none;">
+              <ul>
+                <li>
+                  <span class="if journal !nolink">
+                    <a class="bibtexVar url" href="+URLORDEFAULT+" extra="BIBTEXKEY">
+                      <span style="text-decoration: underline;" class="title"></span>,
+                    </a>
+                  </span>
+
+                  <span class="if title nolink">
+                    <span class="title"></span>,
+                  </span>
+                  <div class="if author">
+                    <span class="author"></span>
+                  </div>
+                  <div>
+                    <span class="if journal"><em><span class="journal"></span></em>,</span>
+                    <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
+                    <span class="if editor"><span class="editor"></span> (editors),</span>
+                    <span class="if publisher"><em><span class="publisher"></span></em>,</span>
+                    <span class="if !journal number">Technical report <span class="number"></span>,</span>
+                    <span class="if institution"><span class="institution"></span>,</span>
+                    <span class="if address"><span class="address"></span>,</span>
+                    <span class="if volume"><span class="volume"></span>,</span>
+                    <span class="if journal number">(<span class="number"></span>),</span>
+                    <span class="if pages"> pages <span class="pages"></span>,</span>
+                    <span class="if month"><span class="month"></span>,</span>
+                    <span class="if year"><span class="year"></span>.</span>
+                    <span class="if note"><span class="note"></span>.</span>
+                    <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+"
+                      aria-expanded="false" aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+                      [bib]
+                    </a>
+                  </div>
+                  <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
+                    <div class="well">
+                      <pre><span class="bibtexraw noread"></span></pre>
+                    </div>
+                  </div>
+                  <div style="display:none"><span class="bibtextype"></span></div>
+                  <div style="display:none"><span class="if topic"><span class="topic"></span></span></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <a href="bashlab/publications.html" class="c-button c-button--bold-text" target="_blank">View All
+              Publications</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEACHING -->
+      <div id="section-teaching" class="o-container   wow1 fadeIn" data-contentPosition="5">
+        <div class="c-section-heading">
+          <svg class="c-section-heading__icon svg-icon" xmlns="http://www.w3.org/2000/svg" width="91" height="91"
+            viewBox="0 0 91 91">
+            <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+            <path class="svg-icon__item"
+              d="M436.894,3644.08v41.3h-32.8v-41.3h4.25v-1.05a1.437,1.437,0,0,1,.35-1.02,1.091,1.091,0,0,1,.9-0.35,1.151,1.151,0,0,1,.875.4,1.5,1.5,0,0,1,.325,1.02v1h1.2v-1.05a1.42,1.42,0,0,1,.325-0.97,1.1,1.1,0,0,1,.875-0.38,1.179,1.179,0,0,1,.9.38,1.437,1.437,0,0,1,.35,1.02v0.95h1.2v-1.1a1.209,1.209,0,0,1,.35-0.9,1.231,1.231,0,0,1,.85-0.37,1.092,1.092,0,0,1,.85.3,1.112,1.112,0,0,1,.35.87l0.05,1.2h1.2v-0.55a2.417,2.417,0,0,1,.3-1.37,1.08,1.08,0,0,1,.925-0.45,0.916,0.916,0,0,1,.9.42,2.774,2.774,0,0,1,.275,1.4v0.55h1.25v-1.05a1.635,1.635,0,0,1,.375-0.97,0.994,0.994,0,0,1,.85-0.35,1.126,1.126,0,0,1,.85.4,1.635,1.635,0,0,1,.375.97v1.05h1.2v-1.1a1.28,1.28,0,0,1,.35-0.95,1.207,1.207,0,0,1,1.7,0,1.393,1.393,0,0,1,.4.9v1.15h1.2v-1.15a1.209,1.209,0,0,1,.35-0.9,1.231,1.231,0,0,1,.85-0.37,1.092,1.092,0,0,1,.85.3,1.112,1.112,0,0,1,.35.87v1.25h4.25Zm-26.5,10.75a1.018,1.018,0,0,0-.3.75,0.921,0.921,0,0,0,.325.73,1.327,1.327,0,0,0,.875.27h18.75a0.938,0.938,0,0,0,.85-0.8,1.025,1.025,0,0,0-.2-0.9,1.131,1.131,0,0,0-.9-0.35h-18.6A1.082,1.082,0,0,0,410.394,3654.83Zm0,4.15a1.018,1.018,0,0,0-.3.75,0.921,0.921,0,0,0,.325.73,1.327,1.327,0,0,0,.875.27h18.75a0.96,0.96,0,0,0,.85-0.8,0.983,0.983,0,0,0-.225-0.9,1.148,1.148,0,0,0-.875-0.35h-18.6A1.082,1.082,0,0,0,410.394,3658.98Zm0,12.53a1.057,1.057,0,0,0,.025,1.5,1.327,1.327,0,0,0,.875.27l18.75-.05a0.776,0.776,0,0,0,.575-0.22,1.007,1.007,0,0,0,.275-0.58,0.983,0.983,0,0,0-.225-0.9,1.021,1.021,0,0,0-.875-0.3l-13.85-.05h-4.75A1.291,1.291,0,0,0,410.394,3671.51Zm20.25,5.62a1.018,1.018,0,0,0,.3-0.75,0.888,0.888,0,0,0-.325-0.72,1.359,1.359,0,0,0-.925-0.28h-18.7a0.938,0.938,0,0,0-.85.8,0.89,0.89,0,0,0,.175.9,1.212,1.212,0,0,0,.925.35h18.6A1.082,1.082,0,0,0,430.644,3677.13Zm0-8.32a0.987,0.987,0,0,0,.3-0.75,0.921,0.921,0,0,0-.325-0.75,1.359,1.359,0,0,0-.925-0.28h-18.7a0.972,0.972,0,0,0-.575.28,1.3,1.3,0,0,0-.325.57,1.086,1.086,0,0,0,.25.85,1.131,1.131,0,0,0,.9.35h18.6A1.151,1.151,0,0,0,430.644,3668.81Zm0-4.18a1.048,1.048,0,0,0,.3-0.77,0.868,0.868,0,0,0-.325-0.73,1.47,1.47,0,0,0-.925-0.25h-18.7a1.072,1.072,0,0,0-.575.25,1.132,1.132,0,0,0-.325.55,0.983,0.983,0,0,0,.225.9,1.212,1.212,0,0,0,.925.35h18.6A1.082,1.082,0,0,0,430.644,3664.63Z"
+              transform="translate(-374.5 -3619.5)" />
+          </svg>
+          <h2 class="c-section-heading__header">Teaching.</h2>
+        </div>
+
+        <div class="c-screen-teaching o-screen-teaching">
+          <div class="o-screen-teaching__col">
+            <nav class="c-tabs  js-tabs">
+              <div class="c-tabs__item">
+                <input class="u-visuallyhidden" id="tab2" type="radio" name="tabs">
+                <label class="c-tabs__header" for="tab2">Graduate courses</label>
+                <div class="c-tabs__content">
+                  <ul class="c-tabs__list">
+                    <li>
+                      <h3>ECE/CS/DS 556: On-Device Deep Learning</h3>
+                      <p><a href="">[Spring 2026]</a>
+                        <a href="https://bashima.notion.site/on-device-deep-learning-s25">[Spring 2025]</a>
+                        <a href="https://users.wpi.edu/~bislam/courses/od-dl/">[Fall 2023]</a>
+                      </p>
+
+                    </li>
+                    <li>
+                      <h3>ECE Graduate Seminar Course</h3>
+                      <p><a
+                          href="https://bashima.notion.site/gradseminar?v=190f8686fc9945808a183f3bb05c786a&pvs=4">[Spring
+                          2025]</a></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="c-tabs__item">
+                <input class="u-visuallyhidden" id="tab1" type="radio" name="tabs" checked>
+                <label class="c-tabs__header" for="tab1">Undergraduate courses</label>
+                <div class="c-tabs__content">
+                  <ul class="c-tabs__list">
+                    <li>
+                      <h3>ECE 341X: Introduction to AI Accelerator</h3>
+                      <p><a href="">[Spring 2026]</a>
+                      </p>
+                    </li>
+                    <li>
+                      <h3>ECE 2312: Discrete-Time Signal and System Analysis</h3>
+                      <p><a href="https://bashima.notion.site/ece2312-a25">[Fall 2025]</a>
+                        <a href="https://users.wpi.edu/~bislam/courses/ece2312_s24">[Spring 2024]</a>
+                        <a href="https://users.wpi.edu/~bislam/courses/ece2312_s23">[Spring 2023]</a>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="c-tabs__item">
+                <input class="u-visuallyhidden" id="tab3" type="radio" name="tabs">
+                <label class="c-tabs__header" for="tab3">Summer Courses</label>
+                <div class="c-tabs__content">
+                  <ul class="c-tabs__list">
+                    <li>
+                      <h3>WPI Frontier K-12: Embedded Computing Systems</h3>
+                      <p><a href="https://users.wpi.edu/~bislam/courses/frontier_ece">[Summer 2022]</a></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTACTS -->
+      <div id="section-contacts" class="o-container   wow1 fadeIn" data-contentPosition="6">
+        <div class="c-section-heading">
+          <svg class="c-section-heading__icon svg-icon contact-icon" xmlns="http://www.w3.org/2000/svg" width="91"
+            height="91" viewBox="0 0 91 91">
+            <rect class="svg-icon__border" x="0.5" y="0.5" width="90" height="90" />
+            <!-- Email and location icons with animation -->
+            <g class="svg-icon__item">
+              <!-- Email envelope -->
+              <rect x="15" y="30" width="35" height="25" rx="2" fill="none" stroke="currentColor" stroke-width="2">
+                <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="2s"
+                  repeatCount="indefinite" />
+              </rect>
+              <!-- Email flap -->
+              <path d="M15 30 L32.5 42 L50 30" fill="none" stroke="currentColor" stroke-width="2">
+                <animate attributeName="stroke-dasharray" values="0,100; 35,100; 35,100" dur="3s"
+                  repeatCount="indefinite" />
+              </path>
+              <!-- Location pin -->
+              <g transform="translate(55, 20)">
+                <circle cx="0" cy="8" r="8" fill="none" stroke="currentColor" stroke-width="2">
+                  <animateTransform attributeName="transform" type="translate" values="0,0; 0,-2; 0,0" dur="2s"
+                    repeatCount="indefinite" />
+                </circle>
+                <circle cx="0" cy="8" r="3" fill="currentColor">
+                  <animate attributeName="opacity" values="1; 0.5; 1" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <!-- Pin shadow -->
+                <ellipse cx="0" cy="20" rx="4" ry="2" fill="currentColor" opacity="0.3">
+                  <animateTransform attributeName="transform" type="scale" values="1; 0.8; 1" dur="2s"
+                    repeatCount="indefinite" />
+                </ellipse>
+              </g>
+              <!-- Communication waves -->
+              <g transform="translate(32.5, 45)" opacity="0.6">
+                <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="r" values="8; 12; 8" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.6; 0.2; 0.6" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="1">
+                  <animate attributeName="r" values="12; 16; 12" dur="2s" begin="0.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.4; 0.1; 0.4" dur="2s" begin="0.5s"
+                    repeatCount="indefinite" />
+                </circle>
+              </g>
+            </g>
+          </svg>
+          <h2 class="c-section-heading__header">Contact.</h2>
+        </div>
+
+        <div class="c-screen-contacts o-screen-contacts">
+          <div class="o-screen-contacts__col">
+            <div class="c-contact-info">
+              <div class="c-contact-item">
+                <h3 class="c-contact-item__header">
+                  <i class="icofont icofont-email"></i>
+                  Email
+                </h3>
+                <p class="c-contact-item__text">
+                  <a href="mailto:bislam@wpi.edu">bislam@wpi.edu</a>
+                </p>
+              </div>
+
+              <div class="c-contact-item">
+                <h3 class="c-contact-item__header">
+                  <i class="icofont icofont-location-pin"></i>
+                  Office Address
+                </h3>
+                <p class="c-contact-item__text">
+                  Atwater Kent Lab, Room 310<br>
+                  Worcester Polytechnic Institute<br>
+                  100 Institute Rd<br>
+                  Worcester, MA 01609
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+
+
+
+
+    <footer class="c-main-footer js-main-footer">
+      <!-- <div id="contact-map" class="c-main-footer__map">
+  </div> -->
+      <div class="c-main-footer__top o-container js-main-footer-top"></div>
+      <div class="c-main-footer__bottom js-main-footer-bottom">
+        <p class="c-main-footer__text">Bashima Islam. Copyright 2021.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="components/jquery.min.js"></script>
+  <script src="components/wow.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/inview.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Publication  -->
+  <script type="text/javascript" src="pub_js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="pub_js/default.js"></script>
+  <script type="text/javascript" src="pub_js/watch.js"></script>
+  <script type="text/javascript" src="pub_js/layout.js"></script>
+  <script type="text/javascript" src="pub_js/main.js"></script>
+  <script>
+    // Hardcoded chart removed - now using dynamic loading from loadFunding()
+    /*
+    const ctx = document.getElementById('fundingChart').getContext('2d');
+    const fundingChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ["NSF", "NIH", "GIFT"], // Update as needed
+        datasets: [{
+          data: [175, 772, 9], // Update with your funding percentages
+          backgroundColor: [
+            "#1E3A8A", // NSF
+            "#60A5FA", // NIH
+            "#38BDF8", // DARPA
+            "#6B7280",  // Industry Partner
+            "#D1D5DB"  // Gift
+          ],
+          borderColor: "#ffffff",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          tooltip: {
+            callbacks: {
+              label: function (context) {
+                const label = context.label || '';
+                const value = context.raw;
+                return `${label}: \$${value},000`;
+              }
+            }
+          }
+        }
+      }
+    });
+    */
+  </script>
+
+  <!-- Google map -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+  <!-- News loading script -->
+  <script>
+    // Function to process text with [red] tags
+    function processRedTags(text) {
+      return text.replace(/\[red\](.*?)\[\/red\]/g, '<b style="color: #2066a1;">$1</b>');
+    }
+
+    // Function to load and display news
+    async function loadNews() {
+      try {
+        const response = await fetch('https://bashlab.github.io/news.json?v=' + Date.now());
+        const newsData = await response.json();
+
+        // Display recent news (first 10 items) - titles only
+        const recentNewsContainer = document.getElementById('recent-news');
+        const recentNews = newsData.slice(0, 10);
+        recentNewsContainer.innerHTML = ''; // clear pre-rendered fallback before rendering
+
+        recentNews.forEach(item => {
+          const newsItem = document.createElement('a');
+          newsItem.href = item.url || '';
+          if (item.url) {
+            newsItem.target = '_blank';
+          }
+
+          const paragraph = document.createElement('p');
+          paragraph.className = 'u-mb-10';
+
+          // Only display title, no content
+          paragraph.innerHTML = processRedTags(item.title);
+          newsItem.appendChild(paragraph);
+          recentNewsContainer.appendChild(newsItem);
+        });
+
+        // Load previous news and combine for timeline
+        await populateTimelineWithAllNews(newsData);
+
+      } catch (error) {
+        // Keep the pre-rendered news baked into the page.
+        console.error('Could not load news; keeping pre-rendered content.', error);
+      }
+    }
+
+    // Function to populate the timeline with current and previous news
+    async function populateTimelineWithAllNews(currentNews) {
+      try {
+        // Load previous news
+        const previousResponse = await fetch('https://bashlab.github.io/previous_news.json?v=' + Date.now());
+        const previousNews = await previousResponse.json();
+
+        // Combine current and previous news
+        const allNews = [...currentNews, ...previousNews];
+
+        populateTimeline(allNews);
+      } catch (error) {
+        console.error('Error loading previous news:', error);
+        // Fallback to just current news
+        populateTimeline(currentNews);
+      }
+    }
+
+    // Function to populate the timeline in the popup
+    function populateTimeline(newsData) {
+      const timeline = document.querySelector('.publication-detail_more_news .timeline');
+      if (!timeline) return;
+
+      // Group news by year
+      const newsByYear = {};
+      newsData.forEach(item => {
+        // Extract year from date - handle both "Month Year" and "Year" formats
+        let year;
+        if (item.date.includes(' ')) {
+          // Format like "September 2025"
+          year = item.date.split(' ')[1];
+        } else {
+          // Format like "2022"
+          year = item.date;
+        }
+
+        if (!newsByYear[year]) {
+          newsByYear[year] = [];
+        }
+        newsByYear[year].push(item);
+      });
+
+      // Clear existing timeline
+      timeline.innerHTML = '';
+
+      // Create timeline items for each year
+      Object.keys(newsByYear).sort((a, b) => b - a).forEach(year => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+                    <div class="date">${year}</div>
+                    <div class="circle"></div>
+                    <div class="data">
+                        <p>
+                            ${newsByYear[year].map(item => {
+          // Only display title for timeline entries
+          return `&bull; ${processRedTags(item.title)}`;
+        }).join('<br/>')}
+                        </p>
+                    </div>
+                `;
+        timeline.appendChild(li);
+      });
+    }
+
+
+
+
+
+    // Function to load and display collaborators
+    async function loadCollaborators() {
+      try {
+        const response = await fetch('https://bashlab.github.io/team.json?v=' + Date.now());
+        const teamData = await response.json();
+
+        const collaboratorsContainer = document.getElementById('collaborators-grid');
+        if (!collaboratorsContainer || !teamData.collaborators) return;
+
+        collaboratorsContainer.innerHTML = '';
+
+        teamData.collaborators.forEach(collaborator => {
+          const collaboratorItem = document.createElement('div');
+          collaboratorItem.className = 'collaborator-item';
+
+          collaboratorItem.innerHTML = `
+            <img src="https://bashlab.github.io/img/${collaborator.logo}"
+                 alt="${collaborator.name}" 
+                 class="collaborator-logo"
+                 onerror="this.style.display='none'">
+            <p class="collaborator-name">${collaborator.name}</p>
+          `;
+
+          collaboratorsContainer.appendChild(collaboratorItem);
+        });
+
+      } catch (error) {
+        // Keep the pre-rendered collaborators baked into the page.
+        console.error('Could not load collaborators; keeping pre-rendered content.', error);
+      }
+    }
+
+    // Global variable to track funding chart
+    let fundingChartInstance = null;
+
+    // Function to load and display funding data
+    async function loadFunding() {
+      console.log('Loading funding data...');
+      try {
+        const response = await fetch('https://bashlab.github.io/funding.json?v=' + Date.now());
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const fundingData = await response.json();
+        console.log('Funding data loaded:', fundingData);
+
+        // Load funding chart with proper cleanup
+        const canvas = document.getElementById('fundingChart');
+        if (canvas) {
+          // Destroy existing chart if it exists
+          if (fundingChartInstance) {
+            fundingChartInstance.destroy();
+            console.log('Destroyed existing chart instance');
+          }
+
+          const ctx = canvas.getContext('2d');
+          fundingChartInstance = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              labels: fundingData.chartData.labels,
+              datasets: [{
+                data: fundingData.chartData.datasets[0].data,
+                backgroundColor: [
+                  "#1E3A8A", // NSF
+                  "#60A5FA", // NIH
+                  "#38BDF8", // GIFT
+                  "#6B7280",  // Industry Partner
+                  "#D1D5DB"  // Other
+                ],
+                borderColor: "#ffffff",
+                borderWidth: 1
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top'
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function (context) {
+                      const label = context.label || '';
+                      const value = context.raw;
+                      return `${label}: $${value}K`;
+                    }
+                  }
+                }
+              }
+            }
+          });
+          console.log('Chart created successfully');
+        }
+
+        // Update the description text with funding summary
+        const cardText = document.querySelector('.c-card__modal-content .c-card__text');
+        if (cardText && fundingData.chartData) {
+          const total = fundingData.chartData.total;
+          const grantCount = fundingData.grants.length;
+          cardText.textContent = `Total funding: $${total}K across ${grantCount} active grants from NSF, NIH, and industry partners supporting research in AI, sensor fusion, TinyML, and behavioral health.`;
+        }
+
+        // Load funding grants list
+        const grantsContainer = document.getElementById('funding-grants');
+        if (grantsContainer && fundingData.grants) {
+          grantsContainer.innerHTML = '';
+
+          console.log('Loading grants:', fundingData.grants.length);
+          fundingData.grants.forEach((grant, index) => {
+            const grantElement = document.createElement('p');
+            grantElement.className = 'u-mb-10';
+
+            let grantText = `${index + 1}. ${grant.title}, ${grant.amount}, Role: ${grant.role}`;
+            console.log('Grant text:', grantText);
+
+            grantElement.textContent = grantText;
+            grantsContainer.appendChild(grantElement);
+          });
+          console.log('Grants loaded successfully');
+        }
+
+      } catch (error) {
+        // Keep the pre-rendered grants baked into the page.
+        console.error('Could not load funding; keeping pre-rendered content.', error);
+      }
+    }
+
+    // Load news and publications when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+      loadNews();
+      loadCollaborators();
+      loadFunding();
+      // Remove the old loadPublications call since we're using bibtex now
+    });
+  </script>
+
+  <!-- Remove the pre-rendered (LLM/crawler) publications fallback once the interactive
+       BibTeX list has rendered. If the .bib fails to load, the fallback stays visible. -->
+  <script>
+    (function () {
+      var tries = 0;
+      var timer = setInterval(function () {
+        tries++;
+        var tpl = document.querySelector('.bibtex_structure .templates');
+        if (tpl && tpl.children.length > 0) {
+          var fb = document.getElementById('pub-fallback');
+          if (fb) fb.remove();
+          clearInterval(timer);
+        } else if (tries > 40) { clearInterval(timer); }
+      }, 250);
+    })();
+  </script>
+
+</body>
+
+</html>

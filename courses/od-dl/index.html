@@ -1,0 +1,729 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>On-Device Deep Learning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ecd0535d-84f0-45f2-83f0-cbbda5b0aa05" class="page sans"><header><h1 class="page-title">On-Device Deep Learning</h1><p class="page-description"></p></header><div class="page-body"><h2 id="fdbf6a28-d9bd-43b7-bcea-8d5a6ea2fc88" class="">Instructor:</h2><table id="f00ef926-cc27-4141-bdd1-c57d1d77400c" class="simple-table"><tbody><tr id="6c683bd6-8fa8-49b1-b3cb-ab8ccd63403d"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="">Bashima Islam</td></tr><tr id="15ab5bba-1d60-4deb-9094-4f39d740f770"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class=""><a href="mailto:bislam@wpi.edu">bislam@wpi.edu</a></td></tr><tr id="8634789c-2ab0-4d5d-8926-79b29da6927a"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="">On-demand (email if you need to meet)</td></tr></tbody></table><div id="d3e19862-191d-41f4-99bc-fc9b6fc04857" class="column-list"><div id="6a1a9cf9-c4fd-4107-8ad9-18923c679b86" style="width:50%" class="column"><h2 id="d7a3b6a4-0572-4308-81eb-0af6fbfa8f06" class="">Teaching Assistant:</h2><table id="94366888-cafd-421b-8356-7595f81e9721" class="simple-table"><tbody><tr id="350d7302-607d-4883-b69c-90804ca67425"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="">Mohammad Nur Hossain Khan</td></tr><tr id="806e23ce-7706-418a-aab6-5219d5876b42"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class="">mkhan@wpi.edu</td></tr><tr id="94eae3b7-95fd-4df4-ac47-fa3f898bda10"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="">Wednesday 11.00 am - 1.00 pm </td></tr><tr id="15b3e605-3e16-45b7-b799-91bbb72d55c3"><th id="MpDQ" class="simple-table-header-color simple-table-header">Location</th><td id="lelX" class="">AK318B/Ak311</td></tr></tbody></table><p id="37586ccf-60bc-4c9c-8e2f-d45d0f63f3d5" class="">
+</p></div><div id="fd0f2f9e-722f-42d9-ad1e-cbecc6e585a6" style="width:50%" class="column"><p id="14c0aea2-170d-499a-abf5-5ae72ff4646a" class="">
+</p><p id="c296aa40-8169-4e6a-bf00-773e7dbcefb4" class="">
+</p><table id="6f06a9c0-a3bf-40a0-99dd-4eb286769b2e" class="simple-table"><tbody><tr id="85212ad1-b7da-4ccf-bb68-832b2e056196"><th id="MpDQ" class="simple-table-header-color simple-table-header">Name</th><td id="lelX" class="" style="width:225.25px">Sheikh Asif Imran Shouborno</td></tr><tr id="05a2b711-19fe-4e75-a6bb-a008d58d9c34"><th id="MpDQ" class="simple-table-header-color simple-table-header">Email</th><td id="lelX" class="" style="width:225.25px"><a href="mailto:ksmadhurkar@wpi.edu">s</a>imran@wpi.edu</td></tr><tr id="92a2d6a3-0839-4209-9157-c11b3d0ae665"><th id="MpDQ" class="simple-table-header-color simple-table-header">Office Hours</th><td id="lelX" class="" style="width:225.25px">Tuesday 12.00 pm — 2.00 pm</td></tr><tr id="a07bc8fb-2358-4ab4-98c0-f319ba83d34c"><th id="MpDQ" class="simple-table-header-color simple-table-header">Location</th><td id="lelX" class="" style="width:225.25px">Physical: AK318, Zoom: <a href="https://wpi.zoom.us/j/96384158888">https://wpi.zoom.us/j/96384158888</a></td></tr></tbody></table><p id="e353f5e1-9b01-404b-b056-c516753bae59" class="">
+</p></div></div><h2 id="5fdfc160-5965-465c-9dc5-ccb2f84bf0bb" class="">Lecture Schedule:</h2><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="43874af9-93f4-4e31-ab4d-5311f2cb0ffc"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/calendar-month_gray.svg"/></div><div style="width:100%">Lectures: <strong>T-R | 6:00 PM - 7:30 PM</strong>, Room <strong>Higgins Labs 218</strong></div></figure><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="cdc5efff-09b5-4fbc-9d00-4d217a687e3c"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/warning_red.svg"/></div><div style="width:100%"><em>If school is canceled due to a &quot;significant weather event&quot; (e.g., &quot;snow day&quot;) or class is canceled due to an unforeseen event, I expect to use our pre-recorded lecture material (see the Lecture Notes section of this web page) to fill-in for any missed lecture. If an exam is canceled, expect it to be rescheduled for the next class meeting.</em></div></figure><h2 id="dc0bdb99-2760-447f-9afd-2c1d38047280" class="">Website:</h2><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="7125fb32-21fd-4b96-ab42-192897dd4fd5"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/globe_blue.svg"/></div><div style="width:100%"><a href="https://www.notion.so/On-Device-Deep-Learning-ecd0535d84f045f283f0cbbda5b0aa05?pvs=21">https://users.wpi.edu/~bislam/courses/od-dl/</a></div></figure><p id="d4225538-2fa9-4c4b-8a5d-882b1c28020f" class="">All course materials, problem sets, solutions, announcements, and other valuable tidbits will be available via this website and the CANVAS site.  The official site of the course will not have the problem sets and their solutions.</p><p id="30c4b136-73a5-4997-a9a2-e41dc332d59b" class=""><strong>Online Lectures </strong>– In this course, all lectures will be recorded and posted online via the CANVAS website. All students are expected to review and study these online lectures to prepare for an interactive in-class discussion. Furthermore, class tests will cover the material from these online lectures and classes.</p><p id="f9614739-7386-4663-a374-c40f6afb46f4" class=""><strong>Paper Presentation </strong>– This course includes paper discussion sessions where a student will present an assigned conference paper from the top conferences in the area. After the presentation, there will be a discussion session, and a student will be designated as a <em>Scribe</em> to write the transcription. <span style="border-bottom:0.05em solid">All non-presenting students except for the scribe must submit a summary of the presented paper. </span></p><h2 id="635c6154-3226-418a-a905-57c3d06974ce" class="">Course Textbook:</h2><ul id="192041a4-85e5-4718-8ead-027d2fae1306" class="bulleted-list"><li style="list-style-type:disc">We will not be using any dedicated book. </li></ul><p id="3a42378c-6994-437e-9356-04fe1b514232" class=""><mark class="highlight-brown_background">The materials of this course are inspired by the TinyML and Efficient Deep Learning Computing course taught by Professor Song Han at MIT.</mark></p><h2 id="7da6548c-3061-4b10-82b6-06b46a18f9b6" class="">Recommended Background:</h2><ul id="128c49ba-10de-49cd-aeab-c110b4b99b87" class="bulleted-list"><li style="list-style-type:disc">The students should have an introductory undergraduate-level background in machine learning and deep neural networks.</li></ul><h2 id="df2b06a0-3037-4879-bba2-5eb8ac8842c6" class="">Evaluation:</h2><p id="35906554-3c77-41fe-801d-232b130a73fc" class=""><mark class="highlight-pink_background"><strong>Projects </strong></mark><mark class="highlight-pink_background">(35%) </mark>-- Teams of up to three students each are expected to complete the projects. The students themselves will propose this project and need to involve the topics taught in the classes. The project proposal also needs to be approved by the instructor. All source codes need to be uploaded to <strong>GitHub</strong>. Final reports (<em>PDF format only</em>), including links to all the source codes uploaded to GitLab, will be submitted via the CANVAS course website. 
+Note that each student team is expected to work independently. During code evaluation, each student&#x27;s role will be judged, too. </p><p id="83f573b8-d7ff-4fca-b4e6-62bc45f0975d" class=""><mark class="highlight-blue_background"><strong>Assignments</strong></mark><mark class="highlight-blue_background"> (30%)</mark> -- Three coding assignments (all equally weighted) will be assigned throughout the course. Assignments source codes need to be uploaded to <strong>GitHub</strong>. Full credit for homework handed in before 5 P.M. on the due date. Assignments handed in late but by 10 a.m. on the day after they are due will be graded for full credit. There is no guarantee of any credit for assignments submitted after this time. (Contact Bashima Islam <strong>immediately</strong> for an exception, preferably <strong>before </strong>the due date.)</p><p id="d2d61be7-1b36-41fe-8e89-7ff330989097" class=""><mark class="highlight-orange_background"><strong>Paper Presentation</strong></mark><mark class="highlight-orange_background">  (35%)</mark><mark class="highlight-blue_background"> </mark>-- Each student will individually present an assigned paper and lead the discussion with the class (10%). Another assigned student will perform as the Scribe for the discussion (5%). Non-presenting students, except for the Scribe, must submit a paper summary (20%) before the presentation. </p><h2 id="a21a54ab-2187-441d-aaf5-6135bb6723a7" class="">Course Schedule and Reading Assignments</h2><div><div id="52a9ec75-8451-49e7-9bc7-6254b57d82a8" class="collection-content"><h4 class="collection-title">Fall 2023</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Topic Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Date</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Class Type</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Pre-Note</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesFile"><path d="M12.5938 8.44043L7.54883 13.4854C6.26367 14.7773 4.54102 14.6475 3.44043 13.54C2.32617 12.4326 2.20312 10.7168 3.49512 9.4248L10.3926 2.52734C11.1445 1.77539 12.2725 1.63867 13.0039 2.37695C13.7422 3.11523 13.6055 4.22949 12.8535 4.98828L6.08594 11.7627C5.77832 12.0703 5.41602 11.9814 5.2041 11.7764C4.99902 11.5576 4.91016 11.2021 5.21777 10.8877L9.93457 6.1709C10.1738 5.93164 10.1875 5.58301 9.96191 5.35059C9.72949 5.13184 9.38086 5.13867 9.1416 5.37793L4.39746 10.1152C3.67285 10.8535 3.7002 11.9746 4.34961 12.624C5.05371 13.3281 6.12012 13.3145 6.8584 12.5762L13.6602 5.77441C14.9795 4.45508 14.9316 2.71875 13.7764 1.55664C12.6416 0.428711 10.8779 0.34668 9.55176 1.66602L2.61328 8.61816C0.883789 10.3477 1 12.8291 2.57227 14.4014C4.14453 15.9668 6.63281 16.0898 8.3623 14.3672L13.4414 9.28809C13.6738 9.0625 13.667 8.64551 13.4346 8.41992C13.209 8.18066 12.833 8.21484 12.5938 8.44043Z"></path></svg></span>Post Note</th></tr></thead><tbody><tr id="49ebc982-8543-43b5-8c5c-5e339ff9fa33"><td class="cell-title"><a href="https://www.notion.so/Lecture-1-Introduction-49ebc982854343b58c5c5e339ff9fa33?pvs=21">Lecture 1 : Introduction </a></td><td class="cell-gGs\"><time>@August 24, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EUMchn_BF0FHgzk-PW23HREBYD9yH2vrh3zEWezvMg4bAQ?e=cVeecP">lecture1_post</a></span></td></tr><tr id="a551858a-7840-44c1-a677-72ba5ea5bf15"><td class="cell-title"><a href="https://www.notion.so/Lecture-2-Basic-of-Deep-Learning-a551858a784044c1a67772ba5ea5bf15?pvs=21">Lecture 2: Basic of Deep Learning</a></td><td class="cell-gGs\"><time>@August 29, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EZYFH-U7tohEsr7RNPt0F-IBYWY92exqm-_khTl1MiN8xw?e=wpU3RG">lecture2_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ESWT2_PyB5xBlXrR7w7ubf8BFsjEMD5-D7mr5TXfZiWlgw?e=7NZZn6">lecture2_post</a></span></td></tr><tr id="2a90d7b3-c748-4966-a5a1-0dc671e0133e"><td class="cell-title"><a href="https://www.notion.so/Lecture-3-Pruning-and-Sparsity-Part-I-2a90d7b3c7484966a5a10dc671e0133e?pvs=21">Lecture 3: Pruning and Sparsity (Part I)</a></td><td class="cell-gGs\"><time>@August 31, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERdKEBsSCDJHmeYryQRjLycBqbJGSDmQkrymjj_TU0z_vw?e=bezGQX">lecture3_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EdoZahdPdE9Ml6bF4rU8Cx8BjVMuSlTqvse6lmuH-gG85w?e=Sj54Jf">lecture3_post</a></span></td></tr><tr id="0ad7d691-1e56-4c34-b8b0-613f25e6a9e9"><td class="cell-title"><a href="https://www.notion.so/Lecture-4-Pruning-and-Sparsity-Part-II-0ad7d6911e564c34b8b0613f25e6a9e9?pvs=21">Lecture 4: Pruning and Sparsity (Part II) </a></td><td class="cell-gGs\"><time>@September 5, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ER7pOWr2D1ZJt2VUsJx0Zg4BJfn3xB7hKOYaN0MyvvcDbw?e=BnR7Lm">lecture4_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EfDdxXV4FsRAu-MvNvCRUw8BdDUMPeKH7c5ghGOtS7fESQ?e=a7zPdI">lecture4_post</a></span></td></tr><tr id="9071b3b7-4f5d-42e7-8cbc-03ced17d5404"><td class="cell-title"><a href="https://www.notion.so/No-Class-9071b3b74f5d42e78cbc03ced17d5404?pvs=21">No Class</a></td><td class="cell-gGs\"><time>@September 7, 2023</time></td><td class="cell-cNJ^"></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="bef00f4a-4c5d-4f73-ab4a-c054557f996d"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-1-Pruning-and-Sparcification-bef00f4a4c5d4f73ab4ac054557f996d?pvs=21">Paper Presentation 1: Pruning and Sparcification</a></td><td class="cell-gGs\"><time>@September 12, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="82b17a8b-31af-4d1e-9798-c51e4fb35ab0"><td class="cell-title"><a href="https://www.notion.so/Project-Proposal-Presentation-82b17a8b31af4d1e9798c51e4fb35ab0?pvs=21">Project Proposal Presentation</a></td><td class="cell-gGs\"><time>@September 14, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-pink">Project Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="2fe604df-8e6d-4230-9295-306de1d68ffc"><td class="cell-title"><a href="https://www.notion.so/Assignment-1-goes-online-2fe604df8e6d42309295306de1d68ffc?pvs=21">Assignment 1 goes online</a></td><td class="cell-gGs\"><time>@September 19, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-gray">Assignment Release</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="3371dfed-67f9-4ad5-b41a-899d48b09ecd"><td class="cell-title"><a href="https://www.notion.so/Lecture-5-Quantization-Part-I-3371dfed67f94ad5b41a899d48b09ecd?pvs=21">Lecture 5: Quantization (Part I)</a></td><td class="cell-gGs\"><time>@September 19, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EcjkmUlpGFNKlbwZldVUlngBKSlMqUStf4B1GWI25v3Lrg?e=KYHvZe">lecture5_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EbV13_F4QoZBj8xixbzdWMQBMZWLUVz5AMcgEVtH5s8E7g?e=cB8ou1">lecture5_post</a></span></td></tr><tr id="13339c48-f021-4ad6-b5c5-f2b3946feffc"><td class="cell-title"><a href="https://www.notion.so/Lecture-6-Quantization-Part-II-13339c48f0214ad6b5c5f2b3946feffc?pvs=21">Lecture 6: Quantization (Part II)</a></td><td class="cell-gGs\"><time>@September 21, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ESPot2hXJ5RCs8pDpumWRFYBJ99eOLJKlWN143L9B5NQ1g?e=fDvkoJ">lecture6_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EVAfBml9j-9CjmU4qcozRTQBQOnPSJyaOjF3q6XWic848A?e=6HwdWa">lecture6_post</a></span></td></tr><tr id="abb57b19-d7df-4363-ba10-fd090760253f"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-2-Quantization-abb57b19d7df4363ba10fd090760253f?pvs=21">Paper Presentation 2: Quantization</a></td><td class="cell-gGs\"><time>@September 26, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="905726c4-a708-42a1-9f87-affae266c6a6"><td class="cell-title"><a href="https://www.notion.so/Lecture-7-Neural-Architecture-Search-Part-I-905726c4a70842a19f87affae266c6a6?pvs=21">Lecture 7: Neural Architecture Search (Part I)</a></td><td class="cell-gGs\"><time>@September 28, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EcRRtw7CZ3ZEucb1h2Q81A8BOnq1wtRHXQZTgAv1DK6e8A?e=dqHdhR">lecture7_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EbQH5uQJX4xBoRkaaKXE0pEBYAviGSzaxJirT_kW5UB9WQ?e=mKhgsj">lecture7_post</a></span></td></tr><tr id="8e4ba941-467a-424e-85c5-5fd4b1f93736"><td class="cell-title"><a href="https://www.notion.so/Lecture-8-Neural-Architecture-Search-Part-II-8e4ba941467a424e85c55fd4b1f93736?pvs=21">Lecture 8: Neural Architecture Search (Part II)</a></td><td class="cell-gGs\"><time>@October 3, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EW29jWpBh5BEt1Ywb-R5M2gBWczEpDIYt7KCbgD2EGTscA?e=WSka1R">lecture8_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQewYR707ZVGoRbNT0WItZEBXXRbqfQnNNIiX3D4yYdFHg?e=h4Ilxd">lecture8_post</a></span></td></tr><tr id="b62a3b40-b2ae-4b11-bef2-1ed6775f6817"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-3-Neural-Architecture-Search-b62a3b40b2ae4b11bef21ed6775f6817?pvs=21">Paper Presentation 3: Neural Architecture Search</a></td><td class="cell-gGs\"><time>@October 5, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="9122ed60-786a-4e2a-993e-08b0b25b1d6f"><td class="cell-title"><a href="https://www.notion.so/Assignment-2-Goes-Online-9122ed60786a4e2a993e08b0b25b1d6f?pvs=21">Assignment 2 Goes Online</a></td><td class="cell-gGs\"><time>@October 10, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-gray">Assignment Release</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="444ec686-e2b5-4a0b-8ad6-db0ea25cd758"><td class="cell-title"><a href="https://www.notion.so/Lecture-9-Knowledge-Distillation-444ec686e2b54a0b8ad6db0ea25cd758?pvs=21">Lecture 9: Knowledge Distillation</a></td><td class="cell-gGs\"><time>@October 10, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYIMSqCPm_tJt-BfVr1EwkoB-dYVjIqtP8ctJbBrixIWsg?e=LXn60C">lecture9_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EaXUtCEoKSxCigT1ifNZNlEB_TKYCpuiGwR-fPGhphtxrw?e=luAX6d">lecture9_post</a></span></td></tr><tr id="3deb195a-c78b-4007-b1da-5eda1168f43d"><td class="cell-title"><a href="https://www.notion.so/Assignment-1-Deadline-3deb195ac78b4007b1da5eda1168f43d?pvs=21">Assignment 1 Deadline</a></td><td class="cell-gGs\"><time>@October 11, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-yellow">Assignment Due</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="83040900-6d59-4d9e-8929-2ba100b3c8f4"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-4-Knowledge-Distillation-830409006d594d9e89292ba100b3c8f4?pvs=21">Paper Presentation 4: Knowledge Distillation</a></td><td class="cell-gGs\"><time>@October 12, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="78d9cab7-ad40-4c1f-a381-eec75c27e482"><td class="cell-title"><a href="https://www.notion.so/Lecture-10-Dynamic-Network-Inference-78d9cab7ad404c1fa381eec75c27e482?pvs=21">Lecture 10: Dynamic Network Inference</a></td><td class="cell-gGs\"><time>@October 24, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EWy8L6zeZPhIqD79OINENaIBtOLA6KP_uMGeoJ34km5BBw?e=BAiUCb">lecture10_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EWy8L6zeZPhIqD79OINENaIBtOLA6KP_uMGeoJ34km5BBw?e=8k0F1a">lecture10_post</a></span></td></tr><tr id="cd4f02ad-cf51-415b-ad08-f60e8798ab41"><td class="cell-title"><a href="https://www.notion.so/Lecture-11-Distributed-Training-cd4f02adcf51415bad08f60e8798ab41?pvs=21">Lecture 11: Distributed Training</a></td><td class="cell-gGs\"><time>@October 26, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYSaBtgqRYtAigxrL1m-qHEB8GqUBrMEykBKt2JmwuQgcg?e=AY4MZo">lecture11_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EZW1mmiud4xLlpJ-ET8ZlaoBs2CHENiDLh4XluswxXX-dg?e=LXMrMh">lecture11_post</a></span></td></tr><tr id="37499373-4e19-4943-bce7-ae4260928c0e"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-5-Dynamic-Network-Inference-374993734e194943bce7ae4260928c0e?pvs=21">Paper Presentation 5: Dynamic Network Inference</a></td><td class="cell-gGs\"><time>@October 31, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="e887538e-18cd-4f31-9c89-20e48965f435"><td class="cell-title"><a href="https://www.notion.so/Assignment-3-online-e887538e18cd4f319c8920e48965f435?pvs=21">Assignment 3 online</a></td><td class="cell-gGs\"><time>@November 2, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-gray">Assignment Release</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="8d95a53c-3d66-4359-934d-59115fe6af60"><td class="cell-title"><a href="https://www.notion.so/Assignment-2-Due-8d95a53c3d664359934d59115fe6af60?pvs=21">Assignment 2 Due</a></td><td class="cell-gGs\"><time>@November 2, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-yellow">Assignment Due</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="66ad437b-62e9-43b3-9df6-eb6b6b10369b"><td class="cell-title"><a href="https://www.notion.so/Lecture-12-Gradient-Compression-66ad437b62e943b39df6eb6b6b10369b?pvs=21">Lecture 12: Gradient Compression</a></td><td class="cell-gGs\"><time>@November 2, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ESF84JQLMsRFuS2OUVhdREsBIgNd8mjQovlP8M6Ttto2Dw?e=rty9NU">lecture12_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EQn7RDm81mNDvuQhqZnQdnsBGh5dQFfUz3gwhiHw49-yrg?e=iXfO27">lecture12_post</a></span></td></tr><tr id="3fc069aa-aba4-4f4c-8e97-ba8c32baa56c"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-6-Distributed-Training-and-Gradient-Compression-3fc069aaaba44f4c8e97ba8c32baa56c?pvs=21">Paper Presentation 6: Distributed Training and Gradient Compression </a></td><td class="cell-gGs\"><time>@November 7, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="6225e505-e31e-4c2e-bc0a-3d53accd0fd1"><td class="cell-title"><a href="https://www.notion.so/Lecture-13-On-Device-Training-and-Transfer-Learning-Part-I-6225e505e31e4c2ebc0a3d53accd0fd1?pvs=21">Lecture 13: On-Device Training and Transfer Learning (Part I)</a></td><td class="cell-gGs\"><time>@November 9, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYKlilaYXVRFv9GNpU7O21IBdkY1gcuBfdkImnoCVqDPQg?e=zNdHXC">lecture13_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/personal/bislam_wpi_edu/_layouts/15/onedrive.aspx?FolderCTID=0x0120006F87FA354EDDE14ABDDBBED3249BF088&amp;id=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE579%5FOn%5FDevice%5FDeep%5FLearning%2FPost%2FLecture%2013%5FOn%2DDevice%20Training%20and%20Transfer%20Learning%20%2Epdf&amp;parent=%2Fpersonal%2Fbislam%5Fwpi%5Fedu%2FDocuments%2FCourse%2FECE579%5FOn%5FDevice%5FDeep%5FLearning%2FPost">lecture13_post.aspx</a></span></td></tr><tr id="b2eb573c-177f-4277-8bb7-7691f480f1fe"><td class="cell-title"><a href="https://www.notion.so/Lecture-14-On-Device-Training-and-Transfer-Learning-Part-II-b2eb573c177f42778bb77691f480f1fe?pvs=21">Lecture 14: On-Device Training and Transfer Learning (Part II)</a></td><td class="cell-gGs\"><time>@November 14, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/ERqOG1ApempEtLxm97bxe54BUeJYgdncc60C3FTUrPo6lg?e=5kD1aG">lecture14_pre</a></span></td><td class="cell-RCh&lt;"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/Ecu18zMcmwdDkrgxwdXfL-gB5zzPQ_Kku6ojehyS2RC6mA?e=JObmEM">lecture14_post</a></span></td></tr><tr id="57c8b6a4-dfcb-4ace-8c34-a3cff6dd6fa4"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-on-On-Device-Training-57c8b6a4dfcb4ace8c34a3cff6dd6fa4?pvs=21">Paper Presentation on On-Device Training </a></td><td class="cell-gGs\"><time>@November 16, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="0cc1e55b-caf0-4645-af04-21e6ba54bf30"><td class="cell-title"><a href="https://www.notion.so/Lecture-15-Efficient-Training-and-Inference-on-Microcontrollers-0cc1e55bcaf04645af0421e6ba54bf30?pvs=21">Lecture 15: Efficient Training and Inference on Microcontrollers</a></td><td class="cell-gGs\"><time>@November 21, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-green">Lecture</span></td><td class="cell-Dnkg"><span style="margin-right:6px"><a href="https://wpi0-my.sharepoint.com/:b:/g/personal/bislam_wpi_edu/EYBvJjQp1OBDlKcbsDc2KscB6vQJbartKxO-wyTKYBZekA?e=f13Qo5">lecture15_pre</a></span></td><td class="cell-RCh&lt;"></td></tr><tr id="4d65c7f3-a671-4e86-b8e6-59394a44f118"><td class="cell-title"><a href="https://www.notion.so/Assignment-3-Due-4d65c7f3a6714e86b8e659394a44f118?pvs=21">Assignment 3 Due</a></td><td class="cell-gGs\"><time>@November 28, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-yellow">Assignment Due</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="fa0bc90c-dda4-49d2-8371-8947cf9ba4e5"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-on-Transfer-Learning-fa0bc90cdda449d283718947cf9ba4e5?pvs=21">Paper Presentation on Transfer Learning</a></td><td class="cell-gGs\"><time>@November 28, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="bbb25a81-c84c-435f-a4be-20e4902af056"><td class="cell-title"><a href="https://www.notion.so/Course-Feedback-and-Question-Answering-bbb25a81c84c435fa4be20e4902af056?pvs=21">Course Feedback and Question Answering</a></td><td class="cell-gGs\"><time>@November 30, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-gray">Discussion</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="06521d96-7268-46c6-954f-71b3f59efc9f"><td class="cell-title"><a href="https://www.notion.so/Paper-Presentation-on-Efficient-Training-and-Inference-on-Microcontrollers-06521d96726846c6954f71b3f59efc9f?pvs=21">Paper Presentation on Efficient Training and Inference on Microcontrollers</a></td><td class="cell-gGs\"><time>@December 5, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-orange">Paper Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="8c06a4a2-c56a-41a2-b44f-030bc88f22e2"><td class="cell-title"><a href="https://www.notion.so/Final-Project-Presentation-3-hr-8c06a4a2c56a41a2b44f030bc88f22e2?pvs=21">Final Project Presentation (3 hr)</a></td><td class="cell-gGs\"><time>@December 7, 2023</time></td><td class="cell-cNJ^"><span class="selected-value select-value-color-pink">Project Presentation</span></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="73dfd474-ad8a-4896-b289-7fa3f5904993"><td class="cell-title"><a href="https://www.notion.so/Project-Report-Submission-73dfd474ad8a4896b2897fa3f5904993?pvs=21">Project Report Submission</a></td><td class="cell-gGs\"><time>@December 14, 2023</time></td><td class="cell-cNJ^"></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr><tr id="1b6a5c90-d23b-431e-9241-1d39dcb089a3"><td class="cell-title"><a href="https://www.notion.so/1b6a5c90d23b431e92411d39dcb089a3?pvs=21">Untitled</a></td><td class="cell-gGs\"></td><td class="cell-cNJ^"></td><td class="cell-Dnkg"></td><td class="cell-RCh&lt;"></td></tr></tbody></table><br/><br/></div><figure class="block-color-red_background callout" style="white-space:pre-wrap;display:flex" id="143f0787-56e1-4427-a088-650dbd71a0d7"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Course schedule subject to change
+- Daily class topics may vary
+- Check e-mail (WPI Account!) for class announcement</div></figure></div><h3 id="686f3222-753f-41b2-95b8-07996dabca42" class=""><strong>List of Papers</strong></h3><p id="ed00bf73-7baf-4cc8-bb11-60e03442ae89" class="">Please check the <strong>Assignments </strong>section of Canvas to find the list of papers that the students need to summarize, present, and scribe for. We keep a copy of the list here for reference, but the students must submit their files on Canvas.</p><ul id="db469578-1e53-4f21-992f-bd1915576ab6" class="toggle"><li><details open=""><summary>September 12, 2023 - Paper Presentation 1: Pruning and Sparsification</summary><ul id="e33d03b4-4d15-4c30-af71-7c56770fa806" class="bulleted-list"><li style="list-style-type:disc">Wang, Z., Li, F., Shi, G., Xie, X. and Wang, F., 2020. Network pruning using sparse learning and genetic algorithm. Neurocomputing, 404, pp.247-256. <a href="https://doi.org/10.1016/j.neucom.2020.03.082">https://doi.org/10.1016/j.neucom.2020.03.082</a> 
+Assigned presenter: Shounak Sheshadri Naik
+Assigned scribe: Keshav Bimbraw</li></ul><ul id="8f1d022d-350c-4c23-bf38-d1368ebda50f" class="bulleted-list"><li style="list-style-type:disc">Sanh, V., Wolf, T. and Rush, A., 2020. Movement pruning: Adaptive sparsity by fine-tuning. Advances in Neural Information Processing Systems, 33, pp.20378-20389. <a href="https://doi.org/10.48550/arXiv.2005.07683">https://doi.org/10.48550/arXiv.2005.07683</a> 
+Assigned presenter: Keshav Bimbraw
+Assigned scribe: Subrata Kumar Biswas</li></ul><ul id="15eda9b5-9c86-4082-8801-57e2394b0d01" class="bulleted-list"><li style="list-style-type:disc">Lin, S., Ji, R., Li, Y., Deng, C. and Li, X., 2019. Toward compact convnets via structure-sparsity regularized filter pruning. IEEE transactions on neural networks and learning systems, 31(2), pp.574-588. <a href="https://doi.org/10.1109/TNNLS.2019.2906563">https://doi.org/10.1109/TNNLS.2019.2906563</a>
+Assigned presenter: Subrata Kumar Biswas
+Assigned scribe: Shounak Sheshadri Naik</li></ul></details></li></ul><ul id="fc7d07e2-f48f-4a17-913f-1f914c4c6535" class="toggle"><li><details open=""><summary>September 26, 2023 - Paper Presentation 2: Quantization</summary><ul id="3d447bb9-0f68-46ba-b68e-e274866395ad" class="bulleted-list"><li style="list-style-type:disc">Yang, J., Shen, X., Xing, J., Tian, X., Li, H., Deng, B., Huang, J. and Hua, X.S., 2019. Quantization networks. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 7308-7316). <a href="https://doi.org/10.1109/CVPR.2019.00748">https://doi.org/10.1109/CVPR.2019.00748</a> 
+Assigned presenter: Maya Flores
+Assigned scribe: Michael Rothstein</li></ul><ul id="b6181ff6-c752-4743-a128-e1422cff81c3" class="bulleted-list"><li style="list-style-type:disc">Z. Cai, X. He, J. Sun and N. Vasconcelos, &quot;Deep Learning with Low Precision by Half-Wave Gaussian Quantization,&quot; 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), Honolulu, HI, USA, 2017, pp. 5406-5414, <a href="https://doi.org/10.1109/CVPR.2017.574">https://doi.org/10.1109/CVPR.2017.574</a> 
+Assigned presenter: Isabella Feeney
+Assigned scribe: Maya Flores</li></ul><ul id="508378e9-bd42-426d-b562-9688d54aa9b0" class="bulleted-list"><li style="list-style-type:disc">Chmiel, B., Banner, R., Shomron, G., Nahshan, Y., Bronstein, A. and Weiser, U., 2020. Robust quantization: One model to rule them all. Advances in neural information processing systems, 33, pp.5308-5317. <a href="https://doi.org/10.48550/arXiv.2002.07686">https://doi.org/10.48550/arXiv.2002.07686</a> Links to an external site.
+Assigned presenter: Michael Rothstein
+Assigned scribe: Isabella Feeney</li></ul></details></li></ul><ul id="5524599c-c234-47d1-b0b6-ed88d832f00d" class="toggle"><li><details open=""><summary>October 5, 2023 - Paper Presentation 3: Neural Architecture Search</summary><ul id="f3a95659-ac20-433d-8a56-f88f775f487a" class="bulleted-list"><li style="list-style-type:disc">Lin, J., Chen, W.M., Lin, Y., Gan, C. and Han, S., 2020. Mcunet: Tiny deep learning on iot devices. Advances in Neural Information Processing Systems, 33, pp.11711-11722. <a href="https://doi.org/10.48550/arXiv.2007.10319">https://doi.org/10.48550/arXiv.2007.10319</a>
+Assigned presenter: Alex Colwell
+Assigned scribe: Yihan Wang</li></ul><ul id="fb610195-d272-4622-a70c-842a05c94345" class="bulleted-list"><li style="list-style-type:disc">Mendis, H.R., Kang, C.K. and Hsiu, P.C., 2021. Intermittent-aware neural architecture search. ACM Transactions on Embedded Computing Systems (TECS), 20(5s), pp.1-27. <a href="https://doi.org/10.1145/3476995">https://doi.org/10.1145/3476995</a>
+Assigned presenter: Yihan Wang
+Assigned scribe: Alex Colwell</li></ul></details></li></ul><ul id="c5f2aeb6-ebfd-4c7b-8039-96321aa7054f" class="toggle"><li><details open=""><summary>October 12, 2023 - Paper Presentation 4: Knowledge Distillation</summary><ul id="36716ec4-4167-4f3a-a9dd-0366ce770ea8" class="bulleted-list"><li style="list-style-type:disc">Cho, J.H. and Hariharan, B., 2019. On the efficacy of knowledge distillation. In Proceedings of the IEEE/CVF international conference on computer vision (pp. 4794-4802). <a href="https://doi.org/10.1109/ICCV.2019.00489">https://doi.org/10.1109/ICCV.2019.00489</a> 
+Assigned presenter: Swapneel Wagholikar
+Assigned scribe: Nikesh Walling</li></ul><ul id="92c6a024-3975-4ec8-9980-1f5c12fcdaf3" class="bulleted-list"><li style="list-style-type:disc">Park, W., Kim, D., Lu, Y. and Cho, M., 2019. Relational knowledge distillation. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 3967-3976). <a href="https://doi.org/10.1109/CVPR.2019.00409">https://doi.org/10.1109/CVPR.2019.00409</a> 
+Assigned presenter: Sai Supreeth Reddy Bandi
+Assigned scribe: Swapneel Wagholikar</li></ul><ul id="8f76495c-51e7-4066-bd35-98b9cae288af" class="bulleted-list"><li style="list-style-type:disc">Mirzadeh, S.I., Farajtabar, M., Li, A., Levine, N., Matsukawa, A. and Ghasemzadeh, H., 2020, April. Improved knowledge distillation via teacher assistant. In Proceedings of the AAAI conference on artificial intelligence (Vol. 34, No. 04, pp. 5191-5198). <a href="https://doi.org/10.1609/aaai.v34i04.5963">https://doi.org/10.1609/aaai.v34i04.5963</a> 
+Assigned presenter: Nikesh Walling
+Assigned scribe: Sai Supreeth Reddy Bandi</li></ul></details></li></ul><ul id="21215b12-c8d3-4556-9662-19e0acc980db" class="toggle"><li><details open=""><summary>October 31, 2023 - Paper Presentation 5: Dynamic Network Inference</summary><ul id="d5dcf380-a80d-4926-88e5-c4c85bba956e" class="bulleted-list"><li style="list-style-type:disc">Ebrahimi, M., Veith, A.D.S., Gabel, M. and de Lara, E., 2022, April. Combining DNN partitioning and early exit. In Proceedings of the 5th International Workshop on Edge Systems, Analytics and Networking (pp. 25-30). <a href="https://doi.org/10.1145/3517206.3526270">https://doi.org/10.1145/3517206.3526270</a>
+Assigned presenter: Reese Haly
+Assigned scribe: Tyler Wong</li></ul><ul id="7640c66e-18c3-446b-b52c-3b0ba1579e9c" class="bulleted-list"><li style="list-style-type:disc">Li, X., Lou, C., Chen, Y., Zhu, Z., Shen, Y., Ma, Y. and Zou, A., 2023, June. Predictive exit: Prediction of fine-grained early exits for computation and energy-efficient inference. In Proceedings of the AAAI Conference on Artificial Intelligence(Vol. 37, No. 7, pp. 8657-8665). <a href="https://doi.org/10.1609/aaai.v37i7.26042">https://doi.org/10.1609/aaai.v37i7.26042</a>
+Assigned presenter: Tyler Wong
+Assigned scribe: Reese Haly</li></ul></details></li></ul><ul id="a48f44ac-8018-4d88-b943-dec29c3de771" class="toggle"><li><details open=""><summary>November 7, 2023 - Paper Presentation 6: Distributed Training and Gradient Compression</summary><ul id="64fdac46-eeca-40bf-be8d-65fcac6eaf08" class="bulleted-list"><li style="list-style-type:disc">Karimireddy, S. P., Rebjock, Q., Stich, S., &amp; Jaggi, M. (2019, May). Error feedback fixes signsgd and other gradient compression schemes. In International Conference on Machine Learning (pp. 3252-3261). PMLR. <a href="https://proceedings.mlr.press/v97/karimireddy19a/karimireddy19a.pdf">Link</a>
+Assigned presenter: Joshua Malcarne
+Assigned scribe: Tuomas Pyorre</li></ul><ul id="6f1b3790-aafd-43d4-9fe3-b05cfdeb0399" class="bulleted-list"><li style="list-style-type:disc">Vogels, T., Karimireddy, S. P., &amp; Jaggi, M. (2019). PowerSGD: Practical low-rank gradient compression for distributed optimization. Advances in Neural Information Processing Systems, 32. <a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/d9fbed9da256e344c1fa46bb46c34c5f-Paper.pdf">Link</a>
+Assigned presenter: Abijith M
+Assigned scribe: Joshua Malcarne</li></ul><ul id="a24661a0-10b3-4970-b70c-ab1afafd27b7" class="bulleted-list"><li style="list-style-type:disc">Chen, C. Y., Ni, J., Lu, S., Cui, X., Chen, P. Y., Sun, X., ... &amp; Gopalakrishnan, K. (2020). Scalecom: Scalable sparsified gradient compression for communication-efficient distributed training. Advances in Neural Information Processing Systems, 33, 13551-13563. <a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/9d58963592071dbf38a0fa114269959c-Paper.pdf">Link</a>
+Assigned presenter: Tuomas Pyorre
+Assigned scribe: Abijith M</li></ul></details></li></ul><ul id="2e6856bc-12c2-408e-8bf7-3ad9be3227f3" class="toggle"><li><details open=""><summary>November 16, 2023 - Paper Presentation 7: On-Device Training</summary><ul id="a855c42f-7057-476c-a5c9-4d318de1e1ee" class="bulleted-list"><li style="list-style-type:disc">Lin, J., Zhu, L., Chen, W.M., Wang, W.C., Gan, C. and Han, S., 2022. On-device training under 256kb memory. Advances in Neural Information Processing Systems, 35, pp.22941-22954. <a href="https://doi.org/10.48550/arXiv.2206.15472">https://doi.org/10.48550/arXiv.2206.15472</a> 
+Assigned presenter: Zhuolin Liu
+Assigned scribe: Fang Shucheng</li></ul><ul id="5662134b-482b-4329-b823-86024f9973f4" class="bulleted-list"><li style="list-style-type:disc">Qiu, X., Fernandez-Marques, J., Gusmao, P.P., Gao, Y., Parcollet, T. and Lane, N.D., 2022. ZeroFL: Efficient on-device training for federated learning with local sparsity. arXiv preprint arXiv:2208.02507. <a href="https://doi.org/10.48550/arXiv.2208.02507">https://doi.org/10.48550/arXiv.2208.02507</a>
+Assigned presenter: Robert Oleynick
+Assigned scribe: Zhuolin Liu</li></ul><ul id="2e67693d-aff2-4907-9cde-c51d5b0034d8" class="bulleted-list"><li style="list-style-type:disc">Zhou, Q., Guo, S., Qu, Z., Guo, J., Xu, Z., Zhang, J., Guo, T., Luo, B. and Zhou, J., 2021. Octo:{INT8} training with loss-aware compensation and backward quantization for tiny on-device learning. In 2021 USENIX Annual Technical Conference (USENIX ATC 21) (pp. 177-191). <a href="https://www.usenix.org/system/files/atc21-zhou.pdf">Link</a>
+Assigned presenter: Fang Shucheng
+Assigned scribe: Robert Oleynick</li></ul></details></li></ul><ul id="0da8b2fd-990d-41ee-852b-c5aba0584c62" class="toggle"><li><details open=""><summary>November 28, 2023 - Paper Presentation 8: Transfer Learning</summary><ul id="2c9c3449-8a10-4a61-81ed-66dd53d2381f" class="bulleted-list"><li style="list-style-type:disc">Profentzas, C., Almgren, M. and Landsiedel, O., 2022, September. MicroTL: Transfer Learning on Low-Power IoT Devices. In 2022 IEEE 47th Conference on Local Computer Networks (LCN) (pp. 1-8). IEEE. <a href="https://doi.org/10.1109/LCN53696.2022.9843735">https://doi.org/10.1109/LCN53696.2022.9843735</a> 
+Assigned presenter: Yashas Honnavalli
+Assigned scribe: Kewal Jayshankar Mishra</li></ul><ul id="24854e6a-5b5a-47dc-b395-e2a86395ee39" class="bulleted-list"><li style="list-style-type:disc">Chiang, H.Y., Frumkin, N., Liang, F. and Marculescu, D., 2023, June. MobileTL: on-device transfer learning with inverted residual blocks. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 37, No. 6, pp. 7166-7174). <a href="https://doi.org/10.1609/aaai.v37i6.25874">https://doi.org/10.1609/aaai.v37i6.25874</a> 
+Assigned presenter: Kewal Jayshankar Mishra
+Assigned scribe: Yashas Honnavalli</li></ul></details></li></ul><h3 id="64847e75-574e-4313-b676-ff3933044034" class="">Suggested<strong> Devices</strong></h3><p id="f7c56556-86ab-459e-a335-45aca9d28fa2" class="">The projects can use one of the following devices or any other microcontroller units (MCUs), single-board computers (SBCs), or system-on-chip (SoC) devices. We can share up to 2 Raspberry Pis, 3 MAX78000s, and 1 Apollo for approved projects.</p><ul id="3d41a6c3-1617-408d-8403-bb6a29b820dc" class="bulleted-list"><li style="list-style-type:disc">Any smartphone</li></ul><ul id="64ecb636-b900-49f2-a525-91a9b2d5a04f" class="bulleted-list"><li style="list-style-type:disc">Raspberry Pi</li></ul><ul id="6dc5c25f-5740-488e-9978-f17bdf285342" class="bulleted-list"><li style="list-style-type:disc">MAX78000</li></ul><ul id="edc1eba5-bc64-4d2b-b5c8-033cbc7b4a67" class="bulleted-list"><li style="list-style-type:disc">Arduino devices, including Edge Impulse accelerators</li></ul><ul id="5bf6076d-839b-41b8-8968-9be825ffd895" class="bulleted-list"><li style="list-style-type:disc">Jetson Nano</li></ul><ul id="0865ef4e-4d14-428f-8cc5-dcd1c5baa536" class="bulleted-list"><li style="list-style-type:disc">Apollo 3/4</li></ul><h2 id="52bb073d-467b-458d-8b0e-3644bf83869a" class="">Policies:</h2><p id="a8bb73b4-82c3-4fde-bf0c-611987c39895" class=""><mark class="highlight-red_background"><strong>Academic Honesty</strong></mark><strong> </strong>– WPI values academic honesty. The definition of an act of academic dishonesty is when an individual attempts to obtain academic credit for work that is not their own. Several forms of academic dishonesty exist, including plagiarism, defined as stealing or “borrowing” someone else’s work or ideas and presenting them as one’s own. Presenting work written by anyone other than you or your team member without properly crediting the source is plagiarism. This includes materials obtained from books, technical papers, websites, solutions
+manuals, student laboratory reports from previous offerings of this course, etc. Plagiarism is both illegal and deceitful, and thus, it is unacceptable. <strong>If a suspected academic dishonesty case has occurred, it will be investigated immediately</strong>. One can find the official university policy toward academic honesty at the following URL: <em>http://www.wpi.edu/Pubs/Policies/Honesty/</em></p><p id="ba8c34f3-e42a-4e0d-84e4-2ed4da9505b5" class="">Note the following:</p><ul id="506f129d-b462-45e9-bab8-802ab8aaf5a0" class="bulleted-list"><li style="list-style-type:disc">Reports of all suspected cases of academic dishonesty for any element of this course will be brought forth to the departmental academic honesty ombudsperson without exception.</li></ul><ul id="0bae0554-3664-4aa8-b2e0-b9f1ab9f15fe" class="bulleted-list"><li style="list-style-type:disc">Discussion with classmates about the material covered in class is permitted and highly encouraged.</li></ul><ul id="96fe9833-1c06-46a5-a794-903658e6216f" class="bulleted-list"><li style="list-style-type:disc">You can <em><strong>only</strong></em> work collaboratively on the projects with your respective team members. It is prohibited to work in groups outside your team, jointly program solutions with individuals outside your team, and copy code from any source, including those available online.</li></ul><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="8eba9d50-9ded-43e3-b522-57556d0fb965"><div style="font-size:1.5em"><span class="icon">ℹ️</span></div><div style="width:100%">- What you hand in MUST represent your understanding<strong>
+</strong>- If something feels wrong — DON’T DO IT !!
+- <strong>NEVER HESITATE </strong>to speak with me about an ethics/academic honesty issue</div></figure><p id="2b79a051-f4b1-47cd-87a8-797330f376b9" class=""><mark class="highlight-red_background"><strong>Email Correspondences</strong></mark><strong> </strong>– When sending an email to the course instructor or other course personnel, please remember the following:</p><ul id="c181ea8b-8e07-4484-9879-190946fef263" class="bulleted-list"><li style="list-style-type:disc">All emails regarding questions about the course content and materials must be sent to <mark class="highlight-orange"><a href="mailto:gr-on-device-deep-learning@wpi.edu">gr-on-device-deep-learning@wpi.edu</a></mark> without exception. Such emails sent to the individual personnel will go unanswered.</li></ul><ul id="c731de6e-f04f-4f4b-a2e4-df5ace0d90ef" class="bulleted-list"><li style="list-style-type:disc">Subject headings for all emails must begin with <strong>[F23-On-Device], </strong>or they will go unanswered.</li></ul><ul id="3b00bca2-1ed2-42bb-9c53-520c0f8dca88" class="bulleted-list"><li style="list-style-type:disc">The expected email response time is normally one business day.
+For example, if an email is sent on Friday afternoon, you could get a response by Monday (assuming Monday is not an official holiday).</li></ul><ul id="9696930e-1f25-48a0-b76e-ecdbb5a6c635" class="bulleted-list"><li style="list-style-type:disc">Emails with attachments greater than one megabyte in size will automatically be deleted without being read.</li></ul><p id="89c02a9e-402c-4dd2-971f-5b960069d78d" class=""><mark class="highlight-red_background"><strong>Punctuality</strong></mark><strong> </strong>– Please make every effort to arrive early for the start of each lecture.</p><p id="fa238c2d-8169-4026-9fab-26ce1776abed" class=""><mark class="highlight-red_background"><strong>Grade Corrections</strong></mark><strong> </strong>– Once a grade has been assigned to specific items, such as an assignment, a student has only one week to indicate any grading anomalies, such as missing grades or miscalculated grades, to the course instructor.</p><p id="08811a60-2ad6-48f0-8448-d25686f5c5e4" class=""><mark class="highlight-red_background"><strong>Academic Accommodations</strong></mark><strong> </strong>– If you need course adaptations or accommodations because of a disability or have medical information to share with Prof. Islam, please make an appointment with Prof. Islam within one week of the first class (Room AK310). If you have not already done so, students with disabilities who believe that they may need accommodations in this class are encouraged to contact the <em>Disability Services Office </em>(DSO) as soon as possible to ensure that such accommodations are implemented in a timely fashion. The DSO is in Daniels Hall, (508) 831-5235.</p><p id="5e2bed4e-3b8a-450b-9a34-e705bf4a71e6" class=""><mark class="highlight-red_background"><strong>Class Environment </strong></mark><strong>—  </strong>We will attempt to provide a <strong>welcoming</strong> class environment.</p><ul id="7248654a-a286-4ca9-9c0d-effcadf452f3" class="bulleted-list"><li style="list-style-type:disc">We desire each of you to learn to the best of your ability<ul id="01c09301-1384-40fe-ad31-7136c613dab3" class="bulleted-list"><li style="list-style-type:circle">Let me know how I can help you do so!</li></ul></li></ul><ul id="d39ca46d-3dca-4dc5-be01-46f2b435500f" class="bulleted-list"><li style="list-style-type:disc">You should be respected by the instructor and by each other.</li></ul><p id="c16063f0-c816-4eea-9ddd-1aee775a3e00" class=""><mark class="highlight-red_background"><strong>Student Mental Health</strong></mark><strong> —  </strong>This course and the WPI environment are quite demanding! </p><ul id="187a3808-88d4-45ca-9934-3fc0c9d6ff87" class="bulleted-list"><li style="list-style-type:disc">We’ll provide as much support as possible</li></ul><ul id="cd825008-4a94-4d08-a1c5-8710558e2b9f" class="bulleted-list"><li style="list-style-type:disc">If overwhelmed, you have many resources<ul id="356c6435-c5a0-493c-a5ac-8e973ed03030" class="bulleted-list"><li style="list-style-type:circle">Academic resources within this class (staff, peer students)</li></ul><ul id="d7dbcc42-1587-4152-9feb-2531d6751eb9" class="bulleted-list"><li style="list-style-type:circle">Mental health resources on campus» WPI Counseling Center» WPI Health Services</li></ul></li></ul><ul id="8c8617df-36d0-4648-95b3-d212bf582969" class="bulleted-list"><li style="list-style-type:disc"><strong>Take care of yourself.</strong> You don’t need to struggle alone.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
