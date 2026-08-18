@@ -1,0 +1,43 @@
+name: Prerender content for LLMs & crawlers
+
+# Bakes the News / Collaborators / Funding / Publications data (fetched from the
+# lab site bashlab.github.io + the GitHub publications.bib) into index.html so
+# LLM agents, chatbots and crawlers can read it without running JavaScript.
+# Runs on push, daily (to pick up new lab data / publications), and on demand.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "37 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prerender-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  prerender:
+    if: "github.event_name != 'push' || !contains(github.event.head_commit.message, '[prerender]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Bake dynamic content into index.html
+        run: python3 prerender.py
+      - name: Commit baked content
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Prerender personal site for LLMs/crawlers [prerender]"
+            git push
+          else
+            echo "No changes to commit."
+          fi
