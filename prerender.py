@@ -20,7 +20,7 @@ import re
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BASE_URL = "https://bashima.github.io"
+BASE_URL = "https://bashimaislam.com"
 LAB = "https://bashlab.github.io"          # shared data lives on the lab site
 BIB_URL = "https://raw.githubusercontent.com/BASHLab/publications/main/publications.bib"
 

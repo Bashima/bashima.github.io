@@ -2,7 +2,7 @@
 
 > Assistant Professor at the University of Massachusetts Amherst and director of the BASH Lab (Bridging AI and Sensing for Health). Research in ubiquitous AI, multimodal sensing, sensor-grounded language models, and resource-constrained (edge / TinyML) machine learning for health and well-being.
 
-Personal site: https://bashima.github.io
+Personal site: https://bashimaislam.com
 Lab: https://bashlab.github.io
 
 ## Recent News
