@@ -8,14 +8,14 @@ Lab: https://bashlab.github.io
 ## Recent News
 - September 2026: BASH Lab moves to UMass Amherst (https://bashlab.github.io)
 - August 2026: Prof. Bashima Islam receives NSF CAREER Award (https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781)
-- July 2026: Subrata joins Amazon AWS as Summer Research Intern
-- March 2026: Subrata joins Mitsubishi Electric Research Laboratories (MERL) as Research Intern
 - January 2026: OWL got accepted in ICLR 2026 (https://bashlab.github.io/owl_project/)
 - September 2025: Our paper got accepted in ICASSP 2026 (https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf)
 - September 2025: Subrata receives Peter B. Meyers Fellowship (https://www.linkedin.com/posts/wpi-electrical-and-computer-engineering-4385b2225_wpi-phd-excellence-activity-7379196307317465088-Tih-?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAAgjZbABO4TS_kXaa2F6FK-u5Ex7vOyAWVg)
 - September 2025: EfficientMic got accepted in BuildSys'25 (https://jta2021.wixsite.com/efficientmic)
 - September 2025: NIH NIMH SBIR Phase 2 Awarded (https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482)
 - September 2025: Mindfulness Meditation and Respiration got accepted in IMWUT/UbiComp'25 (https://bashlab.github.io/meditite_project/)
+- September 2025: LYNX got accepted in MIT URTC'25 as a Poster
+- August 2025: RAVEN got accepted in EMNLP'25 (https://bashlab.github.io/raven_project/)
 
 ## Funding
 Total: $1762K

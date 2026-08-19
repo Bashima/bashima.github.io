@@ -88,6 +88,7 @@ def inject_before(html_text, anchor, name, block):
 # renderers (mirror the page's own JS output)
 # --------------------------------------------------------------------------- #
 def render_recent_news(news):
+    news = [n for n in news if n.get("category") != "internship"]  # personal site excludes internships
     items = []
     for it in news[:10]:
         url = it.get("url") or ""
@@ -243,7 +244,7 @@ def build_llms(news, team, funding, pubs):
              "language models, and resource-constrained (edge / TinyML) machine learning for health and well-being.")
     L += ["", "Personal site: %s" % BASE_URL, "Lab: %s" % LAB, ""]
     L.append("## Recent News")
-    for n in news[:10]:
+    for n in [x for x in news if x.get("category") != "internship"][:10]:
         line = "- %s: %s" % (plain(n.get("date")), plain(n.get("title")))
         if n.get("url"):
             line += " (%s)" % n["url"]
