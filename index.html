@@ -529,7 +529,7 @@
             </div>
             <div id="recent-news">
 <!--PRERENDER:news-->
-<a href="https://bashlab.github.io" target="_blank"><p class="u-mb-10">BASH Lab moves to <b style="color: #2066a1;">UMass Amherst</b></p></a><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781" target="_blank"><p class="u-mb-10">Prof. Bashima Islam receives <b style="color: #2066a1;">NSF CAREER Award</b></p></a><a href="https://bashlab.github.io/owl_project/" target="_blank"><p class="u-mb-10">OWL got accepted in <b style="color: #2066a1;">ICLR 2026</b></p></a><a href="https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf" target="_blank"><p class="u-mb-10">Our paper got accepted in <b style="color: #2066a1;">ICASSP 2026</b></p></a><a href="https://www.linkedin.com/posts/wpi-electrical-and-computer-engineering-4385b2225_wpi-phd-excellence-activity-7379196307317465088-Tih-?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAAgjZbABO4TS_kXaa2F6FK-u5Ex7vOyAWVg" target="_blank"><p class="u-mb-10">Subrata receives <b style="color: #2066a1;">Peter B. Meyers Fellowship</b></p></a><a href="https://jta2021.wixsite.com/efficientmic" target="_blank"><p class="u-mb-10">EfficientMic got accepted in <b style="color: #2066a1;">BuildSys'25</b></p></a><a href="https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482" target="_blank"><p class="u-mb-10"><b style="color: #2066a1;">NIH NIMH SBIR</b> Phase 2 Awarded</p></a><a href="https://bashlab.github.io/meditite_project/" target="_blank"><p class="u-mb-10">Mindfulness Meditation and Respiration got accepted in <b style="color: #2066a1;">IMWUT/UbiComp'25</b></p></a><a href=""><p class="u-mb-10">LYNX got accepted in <b style="color: #2066a1;">MIT URTC'25</b> as a Poster</p></a><a href="https://bashlab.github.io/raven_project/" target="_blank"><p class="u-mb-10">RAVEN got accepted in <b style="color: #2066a1;">EMNLP'25</b></p></a>
+<a href="https://bashlab.github.io" target="_blank"><p class="u-mb-10">BASH Lab moves to <b style="color: #2066a1;">UMass Amherst</b></p></a><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781" target="_blank"><p class="u-mb-10">Prof. Bashima Islam receives <b style="color: #2066a1;">NSF CAREER Award</b></p></a><a href="https://bashlab.github.io/owl_project/" target="_blank"><p class="u-mb-10">OWL got accepted in <b style="color: #2066a1;">ICLR 2026</b></p></a><a href="https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf" target="_blank"><p class="u-mb-10">Our paper got accepted in <b style="color: #2066a1;">ICASSP 2026</b></p></a><a href="https://jta2021.wixsite.com/efficientmic" target="_blank"><p class="u-mb-10">EfficientMic got accepted in <b style="color: #2066a1;">BuildSys'25</b></p></a><a href="https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482" target="_blank"><p class="u-mb-10"><b style="color: #2066a1;">NIH NIMH SBIR</b> Phase 2 Awarded</p></a><a href="https://bashlab.github.io/meditite_project/" target="_blank"><p class="u-mb-10">Mindfulness Meditation and Respiration got accepted in <b style="color: #2066a1;">IMWUT/UbiComp'25</b></p></a><a href=""><p class="u-mb-10">LYNX got accepted in <b style="color: #2066a1;">MIT URTC'25</b> as a Poster</p></a><a href="https://bashlab.github.io/raven_project/" target="_blank"><p class="u-mb-10">RAVEN got accepted in <b style="color: #2066a1;">EMNLP'25</b></p></a><a href="https://bashlab.github.io/llasa_project/" target="_blank"><p class="u-mb-10">LLaSA got accepted in in <b style="color: #2066a1;">GENAI4HS Workshop, UbiComp'25</b></p></a>
 <!--/PRERENDER:news-->
               <!-- Recent news items will be populated here -->
             </div>
@@ -758,6 +758,8 @@
               <h2 class="c-section-heading__header">Award.</h2>
             </div>
             <!-- <h4>2020</h4> -->
+            <p> &bull; NSF CAREER Award 2026. </p>
+            <p> &bull; NSF CRII Award 2024. </p>
             <p> &bull; Forbes 30 under 30 (Science) 2021. </p>
             <p> &bull; EECS Rising Star, University of California Berkley 2020. </p>
             <p> &bull; Finalist Gaetano Borriello Outstanding Student Award, UBICOMP/ISWC 2020.</p>
@@ -1279,8 +1281,8 @@
     async function loadNews() {
       try {
         const response = await fetch('https://bashlab.github.io/news.json?v=' + Date.now());
-        // Personal site excludes internship news
-        const newsData = (await response.json()).filter(item => item.category !== 'internship');
+        // Personal site excludes internship news and lab-only items
+        const newsData = (await response.json()).filter(item => item.category !== 'internship' && !item.labOnly);
 
         // Display recent news (first 10 items) - titles only
         const recentNewsContainer = document.getElementById('recent-news');
@@ -1320,7 +1322,7 @@
         const previousNews = await previousResponse.json();
 
         // Combine current and previous news
-        const allNews = [...currentNews, ...previousNews].filter(item => item.category !== 'internship');
+        const allNews = [...currentNews, ...previousNews].filter(item => item.category !== 'internship' && !item.labOnly);
 
         populateTimeline(allNews);
       } catch (error) {
