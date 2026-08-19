@@ -1053,57 +1053,85 @@
           <h2 class="c-section-heading__header">Teaching.</h2>
         </div>
 
-        <p style="text-align:center; font-weight:600; color:#2066a1; margin: 0 0 25px;">Courses Taught at WPI</p>
+        <style>
+          .teaching-nested { max-width: 780px; margin: 0 auto; text-align: center; }
+          .tn-loc-bar { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+          .tn-loc { background:none; border:none; font-size:1.15em; font-weight:700; color:#9a9a9a; cursor:pointer; padding:6px 10px; border-bottom:3px solid transparent; transition:all .2s; }
+          .tn-loc.is-active { color:#2066a1; border-bottom-color:#2066a1; }
+          .tn-loc-panel { display:none; }
+          .tn-loc-panel.is-active { display:block; }
+          .tn-lvl-bar { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:14px; }
+          .tn-lvl { background:none; border:none; font-size:1em; font-weight:600; color:#9a9a9a; cursor:pointer; padding:4px 8px; border-bottom:2px solid transparent; transition:all .2s; }
+          .tn-lvl.is-active { color:#2066a1; border-bottom-color:#2066a1; }
+          .tn-lvl-panel { display:none; text-align:left; }
+          .tn-lvl-panel.is-active { display:block; }
+        </style>
 
         <div class="c-screen-teaching o-screen-teaching">
           <div class="o-screen-teaching__col">
-            <nav class="c-tabs  js-tabs">
-              <div class="c-tabs__item">
-                <input class="u-visuallyhidden" id="tab2" type="radio" name="tabs">
-                <label class="c-tabs__header" for="tab2">Graduate courses</label>
-                <div class="c-tabs__content">
+            <div class="teaching-nested">
+
+              <div class="tn-loc-bar">
+                <button type="button" class="tn-loc is-active" data-loc="umass">Courses @ UMass Amherst</button>
+                <button type="button" class="tn-loc" data-loc="wpi">Courses Taught at WPI</button>
+              </div>
+
+              <!-- UMass (default) -->
+              <div class="tn-loc-panel is-active" data-loc="umass">
+                <div class="tn-lvl-bar">
+                  <button type="button" class="tn-lvl is-active" data-lvl="umass-grad">Graduate courses</button>
+                  <button type="button" class="tn-lvl" data-lvl="umass-ugrad">Undergraduate courses</button>
+                </div>
+                <div class="tn-lvl-panel is-active" data-lvl="umass-grad">
                   <ul class="c-tabs__list">
                     <li>
-                      <h3>ECE/CS/DS 556: On-Device Deep Learning</h3>
-                      <p><a href="">[Spring 2026]</a>
-                        <a href="https://bashima.notion.site/on-device-deep-learning-s25">[Spring 2025]</a>
-                        <a href="https://users.wpi.edu/~bislam/courses/od-dl/">[Fall 2023]</a>
-                      </p>
-
-                    </li>
-                    <li>
-                      <h3>ECE Graduate Seminar Course</h3>
-                      <p><a
-                          href="https://bashima.notion.site/gradseminar?v=190f8686fc9945808a183f3bb05c786a&pvs=4">[Spring
-                          2025]</a></p>
+                      <h3>690D - Advanced On-Device Deep Learning</h3>
+                      <p>[Fall 2026]</p>
                     </li>
                   </ul>
                 </div>
+                <div class="tn-lvl-panel" data-lvl="umass-ugrad">
+                  <ul class="c-tabs__list">
+                    <li><p>Coming soon.</p></li>
+                  </ul>
+                </div>
               </div>
-              <div class="c-tabs__item">
-                <input class="u-visuallyhidden" id="tab1" type="radio" name="tabs" checked>
-                <label class="c-tabs__header" for="tab1">Undergraduate courses</label>
-                <div class="c-tabs__content">
+
+              <!-- WPI -->
+              <div class="tn-loc-panel" data-loc="wpi">
+                <div class="tn-lvl-bar">
+                  <button type="button" class="tn-lvl is-active" data-lvl="wpi-grad">Graduate courses</button>
+                  <button type="button" class="tn-lvl" data-lvl="wpi-ugrad">Undergraduate courses</button>
+                  <button type="button" class="tn-lvl" data-lvl="wpi-summer">Summer Courses</button>
+                </div>
+                <div class="tn-lvl-panel is-active" data-lvl="wpi-grad">
+                  <ul class="c-tabs__list">
+                    <li>
+                      <h3>ECE/CS/DS 556: On-Device Deep Learning</h3>
+                      <p><a href="https://bashima.notion.site/on-device-deep-learning-s25">[Spring 2025]</a>
+                        <a href="https://users.wpi.edu/~bislam/courses/od-dl/">[Fall 2023]</a></p>
+                    </li>
+                    <li>
+                      <h3>ECE Graduate Seminar Course</h3>
+                      <p><a href="https://bashima.notion.site/gradseminar?v=190f8686fc9945808a183f3bb05c786a&pvs=4">[Spring 2025]</a></p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tn-lvl-panel" data-lvl="wpi-ugrad">
                   <ul class="c-tabs__list">
                     <li>
                       <h3>ECE 341X: Introduction to AI Accelerator</h3>
-                      <p><a href="">[Spring 2026]</a>
-                      </p>
+                      <p>[Spring 2026]</p>
                     </li>
                     <li>
                       <h3>ECE 2312: Discrete-Time Signal and System Analysis</h3>
                       <p><a href="https://bashima.notion.site/ece2312-a25">[Fall 2025]</a>
                         <a href="https://users.wpi.edu/~bislam/courses/ece2312_s24">[Spring 2024]</a>
-                        <a href="https://users.wpi.edu/~bislam/courses/ece2312_s23">[Spring 2023]</a>
-                      </p>
+                        <a href="https://users.wpi.edu/~bislam/courses/ece2312_s23">[Spring 2023]</a></p>
                     </li>
                   </ul>
                 </div>
-              </div>
-              <div class="c-tabs__item">
-                <input class="u-visuallyhidden" id="tab3" type="radio" name="tabs">
-                <label class="c-tabs__header" for="tab3">Summer Courses</label>
-                <div class="c-tabs__content">
+                <div class="tn-lvl-panel" data-lvl="wpi-summer">
                   <ul class="c-tabs__list">
                     <li>
                       <h3>WPI Frontier K-12: Embedded Computing Systems</h3>
@@ -1112,9 +1140,34 @@
                   </ul>
                 </div>
               </div>
-            </nav>
+
+            </div>
           </div>
         </div>
+
+        <script>
+          (function () {
+            var root = document.querySelector('.teaching-nested');
+            if (!root) return;
+            root.querySelectorAll('.tn-loc').forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                root.querySelectorAll('.tn-loc').forEach(function (b) { b.classList.remove('is-active'); });
+                root.querySelectorAll(':scope > .tn-loc-panel').forEach(function (p) { p.classList.remove('is-active'); });
+                btn.classList.add('is-active');
+                root.querySelector('.tn-loc-panel[data-loc="' + btn.dataset.loc + '"]').classList.add('is-active');
+              });
+            });
+            root.querySelectorAll('.tn-lvl').forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                var panel = btn.closest('.tn-loc-panel');
+                panel.querySelectorAll('.tn-lvl').forEach(function (b) { b.classList.remove('is-active'); });
+                panel.querySelectorAll('.tn-lvl-panel').forEach(function (p) { p.classList.remove('is-active'); });
+                btn.classList.add('is-active');
+                panel.querySelector('.tn-lvl-panel[data-lvl="' + btn.dataset.lvl + '"]').classList.add('is-active');
+              });
+            });
+          })();
+        </script>
 
       </div>
 
@@ -1177,7 +1230,7 @@
                   Email
                 </h3>
                 <p class="c-contact-item__text">
-                  <a href="mailto:bislam@wpi.edu">bislam@wpi.edu</a>
+                  <a href="mailto:bashima@umass.edu">bashima@umass.edu</a>
                 </p>
               </div>
 
@@ -1187,10 +1240,10 @@
                   Office Address
                 </h3>
                 <p class="c-contact-item__text">
-                  Atwater Kent Lab, Room 310<br>
-                  Worcester Polytechnic Institute<br>
-                  100 Institute Rd<br>
-                  Worcester, MA 01609
+                  Room 309, Knowles Engineering Building<br>
+                  University of Massachusetts Amherst<br>
+                  151 Holdsworth Way<br>
+                  Amherst, MA 01003
                 </p>
               </div>
             </div>
