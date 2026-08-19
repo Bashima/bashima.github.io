@@ -1476,14 +1476,6 @@
           console.log('Chart created successfully');
         }
 
-        // Update the description text with funding summary
-        const cardText = document.querySelector('.c-card__modal-content .c-card__text');
-        if (cardText && fundingData.chartData) {
-          const total = fundingData.chartData.total;
-          const grantCount = fundingData.grants.length;
-          cardText.textContent = `Total funding: $${total}K across ${grantCount} active grants from NSF, NIH, and industry partners supporting research in AI, sensor fusion, TinyML, and behavioral health.`;
-        }
-
         // Load funding grants list
         const grantsContainer = document.getElementById('funding-grants');
         if (grantsContainer && fundingData.grants) {
