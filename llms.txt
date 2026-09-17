@@ -7,6 +7,7 @@ Lab: https://bashlab.github.io
 
 ## Recent News
 - September 2026: BASH Lab moves to UMass Amherst (https://bashlab.github.io)
+- August 2026: CODetect got accepted into MIT URTC '26 as a paper
 - August 2026: Prof. Bashima Islam receives NSF CAREER Award (https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781)
 - January 2026: OWL got accepted in ICLR 2026 (https://bashlab.github.io/owl_project/)
 - September 2025: Our paper got accepted in ICASSP 2026 (https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf)
@@ -15,7 +16,6 @@ Lab: https://bashlab.github.io
 - September 2025: Mindfulness Meditation and Respiration got accepted in IMWUT/UbiComp'25 (https://bashlab.github.io/meditite_project/)
 - September 2025: LYNX got accepted in MIT URTC'25 as a Poster
 - August 2025: RAVEN got accepted in EMNLP'25 (https://bashlab.github.io/raven_project/)
-- July 2025: LLaSA got accepted in in GENAI4HS Workshop, UbiComp'25 (https://bashlab.github.io/llasa_project/)
 
 ## Funding
 Total: $1762K
