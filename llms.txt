@@ -6,6 +6,8 @@ Personal site: https://bashimaislam.com
 Lab: https://bashlab.github.io
 
 ## Recent News
+- September 2026: Our PhysioNet Challenge 2026 entry got accepted in CinC 2026 as a paper and poster (https://github.com/shouborno/physionet-challenge-2026)
+- September 2026: JOLT got accepted in ICTAI 2026 (https://github.com/BASHLab/jolt-early-exit)
 - September 2026: BASH Lab moves to UMass Amherst (https://bashlab.github.io)
 - August 2026: CODetect got accepted into MIT URTC '26 as a paper
 - August 2026: Prof. Bashima Islam receives NSF CAREER Award (https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2541781)
@@ -14,8 +16,6 @@ Lab: https://bashlab.github.io
 - September 2025: EfficientMic got accepted in BuildSys'25 (https://jta2021.wixsite.com/efficientmic)
 - September 2025: NIH NIMH SBIR Phase 2 Awarded (https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482)
 - September 2025: Mindfulness Meditation and Respiration got accepted in IMWUT/UbiComp'25 (https://bashlab.github.io/meditite_project/)
-- September 2025: LYNX got accepted in MIT URTC'25 as a Poster
-- August 2025: RAVEN got accepted in EMNLP'25 (https://bashlab.github.io/raven_project/)
 
 ## Funding
 Total: $1762K
@@ -31,6 +31,8 @@ Total: $1762K
 Carnegie Mellon University, University of Illinois Urbana-Champaign, Georgia Tech, University of Trento, Meta Reality Lab, Arizona State University, University of Tennessee, Knoxville, Bosch Research America, Equa Health, Northwestern University, Delft University of Technology, University of California San Diego, UMass Chan Medical School, Columbia University
 
 ## Publications
+- JOLT: Jointly Optimized Layerwise Termination for Budgeted Early-Exit Inference. S. A. I. Shouborno, Mohammad Nur Hossain Khan, Bashima Islam. 38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI) 2026 https://github.com/BASHLab/jolt-early-exit
+- Cross-Site Generalization of Interpretable Sleep Features for Predicting Future Cognitive Impairment. S. A. I. Shouborno, Bashima Islam. Computing in Cardiology (CinC) 2026 https://github.com/shouborno/physionet-challenge-2026
 - OWL: Geometry-Aware Spatial Reasoning for Audio Large Language Models. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. International Conference on Learning Representations (ICLR) 2026 https://arxiv.org/pdf/2509.26140?
 - Hair Noise Analysis and Mitigation for Smart Glasses Audio Captures. Subrata Biswas, Daniel Wong, Bashima Islam, Sanjeel Parekh, Vladimir Tourbabin. ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) 2026 https://ieeexplore.ieee.org/document/11464268
 - RAVEN: Query-Guided Representation Alignment for Question Answering over Audio, Video, Embedded Sensors, and Natural Language. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP) 2025 https://aclanthology.org/2025.emnlp-main.96/
