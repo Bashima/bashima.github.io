@@ -6,6 +6,7 @@ Personal site: https://bashimaislam.com
 Lab: https://bashlab.github.io
 
 ## Recent News
+- September 2026: StoMPP got accepted in NeurIPS 2026 (https://arxiv.org/abs/2606.27759)
 - September 2026: Our PhysioNet Challenge 2026 entry got accepted in CinC 2026 as a paper and poster (https://github.com/shouborno/physionet-challenge-2026)
 - September 2026: JOLT got accepted in ICTAI 2026 (https://github.com/BASHLab/jolt-early-exit)
 - September 2026: BASH Lab moves to UMass Amherst (https://bashlab.github.io)
@@ -15,7 +16,6 @@ Lab: https://bashlab.github.io
 - September 2025: Our paper got accepted in ICASSP 2026 (https://users.wpi.edu/~sbiswas/assets/publications/26-icassp/ICASSP_26_HNM.pdf)
 - September 2025: EfficientMic got accepted in BuildSys'25 (https://jta2021.wixsite.com/efficientmic)
 - September 2025: NIH NIMH SBIR Phase 2 Awarded (https://reporter.nih.gov/search/dA1rsefomUqAkWnzcMSysg/project-details/11393482)
-- September 2025: Mindfulness Meditation and Respiration got accepted in IMWUT/UbiComp'25 (https://bashlab.github.io/meditite_project/)
 
 ## Funding
 Total: $1762K
