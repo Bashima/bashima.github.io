@@ -31,6 +31,8 @@ Total: $1762K
 Carnegie Mellon University, University of Illinois Urbana-Champaign, Georgia Tech, University of Trento, Meta Reality Lab, Arizona State University, University of Tennessee, Knoxville, Bosch Research America, Equa Health, Northwestern University, Delft University of Technology, University of California San Diego, UMass Chan Medical School, Columbia University
 
 ## Publications
+- BeatGraph: Self-Supervised Heartbeat Graphs for Infant ECG Representations from the Home Environment. Mohammad Nur Hossain Khan, MS Krafczyk, Beverly G Bolster, Nancy McElwain, Mark A Hasegawa-Johnson, Bashima Islam. arXiv preprint arXiv:2609.31546 2026
+- Encoder-aware Verifier Fusion with Boundary Refinement for Audio Moment Retrieval. Mohammad Nur Hossain Khan, Subrata Biswas, Bashima Islam.  2026
 - JOLT: Jointly Optimized Layerwise Termination for Budgeted Early-Exit Inference. S. A. I. Shouborno, Mohammad Nur Hossain Khan, Bashima Islam. 38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI) 2026 https://github.com/BASHLab/jolt-early-exit
 - Cross-Site Generalization of Interpretable Sleep Features for Predicting Future Cognitive Impairment. S. A. I. Shouborno, Bashima Islam. Computing in Cardiology (CinC) 2026 https://github.com/shouborno/physionet-challenge-2026
 - OWL: Geometry-Aware Spatial Reasoning for Audio Large Language Models. Subrata Biswas, Mohammad Nur Hossain Khan, Bashima Islam. International Conference on Learning Representations (ICLR) 2026 https://arxiv.org/pdf/2509.26140?
